@@ -83,9 +83,8 @@ class WordLearn(QWidget):
         self.study_layout.addWidget(self.button)
 
         # Label for the word
-        if self.wd != 'Lesson Complete!' and self.wd != None:
-            self.word_label = QLabel('Click "✅✅✅" to see a word', self)
-        else:
+        self.word_label = QLabel('Click "✅✅✅" to see a word', self)
+        if sum([weight["weight"] for weight in self.S_Group_words]) == 0:
             self.word_label = QLabel('Lesson Complete!', self)
         self.word_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.word_label.setFont(QFont('Arial', 48))
@@ -148,9 +147,8 @@ class WordLearn(QWidget):
         else:
             pass
         
-        
-
-        
+        self.translation_visible = False
+        self.wd = WordShortcut(self.S_Group_words)
         if self.wd!='Lesson Complete!' and self.wd!=None:
             self.translation_visible = False
             self.wd = WordShortcut(self.S_Group_words)
@@ -253,7 +251,7 @@ class SUBGroupSelect(QWidget):
 # Main function
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    tb = TinyDB("db.json")
+
 
     # Load words from file
         # Determine the base path once during initialization
@@ -264,6 +262,7 @@ if __name__ == '__main__':
         # Running as a script
         base_path = os.getcwd()  # Current working directory
     audio_base_path = os.path.join(base_path, 'audiofiles')
+    tb = TinyDB(os.path.join(base_path, "db.json"))
 
     # Create and show the app window
     window = GroupSelect()
