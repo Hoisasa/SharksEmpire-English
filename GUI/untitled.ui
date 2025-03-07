@@ -60,7 +60,7 @@
        <bool>false</bool>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="Lesson_screen">
        <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -756,9 +756,14 @@ QPushButton:pressed {
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">QLabel {
-    color: green;
-}</string>
+          <string notr="true">
+    QLabel {
+        padding: 10px;            /* Padding around the text */
+        border-radius: 15px;      /* Rounded corners */
+
+    }
+
+</string>
          </property>
          <property name="text">
           <string/>

@@ -5,7 +5,7 @@ a = Analysis(
     ['audio.py'],
     pathex=[],
     binaries=[],
-    datas=[('grouped_dict.pkl', '.'), ('audiofiles', 'audiofiles')],
+    datas=[('db.json', '.'), ('audiofiles', 'audiofiles')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},

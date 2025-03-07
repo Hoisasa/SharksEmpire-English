@@ -1,15 +1,16 @@
 import os
 import random
 import sys
+import re
 import time
 import soundfile as sf
 import sounddevice as sd
-from PyQt6 import QtWidgets, QtGui, QtCore
-from PyQt6.QtGui import QColor, QFont
+from PyQt6.QtCore import QPropertyAnimation
+from PyQt6.QtGui import QColor, QFont, QPalette
 from PyQt6.QtWidgets import QApplication, QMainWindow, QGraphicsDropShadowEffect, QTableWidgetItem, QPushButton, QLabel
 from colorama import Fore, Style, init
 from tinydb import TinyDB, Query, where
-
+from PyQt6 import QtWidgets,QtCore,QtGui
 from python_gui import Ui_UNOlingo
 from python_gui2 import Ui_Form
 
@@ -95,6 +96,40 @@ def shuffle_to_learn(learn_list):
 def shuffle_learned(learned):
 	random.shuffle(learned)
 
+
+class TransparentShadowLabel(QLabel):
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+		
+		self.setText("Styled Label with Fading Shadow")
+		self.setStyleSheet("""
+            QLabel {
+                padding: 10px;
+                border-radius: 15px;
+                background-color: rgba(255, 255, 255, 255);  /* Initial background color */
+                color: black;  /* Text color */
+            }
+        """)
+		
+		# Set up the shadow effect for the label
+		self.shadow_effect = QGraphicsDropShadowEffect()
+		self.shadow_effect.setOffset(0, 0)  # No shadow offset
+		self.shadow_effect.setBlurRadius(20)  # Blur radius for the shadow
+		self.shadow_effect.setColor(QColor(0, 0, 0, 255))  # Start with opaque black shadow
+		self.setGraphicsEffect(self.shadow_effect)
+		
+		# Create the animation for the shadow color (fade effect)
+		self.shadow_anim = QPropertyAnimation(self.shadow_effect, b"color")
+		self.shadow_anim.setDuration(1500)  # Animation duration (in milliseconds)
+		self.shadow_anim.setStartValue(QColor(0, 255, 0, 155))  # Opaque shadow (fully visible)
+		self.shadow_anim.setKeyValueAt(0.66, QColor(0, 255, 0, 100))
+		self.shadow_anim.setEndValue(QColor(0, 0, 0, 50))  # Semi-transparent shadow (fading effect)
+	
+
+	
+
+
+
 class WordShortcut:
 	def __init__(self, word_full):
 		self.word_meta = word_full
@@ -129,6 +164,7 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 		self.group_name = None
 		self.mistakes = []
 		self.glow = False
+		self.Flag = False
 		
 		self.dock = MistakesDock()
 		
@@ -200,6 +236,18 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 		self.prev_page_strip.setStyleSheet(self.stylesheet_red)
 		self.prev_page_strip.setIconSize(QtCore.QSize(100, 300))
 		
+		self.points_display = TransparentShadowLabel(parent=self.Back_widget)
+		self.points_display.setGeometry(QtCore.QRect(650, 70, 341, 50))
+		font = QtGui.QFont()
+		font.setPointSize(20)
+		self.points_display.setFont(font)
+		self.points_display.setStyleSheet("")
+		self.points_display.setText("")
+		self.points_display.setStyleSheet("padding: 0 {:d}px; border-radius: {:d}px;".format(5,10))
+		self.points_display.setAlignment(
+			QtCore.Qt.AlignmentFlag.AlignRight | QtCore.Qt.AlignmentFlag.AlignTrailing | QtCore.Qt.AlignmentFlag.AlignVCenter)
+		self.points_display.setObjectName("points_display")
+		
 		# Images
 		icon1 = QtGui.QIcon()
 		icon1.addPixmap(QtGui.QPixmap(os.path.join(image_files_path, "audio.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
@@ -227,23 +275,22 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 		
 		# Mode choose page section
 		self.prev_page_2.clicked.connect(self.go_back)
-		self.mode1intro.setEnabled(True)
 		self.mode1intro.clicked.connect(self.lesson_start)
 		self.mode1intro.setStyleSheet(self.stylesheet_prpl)
 		self.mode2stud.clicked.connect(self.lesson_start)
 		self.mode2stud.setStyleSheet(self.stylesheet_prpl)
-		self.mode3ex.setEnabled(False)
+		self.mode3ex.setEnabled(True)
 		self.mode3ex.clicked.connect(self.lesson_start)
-		# self.mode3ex.setStyleSheet(self.stylesheet_prpl)
-		self.mode3ex.setStyleSheet("background-color: #828282;     border-radius: 30px;")
+		self.mode3ex.setStyleSheet(self.stylesheet_prpl)
+
 		
 		# Lesson section
 		self.prev_page.clicked.connect(self.go_back)
 		self.repeat_audio.clicked.connect(self.voice_word)
 		self.restart_lesson.clicked.connect(self.teach)
 		self.translation.clicked.connect(self.reveal_translation)
-		self.W_answer.clicked.connect(self.W_W)
-		self.L_answer.clicked.connect(self.L_L)
+		self.W_answer.clicked.connect(self.answer)
+		self.L_answer.clicked.connect(self.answer)
 		
 		self.groupGrid.setContentsMargins(60, 10, 0, 0)
 		self.groupGrid_2.setContentsMargins(60, 10, 0, 0)
@@ -254,6 +301,11 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 		self.groupGrid.setColumnMinimumWidth(0, 1250)
 		self.groupGrid_2.setColumnMinimumWidth(0, 1250)
 		
+		self.shadowLabel = QGraphicsDropShadowEffect()
+		self.shadowLabel.setColor(QColor(255, 0, 255))  # Set glow color
+		self.shadowLabel.setBlurRadius(50)  # Set blur intensity
+		self.shadowLabel.setOffset(0, 0)  # Set offset
+
 		self.populate_main_group()
 		
 		# Effects
@@ -284,16 +336,15 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 	def reveal_translation(self):
 		if self.study_mode == "mode1intro":
 			self.word_iterator()
-		elif self.study_mode == "mode2stud":
+		elif self.study_mode == "mode2stud" or self.study_mode == "mode3ex":
 			self.word_translation.setVisible(True)
 			
-	def W_W(self):
-		self.point(1)
-		self.word_iterator()
-		
-	def L_L(self):
-		self.point(-1)
-		self.mistakes.append(self.current_word)
+			
+	def answer(self):
+		# Flag is study mode. not Flag is exam mode
+		mark = 1 if self.Flag else 3
+		mark *= -1 if self.sender().objectName() == self.L_answer.objectName() else 1
+		self.mark(mark)
 		self.word_iterator()
 	
 	# Common use functions
@@ -341,7 +392,7 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 					full_list.extend(self.learned[:2])
 				elif len(self.to_learn) < 5:
 					full_list.extend(self.learned[:4])
-		elif self.study_mode == 'mode1intro':
+		elif self.study_mode == 'mode1intro' or self.study_mode == 'mode3ex':
 			full_list = tb.search(where("Sub group") == self.group_name)
 		
 		self.word_iterating = iter(full_list)
@@ -352,6 +403,7 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 		sd.play(audio, samplerate)
 		
 	def word_iterator(self):
+		self.Flag = self.study_mode == "mode2stud"
 		if self.study_mode == "mode1intro":
 			if self.W_answer.isVisible():
 				self.W_answer.setVisible(False)
@@ -374,8 +426,8 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 			self.The_word.setText(self.wd.name())
 			self.word_transcription.setText(self.wd.transcript())
 			self.word_translation.setText(self.wd.transl())
-			
-		elif self.study_mode == "mode2stud":
+		
+		elif self.Flag or self.study_mode == "mode3ex":
 			self.translation.setText("translation")
 			self.word_translation.setVisible(False)
 			self.W_answer.setEnabled(False)
@@ -394,17 +446,20 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 					self.lesson_resume()
 				self.enable_buttons(False)
 				return
-			if self.current_word in self.learned and not self.glow:
+			if self.Flag and not self.glow and self.current_word in self.learned:
 				self.glow = True
 				self.shadow = QGraphicsDropShadowEffect()
 				self.shadow.setColor(QColor(255, 0, 255))  # Set glow color
 				self.shadow.setBlurRadius(50)  # Set blur intensity
 				self.shadow.setOffset(0, 0)  # Set offset
 				self.restart_lesson.setGraphicsEffect(self.shadow)
-	
-			elif self.current_word in self.to_learn and self.glow:
+				self.restart_lesson.setEnabled(True)
+			elif  self.Flag and self.glow and self.current_word in self.to_learn:
 				self.glow = False
 				self.restart_lesson.setGraphicsEffect(None)
+				self.restart_lesson.setEnabled(True)
+			else:
+				self.restart_lesson.setEnabled(False)
 			self.wd = WordShortcut(self.current_word)
 			self.show_points()
 			self.The_word.setText(self.wd.name())
@@ -417,6 +472,8 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 		self.file_path = os.path.join(audio_base_path, f"{self.wd.sub_group().replace('/', '-')}",
 									  f"{self.wd.name().split(' (')[0]}.wav")
 		self.voice_word()
+		
+		
 	def populate_main_group(self):
 		self.pages.setCurrentIndex(3)
 		self.prev_page_strip.setVisible(False)
@@ -457,7 +514,7 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 					self.groupGrid.removeWidget(widget)  # Remove from layout
 					widget.deleteLater()  # Delete widget
 	
-	def point(self, num):
+	def mark(self, num):
 		new_value = round((self.wd.weight() - (self.wd.weight() * max_points % 1 / max_points ) - num / max_points),2)
 		new_value = min(1, max(new_value, 0))
 		tb.update({"weight": new_value}, (where('Sub group') == self.wd.sub_group()) & (where("Name") == self.wd.name()))
@@ -468,8 +525,16 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 		self.translation.setVisible(on_off)
 		
 	def show_points(self):
+		self.points_display.shadow_anim.stop()
 		amount = max_points - self.wd.weight()*max_points
-		self.points_display.setText("🐟" * int(amount))
+		self.points_display.setText(" 🐟" * int(amount))
+		if amount == max_points:
+			self.points_display.setText("MAX" + " 🐟" * int(amount))
+			self.points_display.shadow_anim.start()
+
+	
+
+		
 	
 	def lesson_resume(self):
 		self.dock.populate(self.mistakes)
