@@ -124,11 +124,6 @@ class TransparentShadowLabel(QLabel):
 		self.shadow_anim.setStartValue(QColor(0, 255, 0, 155))  # Opaque shadow (fully visible)
 		self.shadow_anim.setKeyValueAt(0.66, QColor(0, 255, 0, 100))
 		self.shadow_anim.setEndValue(QColor(0, 0, 0, 50))  # Semi-transparent shadow (fading effect)
-	
-
-	
-
-
 
 class WordShortcut:
 	def __init__(self, word_full):

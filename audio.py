@@ -262,7 +262,7 @@ if __name__ == '__main__':
         # Running as a script
         base_path = os.getcwd()  # Current working directory
     audio_base_path = os.path.join(base_path, 'audiofiles')
-    tb = TinyDB(os.path.join(base_path, "db.json"))
+    # tb = TinyDB(os.path.join(base_path, "db.json"))
 
     # Create and show the app window
     window = GroupSelect()

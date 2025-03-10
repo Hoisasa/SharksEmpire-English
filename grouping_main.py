@@ -1,13 +1,25 @@
+import time
+
 from tinydb import TinyDB, Query, where
 
 tb = TinyDB("db.json")
 query = Query()
+c = 0
 
 def add_word(name, transl, weight, transcr, s_group, group):
+	global c
 	doc = {"Name": name, "translation": transl, "weight": weight, "transcription": transcr, "Sub group": s_group, "Group": group}
-	tb.upsert(doc, (query.Name == name) & (query.Translation == transl) & (query.SGroup == s_group))
+	if tb.search((where("Name") == name) & (where("Sub group") == s_group)):
+		c += 1
+		print(f"{c}", end=' ')
+	
+	else:
+		tb.insert(doc)
+
 
 print(tb.all())
+
+start_time = time.time()
 
 add_word("beginning", "начало", 1.0, '', "Начало • Begining", "Глаголы этапов • Verbs of Stage")
 add_word("begin", "начинать", 1.0, '', "Начало • Begining", "Глаголы этапов • Verbs of Stage")
@@ -237,12 +249,10 @@ add_word("dry oneself", "вытираться", 1.0, '', "Спать/ Приво
 add_word("shave", "бриться", 1.0, '', "Спать/ Приводить себя в порядок • Sleep/Tidy Oneself up", "Бытовые Глаголы • Verbs of Everyday Life")
 add_word("make up", "делать макияж", 1.0, '', "Спать/ Приводить себя в порядок • Sleep/Tidy Oneself up", "Бытовые Глаголы • Verbs of Everyday Life")
 add_word("do ones hair", "делать прическу", 1.0, '', "Спать/ Приводить себя в порядок • Sleep/Tidy Oneself up", "Бытовые Глаголы • Verbs of Everyday Life")
-#
+
 
 # add_word("fry", "собирать", 1.0, '', "Спать/ Приводить себя в порядок • Sleep/Tidy Oneself up", "Бытовые Глаголы • Verbs of Everyday Life")
 
-
-
-
-
-
+end_time = time.time()
+elapsed_time = end_time - start_time
+print(f"\nTime spent: {elapsed_time:.6f} seconds")
