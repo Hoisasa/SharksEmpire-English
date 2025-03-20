@@ -5,14 +5,18 @@ import re
 import time
 import soundfile as sf
 import sounddevice as sd
-from PyQt6.QtCore import QPropertyAnimation
+from src.settings import APP_VERSION
+from PyQt6.QtCore import QPropertyAnimation, Qt
 from PyQt6.QtGui import QColor, QFont, QPalette
-from PyQt6.QtWidgets import QApplication, QMainWindow, QGraphicsDropShadowEffect, QTableWidgetItem, QPushButton, QLabel
+from PyQt6.QtWidgets import QApplication, QMainWindow, QGraphicsDropShadowEffect, QTableWidgetItem, QPushButton, QLabel, \
+	QSplashScreen
 from colorama import Fore, Style, init
+from github import Github
 from tinydb import TinyDB, Query, where
 from PyQt6 import QtWidgets,QtCore,QtGui
-from python_gui import Ui_UNOlingo
-from python_gui2 import Ui_Form
+from GUI.python_gui import Ui_UNOlingo
+from GUI.python_gui2 import Ui_Form
+from GUI.python_gui_loader import Ui_Splash
 
 
 def get_to_learn_list(group_name):
@@ -263,6 +267,7 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 		icon5 = QtGui.QIcon()
 		icon5.addPixmap(QtGui.QPixmap(os.path.join(image_files_path, "return.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
 		self.prev_page.setIcon(icon5)
+		self.prev_page_2.setIcon(icon5)
 		
 		icon6 = QtGui.QIcon()
 		icon6.addPixmap(QtGui.QPixmap(os.path.join(image_files_path, "BACK.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
@@ -561,7 +566,57 @@ class MistakesDock(Ui_Form, QMainWindow):
 			self.tableWidget.setItem(row, 1, QTableWidgetItem(mistake["translation"]))
 			
 		
+class SplashScreen(Ui_Splash, QSplashScreen):
+	def __init__(self):
+		super().__init__()
+		self.asset = None
+		self.release = None
+		self.repo = None
+		self.g = None
+		self.token = None
+		self.setupUi(self)
+		self.setWindowFlag(Qt.WindowType.FramelessWindowHint)
+		self.getUpdate.setVisible(False)
+		screen = QApplication.primaryScreen().geometry()
+		self.move(screen.center().x() - self.width() // 2,
+						  screen.center().y() - self.height() // 2)
 		
+
+	
+	def mousePressEvent(self, a0):
+		pass
+		
+	def check_for_update(self):
+		self.token = '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'
+		
+		self.progressBar.setValue(14)
+		self.g = Github(self.token)
+		self.progressBar.setValue(28)
+		self.repo = self.g.get_repo('Hoisasa/English-word-learning')
+		self.progressBar.setValue(42)
+		self.release = self.repo.get_latest_release()
+		self.progressBar.setValue(56)
+		print(f"App version: {APP_VERSION}")
+		self.progressBar.setValue(70)
+		print(f"Latest version: {self.release.tag_name}")
+		self.progressBar.setValue(85)
+		if self.int_ver(APP_VERSION) < self.int_ver(self.release.tag_name):
+			
+			self.getUpdate.setVisible(True)
+			self.labelLoading.setText("New Update available")
+			print("New Update available")
+			self.progressBar.setValue(0)
+		else:
+			self.progressBar.setValue(100)
+		
+		
+		self.g.close()
+	
+	# for version comparison we convert a github version tag to a 3 digit int
+	def int_ver(self, version):
+		result = "".join(re.findall(r"\d+", version)) #taking only numbers making it a single string
+		result = int(result)
+		return result
 		
 # Build command
 # pyinstaller --onefile --add-data "images;images" --add-data "audiofiles;audiofiles" --add-data "db_test.json;." --add-data "python_gui.py;." --add-data "python_gui2.py;." audio_dev_ver.py --exclude-module "PySide6" --icon=images/unolingo_P64_icon.ico --windowed
@@ -574,23 +629,26 @@ if __name__ == '__main__':
 	
 	max_points = 5
 
-	if getattr(sys, 'frozen', False):
-		# Running as a packaged app (PyInstaller)
-		base_path = sys._MEIPASS
-	else:
-		# Running as a script
-		base_path = os.getcwd()  # Current working directory
+
+	base_path = os.getcwd()  # Current working directory
 	audio_base_path = os.path.join(base_path, 'audiofiles')
 	image_files_path = os.path.join(base_path, 'images')
-	tb = TinyDB(os.path.join(base_path, "db_test.json"))
+	tb = TinyDB(os.path.join(base_path, "Vocabulary", "db_test.json"))
 	Word = Query()
 	
 	appIcon = QtGui.QIcon()
 	appIcon.addPixmap(QtGui.QPixmap(os.path.join(image_files_path, "UNOlingo.png")), QtGui.QIcon.Mode.Normal,
 					QtGui.QIcon.State.On)
 	QApplication.setWindowIcon(appIcon)
+	
+	update_check = SplashScreen()
+	update_check.show()
+	update_check.check_for_update()
+
+	
 	# Create and show the app window
 	window = EnglishApp()
 	window.show()
-
+	
+	update_check.finish(window)
 	sys.exit(app.exec())
