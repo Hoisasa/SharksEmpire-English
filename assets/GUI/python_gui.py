@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'GUI/untitled.ui'
+# Form implementation generated from reading ui file 'assets/GUI/untitled.ui'
 #
 # Created by: PyQt6 UI code generator 6.8.1
 #
@@ -16,7 +16,7 @@ class Ui_UNOlingo(object):
         UNOlingo.setMinimumSize(QtCore.QSize(1280, 0))
         UNOlingo.setMaximumSize(QtCore.QSize(1280, 720))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("GUI\\../images/UNOlingo.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap("assets/GUI\\../images/unolingo_P64_icon.ico"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         UNOlingo.setWindowIcon(icon)
         self.verticalLayoutWidget = QtWidgets.QWidget(parent=UNOlingo)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(-10, 0, 1301, 771))
@@ -86,7 +86,7 @@ class Ui_UNOlingo(object):
 "    }")
         self.repeat_audio.setText("")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("GUI\\../images/audio.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
+        icon1.addPixmap(QtGui.QPixmap("assets/GUI\\../images/audio.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
         self.repeat_audio.setIcon(icon1)
         self.repeat_audio.setIconSize(QtCore.QSize(60, 60))
         self.repeat_audio.setObjectName("repeat_audio")
@@ -124,7 +124,7 @@ class Ui_UNOlingo(object):
 "")
         self.restart_lesson.setText("")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("GUI\\../images/restart.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
+        icon2.addPixmap(QtGui.QPixmap("assets/GUI\\../images/restart.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
         self.restart_lesson.setIcon(icon2)
         self.restart_lesson.setIconSize(QtCore.QSize(60, 60))
         self.restart_lesson.setObjectName("restart_lesson")
@@ -192,7 +192,7 @@ class Ui_UNOlingo(object):
 "    }")
         self.L_answer.setText("")
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("GUI\\../images/cross.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
+        icon3.addPixmap(QtGui.QPixmap("assets/GUI\\../images/cross.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
         self.L_answer.setIcon(icon3)
         self.L_answer.setIconSize(QtCore.QSize(64, 64))
         self.L_answer.setObjectName("L_answer")
@@ -228,7 +228,7 @@ class Ui_UNOlingo(object):
 "    }")
         self.W_answer.setText("")
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("GUI\\../images/checked.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
+        icon4.addPixmap(QtGui.QPixmap("assets/GUI\\../images/checked.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
         self.W_answer.setIcon(icon4)
         self.W_answer.setIconSize(QtCore.QSize(64, 64))
         self.W_answer.setObjectName("W_answer")
@@ -322,7 +322,7 @@ class Ui_UNOlingo(object):
 "")
         self.prev_page.setText("")
         icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap("GUI\\../images/return.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
+        icon5.addPixmap(QtGui.QPixmap("assets/GUI\\../images/return.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
         self.prev_page.setIcon(icon5)
         self.prev_page.setIconSize(QtCore.QSize(80, 60))
         self.prev_page.setObjectName("prev_page")

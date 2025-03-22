@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'GUI/loading.ui'
+# Form implementation generated from reading ui file 'loading.ui'
 #
 # Created by: PyQt6 UI code generator 6.8.1
 #
@@ -74,13 +74,3 @@ class Ui_Splash(object):
         Splash.setWindowTitle(_translate("Splash", "Form"))
         self.labelLoading.setText(_translate("Splash", "<html><head/><body><p><span style=\" font-size:36pt; font-weight:700; color:#00007f;\">Loading</span></p></body></html>"))
         self.getUpdate.setText(_translate("Splash", "Update app"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Splash = QtWidgets.QWidget()
-    ui = Ui_Splash()
-    ui.setupUi(Splash)
-    Splash.show()
-    sys.exit(app.exec())

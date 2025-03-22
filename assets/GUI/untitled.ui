@@ -27,7 +27,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../images/UNOlingo.png</normaloff>../images/UNOlingo.png</iconset>
+    <normaloff>../images/unolingo_P64_icon.ico</normaloff>../images/unolingo_P64_icon.ico</iconset>
   </property>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">

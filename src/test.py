@@ -2,7 +2,7 @@ import os
 from github import Github
 
 
-token  = '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'
+
 
 g = Github(token)
 
