@@ -12,7 +12,7 @@ from src.settings import APP_VERSION
 from PyQt6.QtCore import QPropertyAnimation, Qt
 from PyQt6.QtGui import QColor, QFont, QPalette
 from PyQt6.QtWidgets import QApplication, QMainWindow, QGraphicsDropShadowEffect, QTableWidgetItem, QPushButton, QLabel, \
-	QSplashScreen
+	QSplashScreen, QSpacerItem, QSizePolicy
 from colorama import Fore, Style, init
 from github import Github, GithubException, RateLimitExceededException
 from tinydb import TinyDB, Query, where
@@ -157,6 +157,7 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 		self.setupUi(self)
 		
 		# Variables init
+		self.size = None
 		self.learned = None
 		self.to_learn = None
 		self.word_iterating = None
@@ -164,13 +165,24 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 		self.current_word = None
 		self.study_mode = None
 		self.group_name = None
+		self.grade = None
+		self.grades_list = None
 		self.mistakes = []
 		self.glow = False
 		self.Flag = False
+		self.translation_flag = False
+		self.dock = None#MistakesDock()
 		
-		self.dock = MistakesDock()
+		self.grades_table = tb.table('exam grades')
+		self.grades_objects = [self.Grade1, self.Grade2, self.Grade3, self.Grade4, self.Grade5]
+		
+		self.focus = tb.table('focused review')
+		
+		# self.dock = MistakesDock()
 		
 		# StyleSheets
+		self.AnswersLabel.setStyleSheet("font-size: 48px; color: #00007f; font-weight: bold;")
+		
 		self.stylesheet_prpl = """
 				QPushButton {
 		    		color: #eee;
@@ -229,6 +241,35 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 						);
 					}
 
+				"""
+		
+		self.stylesheet_gray = """
+				QPushButton {
+					color: #333;
+					border: none;
+					border-radius: 30px;
+					border-style: outset;
+					background: qradialgradient(
+						cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+						radius: 1.35, stop: 0 #fff, stop: 1 #ccc
+						);
+					padding: 5px;
+					}
+				
+				QPushButton:hover {
+					background: qradialgradient(
+						cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+						radius: 1.35, stop: 0 #fff, stop: 1 #aaa
+						);
+					}
+				
+				QPushButton:pressed {
+					border-style: inset;
+					background: qradialgradient(
+						cx: 0.4, cy: -0.1, fx: 0.4, fy: -0.1,
+						radius: 1.35, stop: 0 #fff, stop: 1 #bbb
+						);
+					}
 				"""
 		
 		# New widgets
@@ -294,6 +335,8 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 		self.translation.clicked.connect(self.reveal_translation)
 		self.W_answer.clicked.connect(self.answer)
 		self.L_answer.clicked.connect(self.answer)
+		self.Repeat.clicked.connect(lambda _: (self.pages.setCurrentIndex(1), self.teach()))
+		self.SaveAndExit.clicked.connect(self.choose_next_lesson)
 		
 		self.groupGrid.setContentsMargins(60, 10, 0, 0)
 		self.groupGrid_2.setContentsMargins(60, 10, 0, 0)
@@ -308,20 +351,20 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 		self.shadowLabel.setColor(QColor(255, 0, 255))  # Set glow color
 		self.shadowLabel.setBlurRadius(50)  # Set blur intensity
 		self.shadowLabel.setOffset(0, 0)  # Set offset
+		
+		
 
 		self.populate_main_group()
 		
 		# Effects
 		self.shadow = QGraphicsDropShadowEffect()
-		
-		group_target = "Глаголы Наличия/Количества • Verbs of Presence/Quantity"
-		
 
 
 	# Button functions
 	
 	def lesson_start(self):
-		self.pages.setCurrentIndex(0)
+		self.pages.setCurrentIndex(1)
+		self.size = len(tb.search(where("Sub group") == self.group_name))
 		button_group = self.sender()
 		self.study_mode = button_group.objectName()
 		if self.study_mode == "mode2stud":
@@ -333,7 +376,7 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 		we_are_here = self.pages.currentIndex()
 		print("leaving page" + str(we_are_here))
 		self.pages.setCurrentIndex(we_are_here + 1)
-		if self.pages.currentIndex() == 3:
+		if self.pages.currentIndex() == 4:
 			self.prev_page_strip.setVisible(False)
 	
 	def reveal_translation(self):
@@ -344,11 +387,26 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 			
 			
 	def answer(self):
+		if self.Layout_type.isChecked() and not self.translation_flag:
+			self.translation_flag = True
+			self.reveal_translation()
+			return
+		elif self.translation_flag:
+			self.translation_flag = False
+			
 		# Flag is study mode. not Flag is exam mode
 		mark = 1 if self.Flag else 3
 		mark *= -1 if self.sender().objectName() == self.L_answer.objectName() else 1
 		self.mark(mark)
+		if self.sender().objectName() == self.L_answer.objectName():
+			self.mistakes.insert(0, self.current_word)
 		self.word_iterator()
+	
+		
+	def choose_next_lesson(self):
+		self.focus.upsert(*self.mistakes)
+		self.pages.setCurrentIndex(3)
+		print(self.focus.all())
 	
 	# Common use functions
 	def update_weight_info(self):
@@ -378,11 +436,12 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 		self.learned = get_learned_list(self.group_name)
 		
 	def teach(self):
+		self.mistakes.clear()
 		self.enable_buttons(True)
 		self.W_answer.setEnabled(False)
 		self.L_answer.setEnabled(False)
-		self.mistakes.clear()
-		self.dock.tableWidget.clear()
+		if self.dock:
+			self.dock.tableWidget.clear()
 		if self.study_mode == "mode2stud":
 			self.update_weight_info()
 			shuffle_to_learn(self.to_learn)
@@ -398,12 +457,16 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 		elif self.study_mode == 'mode1intro' or self.study_mode == 'mode3ex':
 			full_list = tb.search(where("Sub group") == self.group_name)
 		
+		self.size = len(full_list)
+		
 		self.word_iterating = iter(full_list)
 		self.word_iterator()
 		
 	def voice_word(self):
 		audio, samplerate = sf.read(self.file_path)
 		sd.play(audio, samplerate)
+
+	
 		
 	def word_iterator(self):
 		self.Flag = self.study_mode == "mode2stud"
@@ -445,7 +508,8 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 				
 			except StopIteration:
 				self.The_word.setText("Lesson Done!")
-				if self.checkBox.isChecked():
+				sd.stop()
+				if self.checkBox.isChecked() or self.study_mode == "mode3ex":
 					self.lesson_resume()
 				self.enable_buttons(False)
 				return
@@ -462,7 +526,7 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 				self.restart_lesson.setGraphicsEffect(None)
 				self.restart_lesson.setEnabled(True)
 			else:
-				self.restart_lesson.setEnabled(False)
+				self.restart_lesson.setEnabled(True)
 			self.wd = WordShortcut(self.current_word)
 			self.show_points()
 			self.The_word.setText(self.wd.name())
@@ -478,7 +542,7 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 		
 		
 	def populate_main_group(self):
-		self.pages.setCurrentIndex(3)
+		self.pages.setCurrentIndex(4)
 		self.prev_page_strip.setVisible(False)
 		self.groups = list(dict.fromkeys([group.get('Group') for group in tb.all()]))
 		for num, group in enumerate(self.groups):
@@ -494,7 +558,7 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 	def populate_group(self):
 		self.clear_grid_column()
 		self.prev_page_strip.setVisible(True)
-		self.pages.setCurrentIndex(2)
+		self.pages.setCurrentIndex(3)
 		group_target = self.sender().text()
 		self.groups = list(dict.fromkeys(
 				[group.get('Sub group') for group in tb.search(where("Group") == group_target)]))
@@ -517,6 +581,17 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 					self.groupGrid.removeWidget(widget)  # Remove from layout
 					widget.deleteLater()  # Delete widget
 	
+	def clear_mistakes(self):
+		for i in reversed(range(self.scrollGrid.count())):  # Iterate in reverse to avoid index shifting
+			item = self.scrollGrid.itemAt(i)
+			if item is not None:
+				widget = item.widget()
+				if widget is not None and item != self.scrollSpacer:
+					self.scrollGrid.removeWidget(widget)  # Remove from layout
+					widget.deleteLater()  # Delete widget
+				else:
+					self.scrollGrid.removeItem(item)  # Remove non-widget items like spacers
+	
 	def mark(self, num):
 		new_value = round((self.wd.weight() - (self.wd.weight() * max_points % 1 / max_points ) - num / max_points),2)
 		new_value = min(1, max(new_value, 0))
@@ -525,7 +600,9 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 	def enable_buttons(self, on_off):
 		self.W_answer.setVisible(on_off)
 		self.L_answer.setVisible(on_off)
+		self.points_display.setVisible(on_off)
 		self.translation.setVisible(on_off)
+		self.repeat_audio.setEnabled(on_off)
 		
 	def show_points(self):
 		self.points_display.shadow_anim.stop()
@@ -540,20 +617,95 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 		
 	
 	def lesson_resume(self):
-		self.dock.populate(self.mistakes)
-		self.dock.show()
+		if self.dock:
+			self.dock.populate(self.mistakes)
+			self.dock.show()
+		else:
+			self.clear_mistakes()
+			
+			for num, mistake in enumerate(self.mistakes):
+			
+				self.redLabel = QLabel(f"{mistake['Name']}", self.ResultsLabel)
+				self.redLabel.setStyleSheet("font-size: 24px; color: #810031; font-weight: bold;")
+				self.redLabel.setFixedSize(400, 50)
+				self.redLabel.setAlignment(Qt.AlignmentFlag.AlignRight)
+				self.scrollGrid.addWidget(self.redLabel, num, 0)
+				self.redLabel = QLabel("-", self.ResultsLabel)
+				self.redLabel.setStyleSheet("font-size: 24px; color: #810031; font-weight: bold;")
+				self.redLabel.setFixedSize(50, 50)
+				self.redLabel.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+				self.scrollGrid.addWidget(self.redLabel, num, 1)
+				self.redLabel = QLabel(f"{mistake['translation']}", self.ResultsLabel)
+				self.redLabel.setStyleSheet("font-size: 24px; color: #810031; font-weight: bold;")
+				self.redLabel.setFixedSize(450, 50)
+				self.redLabel.setAlignment(Qt.AlignmentFlag.AlignLeft)
+				self.scrollGrid.addWidget(self.redLabel, num, 2)
+			self.scrollSpacer = QSpacerItem(0, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+			self.scrollGrid.addItem(self.scrollSpacer, 6, 1)
+			self.AnswersLabel.setText(f"Correct Answers: {self.size - len(self.mistakes)}/{self.size}")
+			self.SaveAndExit.setVisible(not self.Flag)
+			self.Grade1.setVisible(not self.Flag)
+			self.Grade2.setVisible(not self.Flag)
+			self.Grade3.setVisible(not self.Flag)
+			self.Grade4.setVisible(not self.Flag)
+			self.Grade5.setVisible(not self.Flag)
+			self.GradesLabel.setVisible(not self.Flag)
+			
+			
+			
+			if self.Flag:
+				self.Repeat.setText("next Lesson")
+
+			else:
+				self.grades_list = self.grades_table.get(where('group grades') == self.group_name)
+				self.grades_list = self.grades_list.get('list', [])
+				self.grade = self.size - len(self.mistakes)
+				self.Repeat.setText("repeat Exam")
+				if len(self.mistakes) <= 1:
+					self.SaveAndExit.setStyleSheet(self.stylesheet_prpl)
+					self.SaveAndExit.setEnabled(True)
+					
+				else:
+					self.SaveAndExit.setStyleSheet(self.stylesheet_gray)
+					self.SaveAndExit.setEnabled(False)
+
+				self.grades_list.insert(0, self.grade)
+				if len(self.grades_list) > 5: self.grades_list.pop()
+
+				for grade, label_object in zip(self.grades_list, self.grades_objects):
+					label_object.setText(str(grade))
+					label_object.setStyleSheet(self.get_grade_color(grade))
+
+				self.grades_table.update({'list': self.grades_list}, where('group grades') == self.group_name)
+				
+				
+			self.pages.setCurrentIndex(0)
+			
 	
 	def switch_to_WordLearn(self, group):
-		self.pages.setCurrentIndex(1)
+		self.pages.setCurrentIndex(2)
 		self.group_name = self.sender().text()
+		self.grades_table.upsert({"group grades": self.group_name}, where('group grades') == self.group_name)
 		pass
 
+	def get_grade_color(self, grade):
+		percent_grade = round(grade / self.size, 2) * 100
+		if percent_grade == 100:
+			style_sheet = "font-size: 48px; color: #e8c40e; font-weight: bold;"
+		elif percent_grade >= 80:
+			style_sheet = "font-size: 48px; color: #0a912e; font-weight: bold;"
+		elif percent_grade >= 60:
+			style_sheet = "font-size: 48px; color: #177fcf; font-weight: bold;"
+		else:
+			style_sheet = "font-size: 48px; color: #512f9c; font-weight: bold;"
+		return style_sheet
+		
 
 class MistakesDock(Ui_Form, QMainWindow):
 	def __init__(self):
 		super().__init__()
 		self.setupUi(self)
-	
+
 	def populate(self, mistakes):
 		self.tableWidget.setRowCount(len(mistakes))  # Set row count based on the number of mistakes
 		self.tableWidget.setColumnCount(2)
@@ -564,7 +716,7 @@ class MistakesDock(Ui_Form, QMainWindow):
 
 			# Set the Name in the first column
 			self.tableWidget.setItem(row, 0, QTableWidgetItem(mistake["Name"]))
-			
+
 			# Set the Translation in the second column
 			self.tableWidget.setItem(row, 1, QTableWidgetItem(mistake["translation"]))
 			
@@ -580,6 +732,7 @@ class SplashScreen(Ui_Splash, QSplashScreen):
 		self.setupUi(self)
 		self.setWindowFlag(Qt.WindowType.FramelessWindowHint)
 		self.getUpdate.setVisible(False)
+		self.rejectUpdate.setVisible(False)
 		screen = QApplication.primaryScreen().geometry()
 		self.move(screen.center().x() - self.width() // 2,
 						  screen.center().y() - self.height() // 2)
@@ -617,9 +770,12 @@ class SplashScreen(Ui_Splash, QSplashScreen):
 				sec_left = time_left % 60
 				min_left = time_left // 60
 				print(f'Request renew in {min_left:02d}:{sec_left:02d}')
-		# else:
-			# subprocess.run(["python", "src/updater.py"])
-			# sys.exit()
+		else:
+		# 	subprocess.run([".venv/Scripts/python.exe", "src/updater.py"])
+		# 	sys.exit()
+			for i in range(11):
+				self.progressBar.setValue(i*10)  # Update the progress bar value
+				time.sleep(0.05)  # Sleep for 0.1 seconds
 
 
 
@@ -646,11 +802,12 @@ if __name__ == '__main__':
 	base_path = os.path.dirname(__file__)
 	audio_base_path = os.path.join(base_path, 'assets', 'audiofiles')
 	image_files_path = os.path.join(base_path, 'assets', 'images')
-	tb = TinyDB(os.path.join(base_path, "Vocabulary", "db_test.json"))
+	tb = TinyDB(os.path.join(base_path, "Vocabulary", "db.json"))
+	
 	Word = Query()
 	
 	appIcon = QtGui.QIcon()
-	appIcon.addPixmap(QtGui.QPixmap(os.path.join(image_files_path, "unolingo_P64_icon.ico")), QtGui.QIcon.Mode.Normal,
+	appIcon.addPixmap(QtGui.QPixmap(os.path.join(image_files_path, "UNOlingo.png")), QtGui.QIcon.Mode.Normal,
 					QtGui.QIcon.State.On)
 	app.setWindowIcon(appIcon)
 	

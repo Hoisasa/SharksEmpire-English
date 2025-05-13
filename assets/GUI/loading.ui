@@ -57,7 +57,7 @@ QProgressBar::chunk{
    <property name="geometry">
     <rect>
      <x>120</x>
-     <y>220</y>
+     <y>180</y>
      <width>391</width>
      <height>61</height>
     </rect>
@@ -98,6 +98,53 @@ QPushButton:pressed {
    </property>
    <property name="text">
     <string>Update app</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="rejectUpdate">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>270</y>
+     <width>391</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>24</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    color: #eee;
+    border: none;
+    border-radius: 30px;
+    border-style: outset;
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #fff, stop: 1 rgb(170, 170, 255)
+        );
+    padding: 5px;
+    }
+
+QPushButton:hover {
+    background: qradialgradient(
+        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,
+        radius: 1.35, stop: 0 #fff, stop: 1 rgb(211, 203, 255)
+        );
+    }
+
+QPushButton:pressed {
+    border-style: inset;
+    background: qradialgradient(
+        cx: 0.4, cy: -0.1, fx: 0.4, fy: -0.1,
+        radius: 1.35, stop: 0 #fff, stop: 1 rgb(149, 149, 223)
+        );
+    }</string>
+   </property>
+   <property name="text">
+    <string>Maybe later</string>
    </property>
   </widget>
  </widget>

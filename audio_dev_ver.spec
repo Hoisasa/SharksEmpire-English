@@ -36,6 +36,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    icon=['assets\\images\\unolingo_P64_icon.ico'],
 )
 coll = COLLECT(
     exe,
@@ -44,5 +45,6 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='audio_dev_ver',
+    name='UnoLingoLearn',
+
 )

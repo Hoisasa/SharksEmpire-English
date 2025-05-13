@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'loading.ui'
+# Form implementation generated from reading ui file 'assets/gui/loading.ui'
 #
 # Created by: PyQt6 UI code generator 6.8.1
 #
@@ -33,7 +33,7 @@ class Ui_Splash(object):
         self.progressBar.setProperty("value", 24)
         self.progressBar.setObjectName("progressBar")
         self.getUpdate = QtWidgets.QPushButton(parent=Splash)
-        self.getUpdate.setGeometry(QtCore.QRect(120, 220, 391, 61))
+        self.getUpdate.setGeometry(QtCore.QRect(120, 180, 391, 61))
         font = QtGui.QFont()
         font.setPointSize(24)
         font.setBold(True)
@@ -65,6 +65,39 @@ class Ui_Splash(object):
 "        );\n"
 "    }")
         self.getUpdate.setObjectName("getUpdate")
+        self.rejectUpdate = QtWidgets.QPushButton(parent=Splash)
+        self.rejectUpdate.setGeometry(QtCore.QRect(120, 270, 391, 61))
+        font = QtGui.QFont()
+        font.setPointSize(24)
+        font.setBold(True)
+        self.rejectUpdate.setFont(font)
+        self.rejectUpdate.setStyleSheet("QPushButton {\n"
+"    color: #eee;\n"
+"    border: none;\n"
+"    border-radius: 30px;\n"
+"    border-style: outset;\n"
+"    background: qradialgradient(\n"
+"        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,\n"
+"        radius: 1.35, stop: 0 #fff, stop: 1 rgb(170, 170, 255)\n"
+"        );\n"
+"    padding: 5px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    background: qradialgradient(\n"
+"        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,\n"
+"        radius: 1.35, stop: 0 #fff, stop: 1 rgb(211, 203, 255)\n"
+"        );\n"
+"    }\n"
+"\n"
+"QPushButton:pressed {\n"
+"    border-style: inset;\n"
+"    background: qradialgradient(\n"
+"        cx: 0.4, cy: -0.1, fx: 0.4, fy: -0.1,\n"
+"        radius: 1.35, stop: 0 #fff, stop: 1 rgb(149, 149, 223)\n"
+"        );\n"
+"    }")
+        self.rejectUpdate.setObjectName("rejectUpdate")
 
         self.retranslateUi(Splash)
         QtCore.QMetaObject.connectSlotsByName(Splash)
@@ -74,3 +107,4 @@ class Ui_Splash(object):
         Splash.setWindowTitle(_translate("Splash", "Form"))
         self.labelLoading.setText(_translate("Splash", "<html><head/><body><p><span style=\" font-size:36pt; font-weight:700; color:#00007f;\">Loading</span></p></body></html>"))
         self.getUpdate.setText(_translate("Splash", "Update app"))
+        self.rejectUpdate.setText(_translate("Splash", "Maybe later"))

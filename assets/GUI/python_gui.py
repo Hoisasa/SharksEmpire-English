@@ -29,6 +29,137 @@ class Ui_UNOlingo(object):
         self.pages.setLayoutDirection(QtCore.Qt.LayoutDirection.RightToLeft)
         self.pages.setAutoFillBackground(False)
         self.pages.setObjectName("pages")
+        self.page_3 = QtWidgets.QWidget()
+        self.page_3.setObjectName("page_3")
+        self.MistakesLabel = QtWidgets.QLabel(parent=self.page_3)
+        self.MistakesLabel.setGeometry(QtCore.QRect(110, 200, 271, 121))
+        self.MistakesLabel.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.MistakesLabel.setObjectName("MistakesLabel")
+        self.Grade3 = QtWidgets.QLabel(parent=self.page_3)
+        self.Grade3.setGeometry(QtCore.QRect(1030, 230, 51, 71))
+        self.Grade3.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.Grade3.setObjectName("Grade3")
+        self.Grade4 = QtWidgets.QLabel(parent=self.page_3)
+        self.Grade4.setGeometry(QtCore.QRect(1100, 230, 51, 71))
+        self.Grade4.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.Grade4.setObjectName("Grade4")
+        self.GradesLabel = QtWidgets.QLabel(parent=self.page_3)
+        self.GradesLabel.setGeometry(QtCore.QRect(430, 200, 512, 123))
+        self.GradesLabel.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.GradesLabel.setObjectName("GradesLabel")
+        self.scrollArea = QtWidgets.QScrollArea(parent=self.page_3)
+        self.scrollArea.setGeometry(QtCore.QRect(130, 310, 1061, 271))
+        self.scrollArea.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
+        self.scrollArea.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAsNeeded)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName("scrollArea")
+        self.scrollAreaWidget = QtWidgets.QWidget()
+        self.scrollAreaWidget.setGeometry(QtCore.QRect(0, 0, 1059, 269))
+        self.scrollAreaWidget.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
+        self.scrollAreaWidget.setObjectName("scrollAreaWidget")
+        self.scrollGrid = QtWidgets.QGridLayout(self.scrollAreaWidget)
+        self.scrollGrid.setObjectName("scrollGrid")
+        self.scrollArea.setWidget(self.scrollAreaWidget)
+        self.ResultsLabel = QtWidgets.QLabel(parent=self.page_3)
+        self.ResultsLabel.setGeometry(QtCore.QRect(580, 20, 211, 151))
+        self.ResultsLabel.setStyleSheet("font-size: 24px; color: #810031;")
+        self.ResultsLabel.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.ResultsLabel.setObjectName("ResultsLabel")
+        self.Grade1 = QtWidgets.QLabel(parent=self.page_3)
+        self.Grade1.setGeometry(QtCore.QRect(890, 230, 51, 71))
+        self.Grade1.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.Grade1.setObjectName("Grade1")
+        self.Grade5 = QtWidgets.QLabel(parent=self.page_3)
+        self.Grade5.setGeometry(QtCore.QRect(1170, 230, 51, 71))
+        self.Grade5.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.Grade5.setObjectName("Grade5")
+        self.horizontalLayoutWidget = QtWidgets.QWidget(parent=self.page_3)
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(80, 600, 1151, 80))
+        self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
+        self.ButtonsLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
+        self.ButtonsLayout.setContentsMargins(0, 0, 0, 0)
+        self.ButtonsLayout.setObjectName("ButtonsLayout")
+        self.SaveAndExit = QtWidgets.QPushButton(parent=self.horizontalLayoutWidget)
+        self.SaveAndExit.setMinimumSize(QtCore.QSize(500, 70))
+        self.SaveAndExit.setMaximumSize(QtCore.QSize(500, 70))
+        font = QtGui.QFont()
+        font.setPointSize(24)
+        font.setBold(True)
+        font.setKerning(False)
+        self.SaveAndExit.setFont(font)
+        self.SaveAndExit.setStyleSheet("QPushButton {\n"
+"    color: #eee;\n"
+"    border: none;\n"
+"    border-radius: 30px;\n"
+"    border-style: outset;\n"
+"    background: qradialgradient(\n"
+"        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,\n"
+"        radius: 1.35, stop: 0 #fff, stop: 1 #7612b8\n"
+"        );\n"
+"    padding: 5px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    background: qradialgradient(\n"
+"        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,\n"
+"        radius: 1.35, stop: 0 #fff, stop: 1 #954af7\n"
+"        );\n"
+"    }\n"
+"\n"
+"QPushButton:pressed {\n"
+"    border-style: inset;\n"
+"    background: qradialgradient(\n"
+"        cx: 0.4, cy: -0.1, fx: 0.4, fy: -0.1,\n"
+"        radius: 1.35, stop: 0 #fff, stop: 1 #5b29f2\n"
+"        );\n"
+"    }")
+        self.SaveAndExit.setObjectName("SaveAndExit")
+        self.ButtonsLayout.addWidget(self.SaveAndExit)
+        self.Repeat = QtWidgets.QPushButton(parent=self.horizontalLayoutWidget)
+        self.Repeat.setMinimumSize(QtCore.QSize(500, 70))
+        self.Repeat.setMaximumSize(QtCore.QSize(500, 70))
+        font = QtGui.QFont()
+        font.setPointSize(24)
+        font.setBold(True)
+        font.setKerning(False)
+        self.Repeat.setFont(font)
+        self.Repeat.setStyleSheet("QPushButton {\n"
+"    color: #eee;\n"
+"    border: none;\n"
+"    border-radius: 30px;\n"
+"    border-style: outset;\n"
+"    background: qradialgradient(\n"
+"        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,\n"
+"        radius: 1.35, stop: 0 #fff, stop: 1 #7612b8\n"
+"        );\n"
+"    padding: 5px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    background: qradialgradient(\n"
+"        cx: 0.3, cy: -0.4, fx: 0.3, fy: -0.4,\n"
+"        radius: 1.35, stop: 0 #fff, stop: 1 #954af7\n"
+"        );\n"
+"    }\n"
+"\n"
+"QPushButton:pressed {\n"
+"    border-style: inset;\n"
+"    background: qradialgradient(\n"
+"        cx: 0.4, cy: -0.1, fx: 0.4, fy: -0.1,\n"
+"        radius: 1.35, stop: 0 #fff, stop: 1 #5b29f2\n"
+"        );\n"
+"    }")
+        self.Repeat.setObjectName("Repeat")
+        self.ButtonsLayout.addWidget(self.Repeat)
+        self.AnswersLabel = QtWidgets.QLabel(parent=self.page_3)
+        self.AnswersLabel.setGeometry(QtCore.QRect(440, 120, 512, 122))
+        self.AnswersLabel.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.AnswersLabel.setObjectName("AnswersLabel")
+        self.Grade2 = QtWidgets.QLabel(parent=self.page_3)
+        self.Grade2.setGeometry(QtCore.QRect(960, 230, 51, 71))
+        self.Grade2.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.Grade2.setObjectName("Grade2")
+        self.pages.addWidget(self.page_3)
         self.Lesson_screen = QtWidgets.QWidget()
         self.Lesson_screen.setObjectName("Lesson_screen")
         self.verticalLayoutWidget_2 = QtWidgets.QWidget(parent=self.Lesson_screen)
@@ -152,6 +283,12 @@ class Ui_UNOlingo(object):
         font.setPointSize(15)
         self.checkBox.setFont(font)
         self.checkBox.setObjectName("checkBox")
+        self.Layout_type = QtWidgets.QCheckBox(parent=self.Center_widget)
+        self.Layout_type.setGeometry(QtCore.QRect(1060, 80, 161, 31))
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        self.Layout_type.setFont(font)
+        self.Layout_type.setObjectName("Layout_type")
         self.Main_Study_Layout.addWidget(self.Center_widget)
         spacerItem1 = QtWidgets.QSpacerItem(20, 60, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Fixed)
         self.Main_Study_Layout.addItem(spacerItem1)
@@ -464,16 +601,28 @@ class Ui_UNOlingo(object):
         self.Base_Layout.addItem(spacerItem9)
 
         self.retranslateUi(UNOlingo)
-        self.pages.setCurrentIndex(0)
+        self.pages.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(UNOlingo)
 
     def retranslateUi(self, UNOlingo):
         _translate = QtCore.QCoreApplication.translate
         UNOlingo.setWindowTitle(_translate("UNOlingo", "UNOlingo"))
+        self.MistakesLabel.setText(_translate("UNOlingo", "<html><head/><body><p><span style=\" font-size:36pt; font-weight:700; color:#00007f;\">Mistakes:</span></p></body></html>"))
+        self.Grade3.setText(_translate("UNOlingo", "<html><head/><body><p><br/></p></body></html>"))
+        self.Grade4.setText(_translate("UNOlingo", "<html><head/><body><p><br/></p></body></html>"))
+        self.GradesLabel.setText(_translate("UNOlingo", "<html><head/><body><p><span style=\" font-size:36pt; font-weight:700; color:#00007f;\">Recent grades:</span></p></body></html>"))
+        self.ResultsLabel.setText(_translate("UNOlingo", "<html><head/><body><p><span style=\" font-size:48pt; font-weight:700; color:#810031;\">Results</span></p></body></html>"))
+        self.Grade1.setText(_translate("UNOlingo", "<html><head/><body><p><br/></p></body></html>"))
+        self.Grade5.setText(_translate("UNOlingo", "<html><head/><body><p><br/></p></body></html>"))
+        self.SaveAndExit.setText(_translate("UNOlingo", "Save and switch Lesson"))
+        self.Repeat.setText(_translate("UNOlingo", "Next lesson"))
+        self.AnswersLabel.setText(_translate("UNOlingo", "<html><head/><body><p><span style=\" font-size:36pt; font-weight:700; color:#00007f;\">Correct answers: </span></p></body></html>"))
+        self.Grade2.setText(_translate("UNOlingo", "<html><head/><body><p><br/></p></body></html>"))
         self.The_word.setText(_translate("UNOlingo", "WordLabel"))
         self.word_translation.setText(_translate("UNOlingo", "Translation"))
         self.word_transcription.setText(_translate("UNOlingo", "Transcription"))
         self.checkBox.setText(_translate("UNOlingo", "Show mistakes"))
+        self.Layout_type.setText(_translate("UNOlingo", "Buttons layout "))
         self.translation.setText(_translate("UNOlingo", "Reveal Translation"))
         self.mode3ex.setText(_translate("UNOlingo", "Екзамен"))
         self.mode_choose.setText(_translate("UNOlingo", "Выбор режима"))
