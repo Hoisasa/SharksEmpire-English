@@ -18,9 +18,9 @@ from src.circular_progress.circular_progressbar import CircularProgress
 from github import Github, GithubException, RateLimitExceededException
 from tinydb import TinyDB, Query, where
 from PyQt6 import QtWidgets,QtCore,QtGui
-from assets.GUI.python_gui import Ui_UNOlingo
-from assets.GUI.python_gui2 import Ui_Form
-from assets.GUI.python_gui_loader import Ui_Splash
+from GUI.python_gui import Ui_UNOlingo
+from GUI.python_gui2 import Ui_Form
+from GUI.python_gui_loader import Ui_Splash
 
 
 def get_to_learn_list(group_name):
