@@ -14,6 +14,7 @@ from PyQt6.QtGui import QColor, QFont, QPalette
 from PyQt6.QtWidgets import QApplication, QMainWindow, QGraphicsDropShadowEffect, QTableWidgetItem, QPushButton, QLabel, \
 	QSplashScreen, QSpacerItem, QSizePolicy
 from colorama import Fore, Style, init
+from src.circular_progress.circular_progressbar import CircularProgress
 from github import Github, GithubException, RateLimitExceededException
 from tinydb import TinyDB, Query, where
 from PyQt6 import QtWidgets,QtCore,QtGui
@@ -179,6 +180,8 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 		self.focus = tb.table('focused review')
 		
 		# self.dock = MistakesDock()
+		self.progress = CircularProgress()
+		self.progress.setFixedSize(120, 60)
 		
 		# StyleSheets
 		self.AnswersLabel.setStyleSheet("font-size: 48px; color: #00007f; font-weight: bold;")
@@ -378,6 +381,10 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 		self.pages.setCurrentIndex(we_are_here + 1)
 		if self.pages.currentIndex() == 4:
 			self.prev_page_strip.setVisible(False)
+			self.populate_main_group()
+		if self.pages.currentIndex() == 3:
+			self.populate_group()
+			
 	
 	def reveal_translation(self):
 		if self.study_mode == "mode1intro":
@@ -540,46 +547,76 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 									  f"{self.wd.name().split(' (')[0]}.wav")
 		self.voice_word()
 		
+	def progress_value(self, querry, group):
+		max_value = len(tb.search(where(group) == querry))
+		value = len(tb.search((where(group) == querry) & (where('weight') == 0)))
+		return (value, max_value)
 		
+	
 	def populate_main_group(self):
 		self.pages.setCurrentIndex(4)
+		self.clear_grid_column(self.groupGrid_2)
 		self.prev_page_strip.setVisible(False)
 		self.groups = list(dict.fromkeys([group.get('Group') for group in tb.all()]))
 		for num, group in enumerate(self.groups):
 			
 			self.Group_button = QPushButton(f'{group}', self)
 			self.Group_button.clicked.connect(self.populate_group)
-			self.Group_button.setFont(QFont('Arial', 32))
+			self.Group_button.setFont(QFont('Arial', 28))
 			self.Group_button.setMinimumHeight(70)
 			self.Group_button.setStyleSheet(self.stylesheet_prpl)
 			self.groupGrid_2.addWidget(self.Group_button, num, 0)
-
-		
+			
+			self.progress = CircularProgress()
+			self.progress.setFixedSize(120, 60)
+			self.progress.set_values(*self.progress_value(group, "Group"))
+			self.groupGrid_2.addWidget(self.progress, num, 0)
+			self.progress.raise_()
+	
+	
 	def populate_group(self):
-		self.clear_grid_column()
+		self.clear_grid_column(self.groupGrid)
 		self.prev_page_strip.setVisible(True)
 		self.pages.setCurrentIndex(3)
-		group_target = self.sender().text()
+		if self.sender().text():
+			self.supergroup_name = self.sender().text()
 		self.groups = list(dict.fromkeys(
-				[group.get('Sub group') for group in tb.search(where("Group") == group_target)]))
+				[group.get('Sub group') for group in tb.search(where("Group") == self.supergroup_name)]))
 		for num, group in enumerate(self.groups):
 			self.Group_button = QPushButton(f'{group}', self)
 			self.Group_button.clicked.connect(self.switch_to_WordLearn)
-			self.Group_button.setFont(QFont('Arial', 32))
+			self.Group_button.setFont(QFont('Arial', 28))
 			self.Group_button.setMinimumHeight(70)
 			self.Group_button.setStyleSheet(self.stylesheet_prpl)
+			
 			self.groupGrid.addWidget(self.Group_button, num, 0)
+			
+			self.progress = CircularProgress()
+			self.progress.setFixedSize(120, 60)
+			self.progress.set_values(*self.progress_value(group, "Sub group"))
+			self.groupGrid.addWidget(self.progress, num, 0)
+			self.progress.raise_()
 
 	
-	def clear_grid_column(self):
-		for i in reversed(range(self.groupGrid.count())):  # Iterate in reverse to avoid index shifting
-			item = self.groupGrid.itemAt(i)
+	def clear_grid_column(self, obj):
+		for i in reversed(range(obj.count())):  # Iterate in reverse to avoid index shifting
+			item = obj.itemAt(i)
 			if item is not None:
 				widget = item.widget()
-				_, column, _, _ = self.groupGrid.getItemPosition(i)  # Get the column position
+				_, column, _, _ = obj.getItemPosition(i)  # Get the column position
 				if column == 0:
-					self.groupGrid.removeWidget(widget)  # Remove from layout
+					obj.removeWidget(widget)  # Remove from layout
 					widget.deleteLater()  # Delete widget
+					
+					def clear_grid_column(self):
+						for i in reversed(range(self.groupGrid.count())):  # Iterate in reverse to avoid index shifting
+							item = self.groupGrid.itemAt(i)
+							if item is not None:
+								widget = item.widget()
+								_, column, _, _ = self.groupGrid.getItemPosition(i)  # Get the column position
+								if column == 0:
+									self.groupGrid.removeWidget(widget)  # Remove from layout
+									widget.deleteLater()
 	
 	def clear_mistakes(self):
 		for i in reversed(range(self.scrollGrid.count())):  # Iterate in reverse to avoid index shifting
