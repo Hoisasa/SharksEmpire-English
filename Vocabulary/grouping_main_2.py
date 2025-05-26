@@ -649,121 +649,202 @@ POS = "adjectives"
 
 MAIN_GROUP = "Органы чувств • Organs of senses"
 
+dark ; light ; colourless ; transparent ; opaque ; bright ; brilliant ; pale ; dim ; distinct
+large ; big ; huge ; wide ; broad ; thick ; long ; tall ; deep ; little ; small ; narrow ;
+thin ; short ; shallow ; low ; far ; near
+flat ; plane ; straight ; curved ; vertical ; horizontal ; round ; square
+
 SUB_GROUP = "Глаза • Eye"
+
+uneven ; even ; smooth ; rough ; hard ; soft ; sharp ; blunt
+dry; wet; humid
 SUB_GROUP = "Кожа • Skin"
+
+tasty ; delicious ; tasteless ; sweet ; sour ; salty ; bitter ; strong ; pungent
 SUB_GROUP = "Язык • Tongue"
+
+loud ; noisy ; sharp ; calm ; soft ; low ; quiet ; muffled ; deaf ; inaudible
 SUB_GROUP = "Ухо • Ear"
+
+smelly ; stinking ; aromatic ; fragrant ; odourless
 SUB_GROUP = "Нос • Nose"
+
 
 MAIN_GROUP = "Время • Time"
 
+long ; brief ; short ; fast ; swift ; quick ; rapid ; urgent ; slow ; early ; late ; young ; adult ; old ; aged
 SUB_GROUP = "Основные Свойства • Main Properties"
+
+past ; recent ; obsolete ; ancient ; present ; contemporary ; modern ; up-to-date ; future ; previous ; preceding ;
+preliminary ; simultaneous ; next ; following ; the first ; the last ; initial ; final
 SUB_GROUP = "Стадии • Stages"
+
+constant ; temporary ; uninterrupted ; continuous ; rare ; frequent ; usual ; occasional ; sudden ; eternal
 SUB_GROUP = "Продолжительность / Частота • Duration / Frequency"
 
 MAIN_GROUP = "Способности человека • Human abilities"
 
+gifted; capable; talented; clever; intelligent; quick; wise
 SUB_GROUP = "Способность • Ability"
+
+silly; stolid; stupid; dull; naive; ignorant; average; mediocre; mad; crazy
 SUB_GROUP = "Отсутствие Способности • Lack of Ability"
+
+diligent; industrious; lazy; accurate; exact; thorough; negligent; attentive; careful; careless; absent-minded; distracted
 SUB_GROUP = "Старание / Внимание • Diligence / Attention"
+
+experienced; inexperienced; skillful; deft; dexterous; clumsy; awkward
 SUB_GROUP = "Навык / Опыт • Skill / Experience"
 
 MAIN_GROUP = "Эмоция • Emotions"
 
+sensitive; sentimental; hard-hearted; indifferent; irritable; calm; quiet; tranquil; nervous
 SUB_GROUP = "Характер • Character"
+
+happy; lucky; joyful; merry; cheerful; glad; satisfied; optimistic; sad; sorry; upset; pessimistic; sorrowful; high-spirited; low-spirited
 SUB_GROUP = "Настроение • Mood"
+
+good; pleasant; agreeable; interesting; wonderful; excellent; splendid; gorgeous; magnificent; perfect;
+surprising; astonishing; amazing; exciting; moving; touching; strange; shocking; bad; tiresome; boring; disturbing
+
+disgusting; unpleasant; abusive; offensive; awful; terrible; dangerous; beautiful; lovely; nice; pretty; attractive; ugly; repulsive; fearful
 SUB_GROUP = "Эмоциональная Оценка • Emotional Evaluation"
+
+excited; agitated; uneasy; moved; frightened; scared; startled; surprised; astonished; amazed; angry; cross; hurt; offended
 SUB_GROUP = "Оттенки Эмоции • Shades of Emotion"
 
 MAIN_GROUP = "Мораль / Поведение • Moral / Behaviour"
 
+decent; well-behaved; noble; worthy; honest; fair; sincere; lying; mean; base; vile; innocent; criminal; guilty
 SUB_GROUP = "Основные Свойства • Main Properties"
+
+good; kind; friendly; selfish; bad; evil; hostile; obedient; true; faithful; reliable; devoted; unstable; changeable; generous; wasteful; greedy;vicious;
 SUB_GROUP = "Отношение к Окружающим • Attitude towards Others"
+
+talkative; sociable; reserved; polite; civil; gentle; mild; rude; rough; strict; severe;
 SUB_GROUP = "Качества в Общении • Communication Qualities"
+
+brave; audacious; courageous; cowardly; timid; modest; shy; proud; arrogant; reasonable; rational; cautious; thoughtless; rash; hasty; impulsive;
 SUB_GROUP = "Качества в Поведении • Qualities in Behavior"
 
 MAIN_GROUP = "Абстрактные прилагательные • Abstract Adjectives"
 
+certain; common; general; typical; single; separate; particular; special; main; chief; principal; basic; secondary; complex; simple;
 SUB_GROUP = "Классификация • Classification"
+
+equal; the same; different; various; similar; important; significant; essential; advanced; inferior; defective; spoiled; natural; artificial; difficult; easy;
 SUB_GROUP = "Качество • Quality"
+
+maximum; minimum; average; sufficient; excessive; numerous; full; empty;
 SUB_GROUP = "Количество • Quantity"
+
+inevitable; relative; absolute; positive; negative; real; actual; practical; conditional; hypothetical; assumed; possible; probable; desirable; theoretical; imaginary; regular; occasional; necessary
 SUB_GROUP = "Категория • Category"
+
+correct; true; precise; logical; appropriate; suitable; acceptable; satisfactory; wrong; false; illogical; approximate; absurd; legal; lawful; out of place; standard; reliable
 SUB_GROUP = "Соответствие • Accordance"
+
+advantageous; profitable; efficient; valid; useful; harmless; useless; harmful; cheap; expensive; free of charge; priceless
 SUB_GROUP = "Преимущество • Advantage"
 
 MAIN_GROUP = "Состояние / Статус • Condition / Status"
 
+healthy; robust; strong; vigorous; cheerful; sick; ill; weak; drowsy; sleepy; tired; exhausted; fat; lean; slim
 SUB_GROUP = "Физическое Состояние • Physical Condition"
-SUB_GROUP = "Финансовое Положение • Financial Status"
+
+single; married; divorced
 SUB_GROUP = "Семейное Положение • Family Status"
+
+comfortable; convenient; complete; intact; damaged; spoiled; cooked; fried; baked; raw; packed; free; vacant; occupied; busy; clean; dirty
 SUB_GROUP = "Состояние • Condition"
 
 
-# ADVERBS
-POS = "adverbs"
+# # ADVERBS
+# POS = "adverbs"
+#
+# MAIN_GROUP = "Наречия Без группы • Ungrouped Adverbs"
+#
+# SUB_GROUP = "Вопросительные Наречия • Interrogative Adverbs"
+#
+#
+# SUB_GROUP = "Наречия Образа действий • Adverbs of Manner"
+# SUB_GROUP = "Наречия относящиеся к Предложениям • Sentence Adverbs"
+# SUB_GROUP = "Наречия соединения Предложений • Conjunctive Adverbs"
+#
+# MAIN_GROUP = "Наречия Места • Adverbs of Place"
+#
+# SUB_GROUP = "Наречия со значением Места • Adverbs of meaning Place"
+# SUB_GROUP = "Собственно Наречия Места • Adverbs of Place itself"
+# SUB_GROUP = "Наречия Направления • Adverbs of Direction"
+#
+# MAIN_GROUP = "Наречия Времени • Adverbs of Time "
+#
+# SUB_GROUP = "Последовательность • Sequence"
+# SUB_GROUP = "Частота • Frequency"
+# SUB_GROUP = "Вчера / Сегодня / Завтра • Yesterday / Today / Tomorrow"
+# SUB_GROUP = "Все Еще / Уже • Still / Already"
+#
+# MAIN_GROUP = "Наречия Меры, Степени и Количества • Adverbs of Degree, Measure and Quantity"
+#
+# SUB_GROUP = "Большая Степень • High Degree"
+# SUB_GROUP = "Средняя Степень • Medium Degree"
+# SUB_GROUP = "Небольшая Степень • Low Degree"
+#
+#
+#
 
-MAIN_GROUP = "Наречия Без группы • Ungrouped Adverbs"
 
-SUB_GROUP = "Вопросительные Наречия • Interrogative Adverbs"
-SUB_GROUP = "Наречия Образа действий • Adverbs of Manner"
-SUB_GROUP = "Наречия относящиеся к Предложениям • Sentence Adverbs"
-SUB_GROUP = "Наречия соединения Предложений • Conjunctive Adverbs"
-
-MAIN_GROUP = "Наречия Места • Adverbs of Place"
-
-SUB_GROUP = "Наречия со значением Места • Adverbs of meaning Place"
-SUB_GROUP = "Собственно Наречия Места • Adverbs of Place itself"
-SUB_GROUP = "Наречия Направления • Adverbs of Direction"
-
-MAIN_GROUP = "Наречия Времени • Adverbs of Time "
-
-SUB_GROUP = "Последовательность • Sequence"
-SUB_GROUP = "Частота • Frequency"
-SUB_GROUP = "Вчера / Сегодня / Завтра • Yesterday / Today / Tomorrow"
-SUB_GROUP = "Все Еще / Уже • Still / Already"
-
-MAIN_GROUP = "Наречия Меры, Степени и Количества • Adverbs of Degree, Measure and Quantity"
-
-SUB_GROUP = "Большая Степень • High Degree"
-SUB_GROUP = "Средняя Степень • Medium Degree"
-SUB_GROUP = "Небольшая Степень • Low Degree"
-
-
-
-
-
-# PRONOUNS
-POS = "pronouns"
-MAIN_GROUP = "Местоимения  • Pronouns"
-
-SUB_GROUP = "Личные Местоимения • Personal Pronouns"
-SUB_GROUP = "Указательные Местоимения • Demonstrative Pronouns"
-SUB_GROUP = "Вопросительные Местоимения • Interrogative Pronouns"
-SUB_GROUP = "Неопределенные Местоимения • Indefinite Pronouns"
-SUB_GROUP = "Определенные Местоимения • Definite Pronouns"
-SUB_GROUP = "Отрицательные Местоимения • Negative Pronouns"
-
+# # PRONOUNS
+# POS = "pronouns"
+# MAIN_GROUP = "Местоимения  • Pronouns"
+#
+# SUB_GROUP = "Личные Местоимения • Personal Pronouns"
+# SUB_GROUP = "Указательные Местоимения • Demonstrative Pronouns"
+# SUB_GROUP = "Вопросительные Местоимения • Interrogative Pronouns"
+# SUB_GROUP = "Неопределенные Местоимения • Indefinite Pronouns"
+# SUB_GROUP = "Определенные Местоимения • Definite Pronouns"
+# SUB_GROUP = "Отрицательные Местоимения • Negative Pronouns"
+#
 
 
 # PREPOSITIONS
 POS = "prepositions"
 MAIN_GROUP = "Предлоги  • Prepositions"
 
+beside (the house) ; among (us) ; between (the houses) ; by (the window) ; at (the door) ; round (the table) ;
+far from (the house) ; in front of (our office) ; opposite (my house) ; behind (me) ; above (my head) ;
+over (the table) ; under (the bed) ; below (the ground) ; in (the school) ; inside (the house) ;
+outside (the house) ; on (the table)
 SUB_GROUP = "Предлоги Места • Prepositions of place"
+
+from (London) ; off (the field) ; out of (the room) ; along (the street) ; down (the street) ; to (the sea) ;
+towards (the sea) ; across (the river) ; through (the forest) ; over (the wall) ; down (the steps) ;
+up (the hill) ; past (the house) ; into (the house) ; for (Kiev)
 SUB_GROUP = "Предлоги Направления • Prepositions of Direction"
+
+for (two weeks) ; within (a week) ; over (the last three days) ; in (an hour) ; during (the event); in (1965 , August) ;
+since (1980) ; at (four o'clock) ; till (four o'clock) ; by (three o'clock) ; from (two o'clock) ; on (Monday) ;
+in (the morning) ; at (noon , night) ; before (the work) ; after (the work) ; on (the first of May) ;
+(ten minutes) past (seven) ; (ten minutes) to (seven)
 SUB_GROUP = "Предлоги Времени • Prepositions of Time"
+
+according (to the plan) ; in spite of (poor health) ; despite (the difference) ; regardless of (the law) ;
+because of (illness) ; due to (rain) ; thanks to (your help) ; except (you) ; except for (him) ;
+instead of (the teacher) ; as to (buying) ; as for (signing) ; on behalf of (my colleagues) ;
+for the purpose of (improving) ; for (children) ; against (noise) ; without (money) ; (a cake) of (soap) ;
+to (me) ; (a book) about (flowers)
 SUB_GROUP = "Смешанная Группа • Mixed Group"
 
-
-# NUMERALS
-POS = "numerals"
-MAIN_GROUP = "Числительные • Numerals"
-
-SUB_GROUP = "Количественные Числительные • Cardinal Numerals"
-SUB_GROUP = "Порядковые Числительные • Ordinal Numerals"
-SUB_GROUP = "Дроби • Fractions"
-
-
+#
+# # NUMERALS
+# POS = "numerals"
+# MAIN_GROUP = "Числительные • Numerals"
+#
+# SUB_GROUP = "Количественные Числительные • Cardinal Numerals"
+# SUB_GROUP = "Порядковые Числительные • Ordinal Numerals"
+# SUB_GROUP = "Дроби • Fractions"
+#
+#
 
 end_time = time.time()
 elapsed_time = end_time - start_time
