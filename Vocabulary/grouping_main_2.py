@@ -465,62 +465,139 @@ POS = "nouns"
 
 MAIN_GROUP = "Мир • World"
 
+
+sky ; air; cloud; sun; star; moon; planet;
 SUB_GROUP = "Небо • Sky"
+
+earth; soil; land; continent; peninsula; island; shore; bank; coast;
 SUB_GROUP = "Земля • Earth"
+
+water; sea; ocean; river; lake; swamp; pond; pool; puddle; creek; brook; source; mouth; stream; current; wave; waterfall;
 SUB_GROUP = "Вода • Water"
+
+position; location; direction; aim; north; south; east; west; map;
 SUB_GROUP = "Позиция • Position"
-SUB_GROUP = "Зона • Zone"
+
+zone; forest; meadow; steppe; desert; mountain; hill; slope; foot; summit; peak; plain; field; valley; lowland; relief;
+SUB_GROUP = "Местности • Terrains"
+
+
 
 MAIN_GROUP = "Погода • Weather"
 
+season; winter; spring; summer; autumn; climate; weather;
 SUB_GROUP = "Сезон • Season"
+
+meteorology; temperature; pressure; thunderstorm; thunder; lightning; wind; hurricane; sunlight; ray; darkness;
 SUB_GROUP = "Метеорология • Meteorology"
+
+rain; drop; mist; fog; steam; dew; ice; snow;
 SUB_GROUP = "Осадки • Precipitation"
+
+disaster; catastrophe; earthquake; eruption; epicenter; volcano; flood; fire; destruction; demolition; loss; contamination; environment;
 SUB_GROUP = "Стихийные Бедствия • Natural Disasters"
 
 MAIN_GROUP = "Геометрия • Geometry"
 
+size; dimension; unit; meter; centimeter; ruler; measuring tape; length; height; width; depth; thickness;
 SUB_GROUP = "Размер • Size"
+
+shape; body; volume; sphere; cylinder; cone; cube; pyramid; prism;
 SUB_GROUP = "Форма • Shape"
+
+plane; figure; surface; area; circle; polygon; triangle; square; rectangle;
 SUB_GROUP = "Фигуры на плоскости • Plane Figures"
+
+line; straight line; stripe; row; axis; level; limit; point;
 SUB_GROUP = "Линии • Lines"
+
+structure; whole; part; base; bottom; top; inside; side; flank; front; rear; back;
 SUB_GROUP = "Структура • Structure"
 
 MAIN_GROUP = "Время • Time"
 
+second; minute; hour; day; week; month; year; decade; century; millennium; epoch; season; age; eternity; calendar; clock; watch; alarm clock;
 SUB_GROUP = "Единицы времени • Time Units"
+
+december; january; february; march; april; may; june; july; august; september; october; november;
 SUB_GROUP = "Месяцы • Months"
+
+monday; tuesday; wednesday; thursday; friday; saturday; sunday;
 SUB_GROUP = "Дни Недели • Days of The Week"
-SUB_GROUP = "Временные Этапы • Time Periods"
+
+morning; daybreak; dawn; sunrise; day; noon; afternoon; evening; sunset; night;
 SUB_GROUP = "Стадии дня • Parts of Day"
+
+working time; timetable; schedule; set time; delay; break; rest;
 SUB_GROUP = "Рабочее время • Working Time"
+
+holiday; festival; anniversary; birthday; free time; vacation; leave; weekend; day off;
 SUB_GROUP = "Праздник / Свободное Время • Holiday / Free Time"
 
 MAIN_GROUP = "Вещество / Материал • Substance / Material"
 
+solid; liquid; solution; gas; vacuum;
 SUB_GROUP = "Физическое Состояние • Physical State"
+
+metal; iron; alloy; steel; cast iron; bronze; copper; gold; silver; lead; tin; aluminum;
 SUB_GROUP = "Металлы • Metals"
+
+sand; stone; lime; clay; chalk; concrete; brick; cement; asphalt; wood; glass; paint; glue; rubber; plastic;
 SUB_GROUP = "Строительные Материалы • Construction Materials"
+
+ore; oil; petroleum; gas; petrol; gasoline; coal;
 SUB_GROUP = "Сырье • Raw Materials"
+
+textile; cloth; fabric; silk; cotton; linen; wool; artificial fibre; nylon; leather; fur;
 SUB_GROUP = "Ткани • Textiles"
+
+waste; waste paper; dust; dirt; garbage; rubbish; scrap metal;
 SUB_GROUP = "Отходы • Waste"
 
 MAIN_GROUP = "Растения • Plants"
 
+vegetable garden; vegetables; carrot; potato; pepper; cabbage; onion; beet; radish; cucumber; parsley; tomato; garlic; gourd;
 SUB_GROUP = "Овощи • Vegetables"
+
+melon; watermelon; fruit; berry; apple; pear; plum; apricot; banana; cherry; peach; grape; strawberry; raspberry; lemon; orange; tangerine; grapefruit;
 SUB_GROUP = "Фрукты / Ягоды • Fruits / Berries"
+
+grain; cereal; wheat; rye; rice; oat; buckwheat; corn; maize;
 SUB_GROUP = "Зерновые • Grains"
+
+fir; pine; birch; maple; poplar; oak; willow; chestnut; acacia; ash;
 SUB_GROUP = "Деревья • Trees"
+
+root; trunk; branch; stump; leaf; bud; crown;
 SUB_GROUP = "Части дерева • Parts of a Tree"
+
+rose; lily; tulip; lily of the valley; dandelion; daffodil;
 SUB_GROUP = "Цветы • Flowers"
 
 MAIN_GROUP = "Животные • Animals"
 
+wolf; fox; bear; tiger; lion; elephant; ape; monkey; camel; rabbit; hare; rat; mouse
 SUB_GROUP = "Дикие Животные • Wild Animals"
+
+cow; bull; horse; goat; sheep; ram; donkey; mule; pig; cat; dog; calf; lamb; foal; piglet; kitten; puppy
 SUB_GROUP = "Домашние Животные • Domestic Animals"
-SUB_GROUP = "Птицы • Birds"
-SUB_GROUP = "Рыба • Fish"
+
+hen; cock; chick; goose; duck; turkey; crow; sparrow; pigeon; owl; parrot; swan; eagle;
+SUB_GROUP = "Птицы Начального Уровня • Birds Beginner Level"
+
+gander; duckling; hawk; nightingale; crane; stork; nestling; magpie;
+SUB_GROUP = "Птицы Продвинутого Уровня • Birds Advanced Level"
+
+fish; cod; salmon; carp; shark; spawn;
+SUB_GROUP = "Рыба Начального Уровня • Fish Beginner Level"
+
+crucian carp; sturgeon; flatfish; catfish; herring; roach; pike;
+SUB_GROUP = "Рыба Продвинутого Уровня • Fish Advanced Level"
+
+insect; fly; bee; wasp; butterfly; caterpillar; ant; spider; cockroach; bug; aphid; louse; grasshopper; cricket;
 SUB_GROUP = "Насекомые • Insects"
+
+reptile; frog; toad; snake; viper; grass snake; tortoise; turtle; lizard; crocodile
 SUB_GROUP = "Остальные Классы • Other Groups"
 
 MAIN_GROUP = "Человек • Human"
@@ -531,116 +608,293 @@ SUB_GROUP = "Отношения между Людьми • Human Relationships"
 
 MAIN_GROUP = "Жилье • Dwelling"
 
+house; building; apartment; flat; floor; yard; gate; fence; address; street; square
 SUB_GROUP = "Дом • House"
+
+roof; chimney; wall; floor; ceiling; window; corner; door; bell; lock; key; tap; faucet; light; switch; electricity; elevator
 SUB_GROUP = "Устройство Дома • House Layout"
+
+kitchen; bathroom; toilet; corridor; living room; hall; bedroom; dining room; study
 SUB_GROUP = "Комнаты • Rooms"
+
+furniture; table; chair; armchair; bed; sofa; wardrobe; cupboard; bookcase; carpet; mirror; blinds; curtain; coat rack
 SUB_GROUP = "Мебель • Furniture"
+
+bedclothes; sheet; pillowcase; blanket; pillow; mattress; bedspread
 SUB_GROUP = "Кровать • Bed"
+
+container; bag; suitcase; barrel; case; basket; sack; box; backpack; vessel; bucket; vase; can; jar; jug
 SUB_GROUP = "Сосуды / Емкости • Vessels / Containers"
+
+iron; vacuum cleaner; refrigerator; fridge; washing machine; sewing machine; mixer; cooker; stove; range; utensils; broom
 SUB_GROUP = "Бытовые приборы • Household Appliances"
 
 MAIN_GROUP = "Одежда • Clothes"
 
+
 SUB_GROUP = "Верхняя Одежда • Outer Clothing"
+
+coat; raincoat; fur coat; casual wear; suit; jacket; vest; shirt; trousers – pants; jeans; dress; blouse; skirt; underwear; bra; panties; nightgown; pyjamas; socks; stockings; tights;
 SUB_GROUP = "Одежда / Белье • Clothes / Underwear"
+
+footwear; shoe; boot; sandal; slippers; trainers; shoelace; shoe polish;
 SUB_GROUP = "Обувь • Footwear"
+
+
+headgear; hat; cap; beret; kerchief; shawl;
 SUB_GROUP = "Головные уборы • Headgear"
-SUB_GROUP = "Аксессуары • Accessories"
+
+sleeve; collar; cuff; button; zip; belt; hook; buckle; tie; bow tie; cravat; scarf; gloves; umbrella; handkerchief; handbag; wallet; purse;
+SUB_GROUP = "Аксессуары и части одежды • Accessories and Clothing Parts"
 
 MAIN_GROUP = "Питание • Nourishment"
 
+meal; breakfast; lunch; dinner; tea; supper; taste; appetite;
 SUB_GROUP = "Прием Пищи • Eating"
+
+the first course; the second course; dessert; soup; garnish; porridge; noodles; macaroni; fried potatoes; mashed potatoes; boiled egg; fried eggs; beefsteak; meat; beef; pork; mutton; veal; poultry;
 SUB_GROUP = "Блюда • Dishes"
+
+mustard; vinegar; pepper; salt; spice; herb;
 SUB_GROUP = "Приправы • Condiments"
+
+drink; tea; coffee; cocoa; milk; juice; mineral water; lemonade; cola; wine; beer; whisky;
 SUB_GROUP = "Напитки • Drinks and Beverages"
+
+sweets; chocolate; candy; jam; marmalade; cake; pie; biscuit-cookie; sugar; honey; chewing gum;
 SUB_GROUP = "Сладости • Sweets"
+
+foodstuffs; butter; margarine; cheese; cottage cheese; cream; sour cream; buckwheat; oatmeal; salt; sausage; salami; egg; canned goods; tinned food; vegetable oil; butcher's; greengrocery; dairy; fishmonger's; grocery; confectionery;
 SUB_GROUP = "Пищевые Продукты • Foodstuffs"
+
+bread; loaf; roll; bun; pancake; tart; pie; doughnut; pasty; flour; dough; pastry;
 SUB_GROUP = "Хлеб • Bread"
+
+dining table; tablecloth; napkin; spoon; tablespoon; teaspoon; fork; knife; dish; glass; cup; plate; bowl; saucer; pan; frying pan; pot; bottle opener; tin opener; ladle; kitchen utensils;
 SUB_GROUP = "Кухонные Принадлежности • Kitchen Utensils"
 
 MAIN_GROUP = "Чувства / Характер • Feeling / Character"
 
+emotion; satisfaction; pleasure; excitement; happiness; joy; enthusiasm; delight; interest; relief
 SUB_GROUP = "Позитивные Эмоции • Positive Emotions"
+
+boredom; uneasiness; discontent; dissatisfaction; sadness; suffering; sorrow; grief; anxiety
 SUB_GROUP = "Негативные Эмоции • Negative Emotions"
+
+patience; self-control; firmness; courage; willpower; resolution; determination; confidence; weakness; hesitation; doubt; cowardice; suspicion; disbelief; distrust
 SUB_GROUP = "Терпение / Слабость • Patience / Weakness"
+
+sympathy; respect; friendship; admiration; love; adoration; indifference; contempt; malice; resentment; disgust; envy
 SUB_GROUP = "Любовь / Ненависть • Love / Hatred"
+
+pride; vanity; arrogance; modesty; shyness; consideration; tolerance; shame; intolerance; politeness; tact; good manners; courtesy; rudeness; lack of tact; disrespect; offence; insult
 SUB_GROUP = "Гордость / Скромность • Pride / Modesty"
+
+wish; desire; hope; dream; intention; aspiration; eagerness; aim; purpose; stimulus; incentive; tiredness; fatigue; laziness; diligence
 SUB_GROUP = "Старание / Лень • Diligence / Laziness"
 
 MAIN_GROUP = "Мышление • Thinking"
 
+nature; universe; world; existence; reality; being; conscience; science; philosophy
 SUB_GROUP = "Сознание • Consciousness"
+
+practice; knowledge; cognition; object; subject; reflection; sensation; perception; idea; notion; concept; statement; conclusion; logic; theory
 SUB_GROUP = "Познание • Cognition"
+
+regularity; accident; chance; whole; part; form; contents; essence; variety; diversity; similarity; identity; contrast; contradiction; quantity; quality; number; order; sequence; system; time; space; place; room; spot; surroundings; circumstance; factor; reason; cause; development; consequence; necessity; possibility; probability;
 SUB_GROUP = "Категории Мышления • Thinking Categories"
+
+research; theme; topic; issue; problem; phenomenon; fact; sample; specimen; example; field; indication; symptom; characteristic; feature; means; method; procedure; way; manner; laboratory; equipment; appliance; device; discovery; modification; improvement; development; creation; invention; verification
 SUB_GROUP = "Исследование • Research"
+
+analysis; comparison; data processing; classification; kind; type; interconnection; correlation; interaction; rule; law; principle; exception
 SUB_GROUP = "Анализ • Analysis"
+
+success; failure; advantage; merit; effectiveness; efficiency; importance; disadvantage; deficiency; demerit; error; mistake
 SUB_GROUP = "Результат • Result"
+
+statement; report; thought; idea; premise; criteria; proof; argument; conclusion
 SUB_GROUP = "Сообщение • Report"
+
+criticism; attitude; position; point of view; definition; consent; assent; approval; recognition; confirmation; objection; rejection; refusal; overestimation; underestimation; misunderstanding
 SUB_GROUP = "Критика • Criticism"
 
 MAIN_GROUP = "Образование • Education"
 
+education; upbringing; teaching; instruction; training; elementary school; primary school; high school; vocational school; college; institute; university;
 SUB_GROUP = "Учебные Заведения • Educational Institutions"
+
+subject; timetable; STEM fields; mathematics; physics; biology; chemistry; engineering; drawing; humanities; history; literature; foreign language; physical education;
 SUB_GROUP = "Учебные Предметы • Subjects"
+
+year (as grade); grade; form; class; lesson; lecture; break; task; homework; teacher; pupil; student; classroom; blackboard; desk; teaching aids; textbook; pen; pencil; ruler; eraser; map; school year; vacation;
 SUB_GROUP = "Учеба • Studies"
+
+competition; examination; exam; certificate; diploma;
 SUB_GROUP = "Экзамен / Оценки • Exams / Grades"
-SUB_GROUP = "Лингвистика • Linguistics"
+
+linguistics; language; speech; vocabulary; grammar; style; letter; alphabet; spelling; pronunciation; vowel; consonant; transcription;
+SUB_GROUP = "Лингвистика • Linguistics — Part 1"
+
+word; phrase; idiom; sentence; simple sentence; complex sentence; clause; text; affirmation; interrogation; negation;
+SUB_GROUP = "Лингвистика • Linguistics — Part 2"
+
+part of speech; noun; verb; adjective; pronoun; adverb; numeral; preposition; conjunction; article; interjection;
+SUB_GROUP = "Лингвистика • Linguistics — Part 3"
+
+progressive aspect; perfective aspect; active voice; passive voice; case; gender; number; singular; plural;
+SUB_GROUP = "Лингвистика • Linguistics — Part 4"
+
+part of sentence; subject; predicate; object; adverbial; attribute;
+SUB_GROUP = "Лингвистика • Linguistics — Part 5"
 
 MAIN_GROUP = "Культура • Culture"
 
+cinema; film documentary; detective comedy; adventure film; thriller; horror film; box-office; ticket; seat; performance; showing;
 SUB_GROUP = "Кино • Cinema"
+
+producer; cameramen; actor; actress; extra; artist; makeup artist; set designer; star;
+SUB_GROUP = "Киносоздатели  • Cinema — People"
+
+theatre; puppet show; stage; curtain; scenery; performance; cast; audience; applause; first night; interval; auditorium; balcony
 SUB_GROUP = "Театр • Theatre"
+
+song; tune; concert; program; encore; music; orchestra; chorus; choir; band; musician; composer; conductor; singer
 SUB_GROUP = "Музыка • Music"
+
+piano; violin; drum; guitar; trumpet; saxophone
+SUB_GROUP = "Музыкальные инструменты • Musical Instruments"
+
+literature; book; edition; volume; title; cover; section; chapter; page; author; writer; poet; playwright;
 SUB_GROUP = "Литература • Literature"
+
+work; novel; story; verse; fairy tale; fiction; library; editor
+SUB_GROUP = "Издательство • Publishing House"
+
+
 SUB_GROUP = "Спорт • Sport"
+
+
 
 MAIN_GROUP = "Работа • Work"
 
+job; work; labour; activity; service; years of experience; position; role; duty; place; unemployed; unemployment;
 SUB_GROUP = "Труд / Занятость • Labour / Employment"
+
+field; industry; agriculture; construction; transport; communication; trade; culture; science; art; healthcare; education;
 SUB_GROUP = "Сферы • Fields"
+
+company; branch; firm; enterprise; plant; factory; power plant; oil refinery; coal mine;
 SUB_GROUP = "Предприятие • Enterprise"
+
+profession; trade; occupation; worker; mechanic; electrician; welder; driver; employee; engineer; lawyer; secretary; interpreter; translator; chief; director; manager; minister; ambassador;
 SUB_GROUP = "Професcия • Profession"
-SUB_GROUP = "Инструменты / Оборудование • Tools / Equipment"
+
+tool; hammer; axe; drill; scissors; screwdriver; wrench; nail; bolt; screw; wire; spring; equipment; device; accessory; cutter; machinery;
+SUB_GROUP = "Инструменты / Оборудование • Tools / Equipment (Beginner)"
+
+file; plane; pliers; jack; nut; washer; appliance; tongs; pincers; sickle;
+SUB_GROUP = "Инструменты / Оборудование • Tools / Equipment (Advanced)"
+
 
 MAIN_GROUP = "Связь / Транспорт • Communication / Transport"
 
-SUB_GROUP = "Телефон / Почта • Phone / Post"
+post office; general post office; postman; address; addressee; sender; letter; envelope; stamp; printed matter; postal order; parcel;
+SUB_GROUP = "Почта • Post"
+
+telegraph; text; charge; phone; dial; receiver; trunk call; international call; directory;
+SUB_GROUP = "Телефон • Phone"
+
+railway station; platform; track; train; locomotive; ticket collector; porter; guard; departure; arrival; timetable; departures board; upper berth; lower berth
 SUB_GROUP = "Железная Дорога • Railway"
+
+passenger train; fast train; express; suburban train; train car; train coach; train carriage; wagon; first class; sleeping car; buffet car; dining car; goods van; tank wagon
+SUB_GROUP = "Типы Вагонов и Поездов • Types of Trains and Cars"
+
+aeroplane; jet plane; propeller-driven aircraft; supersonic airliner; engine; wing; fuselage; tail; undercarriage; cockpit
 SUB_GROUP = "Воздушный Транспорт • Air Transport"
-SUB_GROUP = "Автомобильный Транспорт • Motor Transport"
+
+airport; air terminal; take-off runway; waiting room; departure lounge; crew; pilot; navigator; air hostess; flight; journey; check-in; passport control; boarding; take-off; landing; crash
+SUB_GROUP = "В аэропорту • At the Airport"
+
+vehicle; car; bus; truck; tanker; road; highway; motorway; crossroads; bridge; flyover; underpass; guardrail
+SUB_GROUP = "Vehicle Types and Infrastructure"
+
+traffic; traffic sign; road marking; pedestrian crossing; traffic lights; starting; braking; acceleration; car service; gas station; car wash
+SUB_GROUP = "Traffic and Road Usage"
+
+spare part; hood; headlight; license plate; windshield; wipers; tire; trunk; exhaust pipe; steering wheel; seat belt; gear lever; clutch; brake pedal; accelerator; ignition; fuel gauge; horn; engine; radiator; battery; spare wheel
+SUB_GROUP = "Car parts"
 
 MAIN_GROUP = "Город • City"
 
+city; town; village; street; lane; avenue; square; building; corner; pavement;
 SUB_GROUP = "Улицы • Streets"
+
+tram; metro; underground; subway; car; taxi; conductor; ticket; seat;
 SUB_GROUP = "Транспорт • Transport"
+
+cinema; theatre; museum; gallery; circus; restaurant; bar; cafe; club; park; church; hotel;
 SUB_GROUP = "Культурные Учреждения • Social and Cultural institutions"
-SUB_GROUP = "Торговля / Услуги • Trade / Services"
+
 
 MAIN_GROUP = "Общение • Communication"
 
+deal; information; report; rumours; news; truth; lie; white lie;
 SUB_GROUP = "Информация • Information"
+
+mother tongue; foreign language; meaning; accent; dialect; slang; conversation; dialogue; dispute; discussion; question; answer; advice; warning; request; demand; observation; remark; reaction; consent; permission; promise; comment; aid; assistance; help; objection; prohibition; refusal; understanding
 SUB_GROUP = "Общение / Высказывание • Communication / Expression"
+
+visit; meeting; reception; invitation; host; guest; greeting; welcome; handshake; farewell; etiquette; behaviour
 SUB_GROUP = "Визит • Visit"
-SUB_GROUP = "Этикет • Etiquette"
+
 
 MAIN_GROUP = "Государство • State"
 
+country; state; capital; border; flag; democracy
+territory; anthem; social system; socialism; capitalism; civilization
 SUB_GROUP = "Государство • State"
+
+people; population; nationality; nation; custom; habit; motherland; patriot; glory; hero; religion; faith; church; christian; muslim; buddhist; catholic; protestant
 SUB_GROUP = "Народ • People"
+
+social status; worker; peasant; owner; landlord; capitalist
 SUB_GROUP = "Социальный Статус • Social Status"
+
+justice; equality; right; human rights; duty; discrimination; violence; protest; law; police; lawyer; crime; criminal; court; judge; sentence; punishment; penalty; fine; jail; prison; obligation; oppression; offence; public prosecutor
 SUB_GROUP = "Закон / Право • Law"
+
+government; republic; parliament; president; election; constitution; article; party; trade union; congress; conference; discussion; program; monarchy; king; queen; emperor; dictatorship; reform; revolution
 SUB_GROUP = "Политика • Politics"
+
+economics; statistics; economy; national income; wealth; finance; budget; tax; money; living standard; private property; bank; account; cash; free of charge; debt; price; increase; decrease; foreign trade; contract; customs; inspection; duty
 SUB_GROUP = "Экономика • Economy"
+
+foreign policy; peaceful coexistence; mutual assistance; cooperation; interference; intervention; aggression; diplomacy; negotiations; talks; treaty; citizen; citizenship; permanent residence; visa
 SUB_GROUP = "Внешняя Политика • Foreign Policy"
 
 MAIN_GROUP = "Медицина • Medicine"
 
+health; hygiene; preventive measures; health hazard; alcohol consumption; smoking; obesity; weight loss; illness; disease; recovery; death
 SUB_GROUP = "Здоровье / болезнь • Health / Illness"
+
+injury; wound; bruise; fracture; burn; ulcer; rash; abscess; sore
 SUB_GROUP = "Наружные повреждения • Injuries"
+
+infection; contagious disease; plague; flu;
 SUB_GROUP = "Инфекции • Infections"
+
+mental disease; neurological disease; neurosis; allergy; AIDS; cancer
 SUB_GROUP = "Остальные Заболевания • Other Diseases"
+
+symptom; fever; blood pressure; dizziness; sweating; cough; sickness; diarrhea; ache; headache; toothache
 SUB_GROUP = "Симптомы • Symptoms"
+
+medical examination; blood test; urine test; x ray; treatment; therapy; operation; anaesthesia; injection; medicine; drug; bandage; drugstore; pharmacy; prescription
 SUB_GROUP = "Лечение • Treatment"
+
+ambulance; hospital; clinic; doctor; surgeon; psychiatrist; dentist; eye doctor; nurse; patient
 SUB_GROUP = "Больница • Hospital"
 
 
