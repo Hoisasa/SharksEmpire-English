@@ -1,9 +1,9 @@
 import timeit
 
-from models.POS import POS
-from models.Group import Group
-from models.Sub_Group import Sub_Group
-from models.Word import Word
+from models.mPOS import POS
+from models.mGroup import Group
+from models.mSub_Group import Sub_Group
+from models.mWord import Word
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 
