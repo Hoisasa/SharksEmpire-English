@@ -60,7 +60,7 @@
        <bool>false</bool>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="page_3">
        <widget class="QLabel" name="MistakesLabel">
@@ -139,6 +139,9 @@
         <property name="layoutDirection">
          <enum>Qt::LayoutDirection::LeftToRight</enum>
         </property>
+        <property name="autoFillBackground">
+         <bool>true</bool>
+        </property>
         <property name="verticalScrollBarPolicy">
          <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
         </property>
@@ -156,6 +159,9 @@
          </property>
          <property name="layoutDirection">
           <enum>Qt::LayoutDirection::LeftToRight</enum>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
          </property>
          <layout class="QGridLayout" name="scrollGrid"/>
         </widget>
@@ -1368,29 +1374,87 @@ QPushButton:pressed {
        </widget>
       </widget>
       <widget class="QWidget" name="page">
-       <widget class="QWidget" name="gridLayoutWidget">
+       <widget class="QScrollArea" name="scrollArea_2">
         <property name="geometry">
          <rect>
-          <x>10</x>
+          <x>30</x>
           <y>0</y>
-          <width>1271</width>
-          <height>721</height>
+          <width>1261</width>
+          <height>731</height>
          </rect>
         </property>
-        <layout class="QGridLayout" name="groupGrid"/>
+        <property name="layoutDirection">
+         <enum>Qt::LayoutDirection::LeftToRight</enum>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+        </property>
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="scrollAreaWidget_2">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>1259</width>
+           <height>729</height>
+          </rect>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LayoutDirection::LeftToRight</enum>
+         </property>
+         <layout class="QGridLayout" name="groupGrid" rowminimumheight="0">
+          <property name="spacing">
+           <number>6</number>
+          </property>
+         </layout>
+        </widget>
        </widget>
       </widget>
       <widget class="QWidget" name="page_2">
-       <widget class="QWidget" name="gridLayoutWidget_2">
+       <widget class="QScrollArea" name="scrollArea_3">
         <property name="geometry">
          <rect>
-          <x>10</x>
+          <x>-10</x>
           <y>0</y>
-          <width>1271</width>
-          <height>721</height>
+          <width>1291</width>
+          <height>731</height>
          </rect>
         </property>
-        <layout class="QGridLayout" name="groupGrid_2"/>
+        <property name="layoutDirection">
+         <enum>Qt::LayoutDirection::LeftToRight</enum>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+        </property>
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="scrollAreaWidget_5">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>1289</width>
+           <height>729</height>
+          </rect>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LayoutDirection::LeftToRight</enum>
+         </property>
+         <layout class="QGridLayout" name="groupGrid_2" rowminimumheight="0">
+          <property name="leftMargin">
+           <number>9</number>
+          </property>
+          <property name="rightMargin">
+           <number>9</number>
+          </property>
+          <property name="spacing">
+           <number>6</number>
+          </property>
+         </layout>
+        </widget>
        </widget>
       </widget>
      </widget>
