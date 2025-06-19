@@ -1,11 +1,12 @@
 from sqlalchemy import Column, String, Integer, ForeignKey, Float
-from sqlalchemy.orm import declarative_base, relationship
-Base = declarative_base()
+from sqlalchemy.orm import relationship
 
-class Sub_Group(Base):
+from Vocabulary.models.mDictionaryBase import DictionaryBase
+
+class Sub_Group(DictionaryBase):
     __tablename__ = 'subgroups'
-    name = Column(String, primary_key=True)  # globally unique
-    group_id = Column(Integer, ForeignKey('groups.id'))
+    name = Column(String, primary_key=True)
+    group_id = Column(String, ForeignKey('groups.name'))
 
     group = relationship('Group', back_populates='subgroups')
     words = relationship('Word', back_populates='subgroup')

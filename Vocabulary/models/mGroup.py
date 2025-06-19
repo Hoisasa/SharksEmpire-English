@@ -1,12 +1,13 @@
 from sqlalchemy import Column, String, Integer, ForeignKey, Float
-from sqlalchemy.orm import declarative_base, relationship
-Base = declarative_base()
+from sqlalchemy.orm import relationship
 
-class Group(Base):
+from Vocabulary.models.mDictionaryBase import DictionaryBase
+
+
+class Group(DictionaryBase):
     __tablename__ = 'groups'
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
+    name = Column(String, primary_key=True)
     pos_name = Column(String, ForeignKey('pos.name'))
 
     pos = relationship('POS', back_populates='groups')
-    subgroups = relationship('SubGroup', back_populates='group')
+    subgroups = relationship('Sub_Group', back_populates='group')
