@@ -21,9 +21,9 @@
 
 ##
 
-- [Installation](##Installation)
-- [Key Features](##Key-Features)
-- [Tweaking project](##How-to-tweak-project-for-your-own-uses)
+- [Installation](#Installation)
+- [Key Features](#Key-Features)
+- [Tweaking project](#How-to-tweak-project-for-your-own-uses)
 
 
 ## Key Features
