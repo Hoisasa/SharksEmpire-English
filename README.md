@@ -19,14 +19,14 @@
     </p>
 </div>
 
-#
+##
 
-[Installation](## Installation)
-[Key Features](## Key Features)
-[Tweaking project](## Manual Installation (from Source))
+- [Installation](##Installation)
+- [Key Features](##Key-Features)
+- [Tweaking project](##How-to-tweak-project-for-your-own-uses)
 
 
-## Key Fetures
+## Key Features
 
 It's a flashcards application which organises words into quite small groups for easier memorisation. 
 It aims to help beginner english learners whose native language is russian. 
