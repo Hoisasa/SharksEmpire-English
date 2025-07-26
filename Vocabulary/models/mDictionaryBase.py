@@ -1,5 +1,3 @@
-from sqlite3 import IntegrityError
-
 from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()

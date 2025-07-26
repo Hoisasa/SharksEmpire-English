@@ -6,6 +6,7 @@ from models.mPOS import POS
 from models.mGroup import Group
 from models.mSub_Group import Sub_Group
 from models.mWord import Word
+from models.mGrade import Grade
 from models.mDictionaryBase import DictionaryBase
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
@@ -19,7 +20,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Глаголы этапов • Verbs of Stage", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Начало • Beginning", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Начало • Beginning", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="beginning", translation="начало", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="begin", translation="начинать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="start", translation="начинать", subgroup=SUB_GROUP).add_to_session(session)
@@ -30,7 +31,7 @@ def vocab_filling_2():
 		Word(word="prepare", translation="готовиться", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="be late", translation="опаздывать", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Продолжение • Continuation", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Продолжение • Continuation", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="continue", translation="продолжать(ся)", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="go on", translation="продолжать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="last", translation="длиться", subgroup=SUB_GROUP).add_to_session(session)
@@ -40,7 +41,7 @@ def vocab_filling_2():
 		Word(word="repeat", translation="повторять", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="resume", translation="возобновлять", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Завершение • End", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Завершение • End", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="finish", translation="завершать(ся)", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="end", translation="завершать(ся)", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="complete", translation="завершать", subgroup=SUB_GROUP).add_to_session(session)
@@ -49,7 +50,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Глаголы Движения • Verbs of Movement", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Виды движений • Ways of Movement", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Виды движений • Ways of Movement", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="move", translation="двигать(ся)", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="stop", translation="останавливать(ся)", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="go", translation="идти / ехать", subgroup=SUB_GROUP).add_to_session(session)
@@ -61,7 +62,7 @@ def vocab_filling_2():
 		Word(word="swim", translation="плыть", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="ski", translation="кататься на лыжах", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Движение вверх/вниз • Upward/Downward Movement", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Движение вверх/вниз • Upward/Downward Movement", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="raise", translation="поднимать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="lift", translation="поднимать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="rise", translation="подниматься", subgroup=SUB_GROUP).add_to_session(session)
@@ -71,7 +72,7 @@ def vocab_filling_2():
 		Word(word="drop", translation="ронять / подать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="fall", translation="падать", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Скорость • Speed", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Скорость • Speed", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="fly", translation="лететь", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="ride", translation="скакать / ехать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="run", translation="бежать", subgroup=SUB_GROUP).add_to_session(session)
@@ -79,7 +80,7 @@ def vocab_filling_2():
 		Word(word="speed up", translation="ускорять", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="slow down", translation="замедлять", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Преследование • Pursuit", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Преследование • Pursuit", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="pursue", translation="преследовать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="catch up", translation="догонять", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="leave behind", translation="оставлять позади", subgroup=SUB_GROUP).add_to_session(session)
@@ -88,7 +89,7 @@ def vocab_filling_2():
 		Word(word="flee", translation="спасаться бегством", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="avoid", translation="избегать", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Из начальной точки в конец 1 • Movement form start to finish", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Из начальной точки в конец 1 • Movement form start to finish", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="depart", translation="отправляться", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="start", translation="отправляться", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="leave", translation="отправляться", subgroup=SUB_GROUP).add_to_session(session)
@@ -100,7 +101,7 @@ def vocab_filling_2():
 		Word(word="go along", translation="идти (вдоль)", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="cross", translation="пересекать", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Из начальной точки в конец 2 • Movement form start to finish", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Из начальной точки в конец 2 • Movement form start to finish", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="run into", translation="врезаться (в)", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="pass", translation="проходить мимо", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="turn left", translation="повернуть (налево)", subgroup=SUB_GROUP).add_to_session(session)
@@ -111,7 +112,7 @@ def vocab_filling_2():
 		Word(word="enter", translation="входить / вводить", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="go in", translation="входить", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Движение в Воде • Movement in Water", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Движение в Воде • Movement in Water", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="flow", translation="течь", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="float", translation="не тонуть", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="row", translation="грести", subgroup=SUB_GROUP).add_to_session(session)
@@ -120,7 +121,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Глаголы Наличия/Количества • Verbs of Presence/Quantity", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Наличие/Принадлежность • Presence/Belonging", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Наличие/Принадлежность • Presence/Belonging", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="exist", translation="существовать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="be", translation="быть", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="there is", translation="имеется", subgroup=SUB_GROUP).add_to_session(session)
@@ -135,7 +136,7 @@ def vocab_filling_2():
 		Word(word="contain", translation="содержать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="include", translation="включать", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Нехватка • Lack", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Нехватка • Lack", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="need", translation="нуждаться", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="require", translation="требовать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="be necessary", translation="быть необходимым", subgroup=SUB_GROUP).add_to_session(session)
@@ -144,14 +145,14 @@ def vocab_filling_2():
 		Word(word="empty", translation="опорожнять", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="be empty", translation="быть пустым", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Добавление/Избыток • Addition/Excess", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Добавление/Избыток • Addition/Excess", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="gather", translation="собирать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="collect", translation="собирать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="add", translation="добавлять", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="fill", translation="наполнять", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="be full", translation="быть полным", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Сокращение/Остаток • Shortening/Remainder", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Сокращение/Остаток • Shortening/Remainder", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="reduce", translation="сокращать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="eliminate", translation="устранять", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="lose", translation="терять", subgroup=SUB_GROUP).add_to_session(session)
@@ -160,7 +161,7 @@ def vocab_filling_2():
 		Word(word="consume", translation="потреблять", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="damage", translation="повреждать", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Сохранение • Preservation", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Сохранение • Preservation", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="remain", translation="оставаться", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="be left", translation="оставаться", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="keep", translation="удерживать", subgroup=SUB_GROUP).add_to_session(session)
@@ -169,7 +170,7 @@ def vocab_filling_2():
 		Word(word="retain", translation="сохранять за собой", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="store", translation="хранить", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Положение 1 • Position 1", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Положение 1 • Position 1", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="put", translation="класть", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="place", translation="помещать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="set", translation="класть", subgroup=SUB_GROUP).add_to_session(session)
@@ -179,9 +180,9 @@ def vocab_filling_2():
 		Word(word="stay", translation="пребывать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="lie", translation="лежать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="hang", translation="висеть / вешать", subgroup=SUB_GROUP).add_to_session(session)
-		Word(word="stand", translation="собирать", subgroup=SUB_GROUP).add_to_session(session)
+		Word(word="stand", translation="стоять / ставить", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Положение 2 • Position 2", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Положение 2 • Position 2", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="locate", translation="определять место", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="lie down", translation="ложиться", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="stand up", translation="вставать", subgroup=SUB_GROUP).add_to_session(session)
@@ -192,7 +193,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Бытовые Глаголы • Verbs of Everyday Life", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Жить • Live", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Жить • Live", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="bear", translation="рождать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="give birth", translation="родить", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="be born", translation="родиться", subgroup=SUB_GROUP).add_to_session(session)
@@ -202,7 +203,7 @@ def vocab_filling_2():
 		Word(word="name", translation="называть", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="marry", translation="жениться", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Работать • Work", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Работать • Work", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="work", translation="работать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="take a job", translation="устраиваться на работу", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="employ", translation="нанимать", subgroup=SUB_GROUP).add_to_session(session)
@@ -214,7 +215,7 @@ def vocab_filling_2():
 		Word(word="waste", translation="расточительно тратить", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="rest", translation="отдыхать", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Есть/Пить • Eat/Drink", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Есть/Пить • Eat/Drink", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="eat", translation="есть", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="be hungry", translation="быть голодным", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="feed", translation="кормить", subgroup=SUB_GROUP).add_to_session(session)
@@ -228,7 +229,7 @@ def vocab_filling_2():
 		Word(word="fry", translation="жарить", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="boil", translation="кипятить", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Одеваться • Dress", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Одеваться • Dress", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="wear", translation="носить", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="dress", translation="одеваться", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="put on", translation="одевать", subgroup=SUB_GROUP).add_to_session(session)
@@ -241,7 +242,7 @@ def vocab_filling_2():
 		Word(word="be in fashion", translation="быть в моде", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="be out of fashion", translation="выйти из моды", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Спать/ Приводить себя в порядок • Sleep/Tidy Oneself up", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Спать/ Приводить себя в порядок • Sleep/Tidy Oneself up", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="sleep", translation="спать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="fall asleep", translation="уснуть", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="go to bed", translation="ложиться спать", subgroup=SUB_GROUP).add_to_session(session)
@@ -256,7 +257,7 @@ def vocab_filling_2():
 		Word(word="make up", translation="делать макияж", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="do ones hair", translation="делать прическу", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Болеть • Feel sick", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Болеть • Feel sick", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="be ill", translation="болеть (болезнь)", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="ache", translation="болеть (боль)", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="catch a cold", translation="простудиться", subgroup=SUB_GROUP).add_to_session(session)
@@ -271,7 +272,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Глаголы Чувства • Verbs of Feeling", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Хорошее Отношение • Good Attitude", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Хорошее Отношение • Good Attitude", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="love", translation="любить", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="fall in love", translation="влюбляться", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="like", translation="нравиться", subgroup=SUB_GROUP).add_to_session(session)
@@ -281,14 +282,14 @@ def vocab_filling_2():
 		Word(word="admire", translation="восхищаться", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="adore", translation="обожать", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Плохое Отношение • Bad Attitude", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Плохое Отношение • Bad Attitude", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="hate", translation="ненавидеть", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="dislike", translation="не нравиться", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="accuse", translation="обвинять", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="envy", translation="завидовать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="disregard", translation="игнорировать", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Горе / Радость • Grief / Joy", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Горе / Радость • Grief / Joy", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="suffer", translation="страдать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="bear", translation="выносить", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="stand", translation="терпеть", subgroup=SUB_GROUP).add_to_session(session)
@@ -305,13 +306,13 @@ def vocab_filling_2():
 		Word(word="surrender", translation="капитулировать", subgroup=SUB_GROUP).add_to_session(session)
 		
 		SUB_GROUP = Sub_Group(name="Гордость / Скромность"
-								   " • Pride / Modesty", group=MAIN_GROUP).add_to_session(session)
+								   " • Pride / Modesty", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="be proud", translation="гордиться", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="be shy", translation="быть застенчивым", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="brag", translation="хвастаться", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="be modest", translation="быть скромным", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Уверенность / Сомнение • Confidence / Doubt", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Уверенность / Сомнение • Confidence / Doubt", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="hope", translation="надеяться", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="believe", translation="верить", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="rely", translation="полагаться", subgroup=SUB_GROUP).add_to_session(session)
@@ -320,7 +321,7 @@ def vocab_filling_2():
 		Word(word="hesitate", translation="колебаться", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="suspect", translation="подозревать", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Старание / Лень • Diligence / Laziness", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Старание / Лень • Diligence / Laziness", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="care", translation="заботиться", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="try to do one's best", translation="стараться изо всех сил", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="be lazy", translation="лениться", subgroup=SUB_GROUP).add_to_session(session)
@@ -328,7 +329,7 @@ def vocab_filling_2():
 		Word(word="be tired", translation="быть уставшим", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="get tired", translation="уставать", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Оттенки Эмоций • Subtle Emotions", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Оттенки Эмоций • Subtle Emotions", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="excite", translation="волновать, возбуждать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="move", translation="тронуть", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="frighten", translation="пугать", subgroup=SUB_GROUP).add_to_session(session)
@@ -343,7 +344,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Глаголы Восприятия и Мышления • Verbs of Perception and Thinking", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Восприятие Мира • Perception of the World", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Восприятие Мира • Perception of the World", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="feel", translation="чувствовать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="see", translation="видеть", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="hear", translation="слышать", subgroup=SUB_GROUP).add_to_session(session)
@@ -354,7 +355,7 @@ def vocab_filling_2():
 		Word(word="listen", translation="слушать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="recognize", translation="узнавать", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Обучение • Learning", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Обучение • Learning", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="learn", translation="учить(ся)", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="study", translation="изучать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="memorize", translation="запоминать", subgroup=SUB_GROUP).add_to_session(session)
@@ -373,7 +374,7 @@ def vocab_filling_2():
 		Word(word="examine", translation="проверять, исследовать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="correct", translation="исправлять", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Учебные операции • Study Processes", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Учебные операции • Study Processes", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="read", translation="читать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="write", translation="писать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="count", translation="считать", subgroup=SUB_GROUP).add_to_session(session)
@@ -387,7 +388,7 @@ def vocab_filling_2():
 		Word(word="relate", translation="соотносить", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="translate", translation="переводить", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Логические операции • Logical operations", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Логические операции • Logical operations", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="think", translation="думать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="change one's mind", translation="передумать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="take into account", translation="принимать во внимание", subgroup=SUB_GROUP).add_to_session(session)
@@ -411,7 +412,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Рабочие операции • Work Tasks", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Работать / Делать • Work / Do", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Работать / Делать • Work / Do", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="work", translation="работать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="do", translation="делать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="carry out", translation="выполнять", subgroup=SUB_GROUP).add_to_session(session)
@@ -422,7 +423,7 @@ def vocab_filling_2():
 		Word(word="manufacture", translation="производить", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="produce", translation="производить", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Готовить / Проверять • Prepare / Check", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Готовить / Проверять • Prepare / Check", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="prepare", translation="готовить", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="repair", translation="ремонтировать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="fit", translation="подгонять", subgroup=SUB_GROUP).add_to_session(session)
@@ -439,7 +440,7 @@ def vocab_filling_2():
 		Word(word="act", translation="действовать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="function", translation="функционировать", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Ручные операции • Manual Operations", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Ручные операции • Manual Operations", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="take", translation="брать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="catch", translation="ловить", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="keep", translation="держать", subgroup=SUB_GROUP).add_to_session(session)
@@ -453,7 +454,7 @@ def vocab_filling_2():
 		Word(word="pull", translation="тянуть", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="push", translation="толкать", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Соединять / Закреплять • Connect / Fix", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Соединять / Закреплять • Connect / Fix", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="attach", translation="прикреплять", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="connect", translation="соединять", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="fix", translation="закреплять", subgroup=SUB_GROUP).add_to_session(session)
@@ -466,7 +467,7 @@ def vocab_filling_2():
 		Word(word="undo", translation="развязывать, отсоединять", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="unfasten", translation="отстёгивать, отвязывать", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Закрывать / Открывать • Close / Open", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Закрывать / Открывать • Close / Open", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="shut", translation="закрывать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="close", translation="закрывать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="cover", translation="накрывать", subgroup=SUB_GROUP).add_to_session(session)
@@ -478,7 +479,7 @@ def vocab_filling_2():
 		Word(word="search", translation="искать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="find", translation="находить", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Разрушать / Делить на части • Destroy / Divide into parts", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Разрушать / Делить на части • Destroy / Divide into parts", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="break", translation="ломать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="destroy", translation="разрушать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="demolish", translation="сносить", subgroup=SUB_GROUP).add_to_session(session)
@@ -491,7 +492,7 @@ def vocab_filling_2():
 		Word(word="scratch", translation="царапать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="rub", translation="тереть", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Операции с Водой • Water-related Actions", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Операции с Водой • Water-related Actions", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="pour", translation="лить", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="spill", translation="проливать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="water", translation="поливать", subgroup=SUB_GROUP).add_to_session(session)
@@ -505,7 +506,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Глаголы Общения • Verbs of Communication", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Говорить • Speak", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Говорить • Speak", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="speak", translation="говорить", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="talk", translation="разговаривать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="say", translation="сказать", subgroup=SUB_GROUP).add_to_session(session)
@@ -515,7 +516,7 @@ def vocab_filling_2():
 		Word(word="cry", translation="кричать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="be silent", translation="молчать", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Обращаться • Address", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Обращаться • Address", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="address", translation="обращаться", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="have a conversation", translation="вести разговор", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="inform", translation="информировать", subgroup=SUB_GROUP).add_to_session(session)
@@ -528,7 +529,7 @@ def vocab_filling_2():
 		Word(word="demand", translation="требовать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="order", translation="приказывать", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Отвечать • Answer", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Отвечать • Answer", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="answer", translation="отвечать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="reply", translation="отвечать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="explain", translation="объяснять", subgroup=SUB_GROUP).add_to_session(session)
@@ -541,7 +542,7 @@ def vocab_filling_2():
 		Word(word="assist", translation="помогать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="contribute", translation="способствовать", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Брать • Take", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Брать • Take", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="accept", translation="принимать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="take", translation="брать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="get", translation="получать", subgroup=SUB_GROUP).add_to_session(session)
@@ -551,7 +552,7 @@ def vocab_filling_2():
 		Word(word="rent", translation="арендовать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="buy", translation="покупать", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Давать • Give", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Давать • Give", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="offer", translation="предлагать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="suggest", translation="предлагать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="give", translation="давать", subgroup=SUB_GROUP).add_to_session(session)
@@ -562,7 +563,7 @@ def vocab_filling_2():
 		Word(word="lend", translation="одалживать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="bribe", translation="давать взятку", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Визит / Этикет • Visit / Etiquette", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Визит / Этикет • Visit / Etiquette", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="invite", translation="приглашать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="call", translation="звонить", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="wait", translation="ждать", subgroup=SUB_GROUP).add_to_session(session)
@@ -581,7 +582,7 @@ def vocab_filling_2():
 		Word(word="leave", translation="уходить", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="get acquainted", translation="знакомиться", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Нарушение Этикета / Наказание • Breach of Etiquette / Punishment", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Нарушение Этикета / Наказание • Breach of Etiquette / Punishment", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="disturb", translation="беспокоить", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="bother", translation="мучить", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="offend", translation="обижать", subgroup=SUB_GROUP).add_to_session(session)
@@ -598,14 +599,14 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Глаголы Борьбы • Verbs of Fighting", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Нападать • Attack", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Нападать • Attack", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="threaten", translation="угрожать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="arm oneself", translation="вооружаться", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="disarm", translation="разоружать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="attack", translation="атаковать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="invade", translation="вторгаться", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Защищаться • Defend Oneself", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Защищаться • Defend Oneself", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="struggle", translation="бороться", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="fight", translation="сражаться", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="resist", translation="сопротивляться", subgroup=SUB_GROUP).add_to_session(session)
@@ -614,7 +615,7 @@ def vocab_filling_2():
 		Word(word="rescue", translation="спасать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="drive out", translation="изгнать", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Военные операции • Field Operations", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Военные операции • Field Operations", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="win", translation="побеждать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="lose", translation="проигрывать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="conquer", translation="завоёвывать", subgroup=SUB_GROUP).add_to_session(session)
@@ -625,7 +626,7 @@ def vocab_filling_2():
 		Word(word="submit", translation="подчиняться", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="yield", translation="поддаться, уступить", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Действия с Оружием • Actions with Weapons", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Действия с Оружием • Actions with Weapons", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="shoot", translation="стрелять", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="aim", translation="целиться", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="point", translation="наводить", subgroup=SUB_GROUP).add_to_session(session)
@@ -644,7 +645,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Мир • World", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Небо • Sky", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Небо • Sky", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="sky", translation="небо", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="air", translation="воздух", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="cloud", translation="облако", subgroup=SUB_GROUP).add_to_session(session)
@@ -653,7 +654,7 @@ def vocab_filling_2():
 		Word(word="moon", translation="луна", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="planet", translation="планета", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Земля • Earth", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Земля • Earth", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="earth", translation="земля", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="soil", translation="почва", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="land", translation="земля", subgroup=SUB_GROUP).add_to_session(session)
@@ -664,7 +665,7 @@ def vocab_filling_2():
 		Word(word="bank", translation="берег", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="coast", translation="побережье", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Вода • Water", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Вода • Water", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="water", translation="вода", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="sea", translation="море", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="ocean", translation="океан", subgroup=SUB_GROUP).add_to_session(session)
@@ -681,7 +682,7 @@ def vocab_filling_2():
 		Word(word="wave", translation="волна", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="waterfall", translation="водопад", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Позиция • Position", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Позиция • Position", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="position", translation="позиция", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="location", translation="местоположение", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="direction", translation="направление", subgroup=SUB_GROUP).add_to_session(session)
@@ -692,7 +693,7 @@ def vocab_filling_2():
 		Word(word="west", translation="запад", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="map", translation="карта", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Местности • Terrains", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Местности • Terrains", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="zone", translation="зона", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="forest", translation="лес", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="meadow", translation="луг", subgroup=SUB_GROUP).add_to_session(session)
@@ -712,7 +713,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Погода • Weather", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Сезон • Season", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Сезон • Season", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="season", translation="сезон", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="winter", translation="зима", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="spring", translation="весна", subgroup=SUB_GROUP).add_to_session(session)
@@ -721,7 +722,7 @@ def vocab_filling_2():
 		Word(word="climate", translation="климат", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="weather", translation="погода", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Метеорология • Meteorology", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Метеорология • Meteorology", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="meteorology", translation="метеорология", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="temperature", translation="температура", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="pressure", translation="давление", subgroup=SUB_GROUP).add_to_session(session)
@@ -734,7 +735,7 @@ def vocab_filling_2():
 		Word(word="ray", translation="луч", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="darkness", translation="темнота", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Осадки • Precipitation", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Осадки • Precipitation", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="rain", translation="дождь", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="drop", translation="капля", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="mist", translation="туман", subgroup=SUB_GROUP).add_to_session(session)
@@ -744,7 +745,7 @@ def vocab_filling_2():
 		Word(word="ice", translation="лед", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="snow", translation="снег", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Стихийные Бедствия • Natural Disasters", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Стихийные Бедствия • Natural Disasters", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="environment", translation="окружающая среда", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="disaster", translation="катастрофа", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="catastrophe", translation="катастрофа", subgroup=SUB_GROUP).add_to_session(session)
@@ -761,7 +762,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Геометрия • Geometry", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Размер • Size", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Размер • Size", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="size", translation="размер", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="dimension", translation="измерение (пример: трехмерное)", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="unit", translation="единица", subgroup=SUB_GROUP).add_to_session(session)
@@ -775,7 +776,7 @@ def vocab_filling_2():
 		Word(word="depth", translation="глубина", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="thickness", translation="толщина", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Форма • Shape", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Форма • Shape", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="shape", translation="форма", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="body", translation="тело", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="volume", translation="объем", subgroup=SUB_GROUP).add_to_session(session)
@@ -786,7 +787,7 @@ def vocab_filling_2():
 		Word(word="pyramid", translation="пирамида", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="prism", translation="призма", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Фигуры на плоскости • Plane Figures", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Фигуры на плоскости • Plane Figures", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="plane", translation="плоскость", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="figure", translation="фигура", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="surface", translation="поверхность", subgroup=SUB_GROUP).add_to_session(session)
@@ -797,7 +798,7 @@ def vocab_filling_2():
 		Word(word="square", translation="квадрат", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="rectangle", translation="прямоугольник", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Линии • Lines", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Линии • Lines", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="line", translation="линия", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="straight line", translation="прямая линия", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="stripe", translation="полоса", subgroup=SUB_GROUP).add_to_session(session)
@@ -807,7 +808,7 @@ def vocab_filling_2():
 		Word(word="limit", translation="граница", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="point", translation="точка", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Структура • Structure", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Структура • Structure", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="structure", translation="структура", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="whole", translation="целое", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="part", translation="часть", subgroup=SUB_GROUP).add_to_session(session)
@@ -823,7 +824,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Время • Time", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Единицы времени • Time Units", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Единицы времени • Time Units", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="second", translation="секунда", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="minute", translation="минута", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="hour", translation="час", subgroup=SUB_GROUP).add_to_session(session)
@@ -843,7 +844,7 @@ def vocab_filling_2():
 		Word(word="watch", translation="наручные часы", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="alarm clock", translation="будильник", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Месяцы • Months", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Месяцы • Months", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="january", translation="январь", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="february", translation="февраль", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="march", translation="март", subgroup=SUB_GROUP).add_to_session(session)
@@ -857,7 +858,7 @@ def vocab_filling_2():
 		Word(word="november", translation="ноябрь", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="december", translation="декабрь", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Дни Недели • Days of The Week", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Дни Недели • Days of The Week", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="monday", translation="понедельник", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="tuesday", translation="вторник", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="wednesday", translation="среда", subgroup=SUB_GROUP).add_to_session(session)
@@ -866,7 +867,7 @@ def vocab_filling_2():
 		Word(word="saturday", translation="суббота", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="sunday", translation="воскресенье", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Стадии дня • Parts of Day", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Стадии дня • Parts of Day", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="morning", translation="утро", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="daybreak", translation="рассвет", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="dawn", translation="утренняя заря", subgroup=SUB_GROUP).add_to_session(session)
@@ -878,7 +879,7 @@ def vocab_filling_2():
 		Word(word="sunset", translation="закат", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="night", translation="ночь", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Рабочее время • Working Time", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Рабочее время • Working Time", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="working time", translation="рабочее время", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="timetable", translation="расписание", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="schedule", translation="график", subgroup=SUB_GROUP).add_to_session(session)
@@ -887,7 +888,7 @@ def vocab_filling_2():
 		Word(word="break", translation="перерыв", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="rest", translation="отдых", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Праздник / Свободное Время • Holiday / Free Time", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Праздник / Свободное Время • Holiday / Free Time", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="holiday", translation="праздник", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="festival", translation="фестиваль", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="anniversary", translation="юбилей", subgroup=SUB_GROUP).add_to_session(session)
@@ -900,14 +901,14 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Вещество / Материал • Substance / Material", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Физическое Состояние • Physical State", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Физическое Состояние • Physical State", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="solid", translation="твердое тело", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="liquid", translation="жидкость", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="solution", translation="раствор", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="gas", translation="газ", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="vacuum", translation="вакуум", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Металлы • Metals", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Металлы • Metals", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="metal", translation="металл", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="iron", translation="железо", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="alloy", translation="сплав", subgroup=SUB_GROUP).add_to_session(session)
@@ -921,7 +922,7 @@ def vocab_filling_2():
 		Word(word="tin", translation="олово", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="aluminum", translation="алюминий", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Строительные Материалы • Construction Materials", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Строительные Материалы • Construction Materials", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="sand", translation="песок", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="stone", translation="камень", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="lime", translation="известь", subgroup=SUB_GROUP).add_to_session(session)
@@ -938,7 +939,7 @@ def vocab_filling_2():
 		Word(word="rubber", translation="резина", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="plastic", translation="пластик", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Сырье • Raw Materials", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Сырье • Raw Materials", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="ore", translation="руда", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="oil", translation="нефть", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="petroleum", translation="нефть", subgroup=SUB_GROUP).add_to_session(session)
@@ -947,7 +948,7 @@ def vocab_filling_2():
 		Word(word="gasoline", translation="бензин", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="coal", translation="уголь", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Ткани • Textiles", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Ткани • Textiles", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="textile", translation="ткань", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="cloth", translation="ткань", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="fabric", translation="материал", subgroup=SUB_GROUP).add_to_session(session)
@@ -959,7 +960,7 @@ def vocab_filling_2():
 		Word(word="leather", translation="кожа", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="fur", translation="мех", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Отходы • Waste", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Отходы • Waste", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="waste", translation="отходы", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="waste paper", translation="макулатура", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="dust", translation="пыль", subgroup=SUB_GROUP).add_to_session(session)
@@ -970,7 +971,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Растения • Plants", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Овощи • Vegetables", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Овощи • Vegetables", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="vegetable garden", translation="огород", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="vegetables", translation="овощи", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="carrot", translation="морковь", subgroup=SUB_GROUP).add_to_session(session)
@@ -985,7 +986,7 @@ def vocab_filling_2():
 		Word(word="garlic", translation="чеснок", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="gourd", translation="тыква", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Фрукты / Ягоды • Fruits / Berries", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Фрукты / Ягоды • Fruits / Berries", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="melon", translation="дыня", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="watermelon", translation="арбуз", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="fruit", translation="фрукты", subgroup=SUB_GROUP).add_to_session(session)
@@ -1005,7 +1006,7 @@ def vocab_filling_2():
 		Word(word="tangerine", translation="мандарин", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="grapefruit", translation="грейпфрут", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Зерновые • Grains", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Зерновые • Grains", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="grain", translation="зерно", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="cereal", translation="злак", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="wheat", translation="пшеница", subgroup=SUB_GROUP).add_to_session(session)
@@ -1016,7 +1017,7 @@ def vocab_filling_2():
 		Word(word="corn", translation="кукуруза", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="maize", translation="кукуруза", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Деревья • Trees", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Деревья • Trees", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="fir", translation="ель", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="pine", translation="сосна", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="birch", translation="берёза", subgroup=SUB_GROUP).add_to_session(session)
@@ -1028,7 +1029,7 @@ def vocab_filling_2():
 		Word(word="acacia", translation="акация", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="ash", translation="ясень", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Части дерева • Parts of a Tree", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Части дерева • Parts of a Tree", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="root", translation="корень", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="trunk", translation="ствол", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="branch", translation="ветка", subgroup=SUB_GROUP).add_to_session(session)
@@ -1037,7 +1038,7 @@ def vocab_filling_2():
 		Word(word="bud", translation="почка", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="crown", translation="крона", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Цветы • Flowers", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Цветы • Flowers", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="rose", translation="роза", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="lily", translation="лилия", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="tulip", translation="тюльпан", subgroup=SUB_GROUP).add_to_session(session)
@@ -1047,7 +1048,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Животные • Animals", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Дикие Животные • Wild Animals", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Дикие Животные • Wild Animals", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="wolf", translation="волк", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="fox", translation="лиса", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="bear", translation="медведь", subgroup=SUB_GROUP).add_to_session(session)
@@ -1062,7 +1063,7 @@ def vocab_filling_2():
 		Word(word="rat", translation="крыса", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="mouse", translation="мышь", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Домашние Животные • Domestic Animals", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Домашние Животные • Domestic Animals", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="cow", translation="корова", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="bull", translation="бык", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="horse", translation="лошадь", subgroup=SUB_GROUP).add_to_session(session)
@@ -1079,7 +1080,7 @@ def vocab_filling_2():
 		Word(word="kitten", translation="котёнок", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="puppy", translation="щенок", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Птицы Начального Уровня • Birds Beginner Level", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Птицы Начального Уровня • Birds Beginner Level", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="hen", translation="курица", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="cock", translation="петух", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="chick", translation="цыплёнок", subgroup=SUB_GROUP).add_to_session(session)
@@ -1094,7 +1095,7 @@ def vocab_filling_2():
 		Word(word="swan", translation="лебедь", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="eagle", translation="орёл", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Птицы Продвинутого Уровня • Birds Advanced Level", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Птицы Продвинутого Уровня • Birds Advanced Level", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="gander", translation="гусак", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="duckling", translation="утёнок", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="hawk", translation="ястреб", subgroup=SUB_GROUP).add_to_session(session)
@@ -1104,7 +1105,7 @@ def vocab_filling_2():
 		Word(word="nestling", translation="птенец", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="magpie", translation="сорока", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Рыба Начального Уровня • Fish Beginner Level", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Рыба Начального Уровня • Fish Beginner Level", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="fish", translation="рыба", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="cod", translation="треска", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="salmon", translation="лосось", subgroup=SUB_GROUP).add_to_session(session)
@@ -1112,7 +1113,7 @@ def vocab_filling_2():
 		Word(word="shark", translation="акула", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="spawn", translation="икра", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Рыба Продвинутого Уровня • Fish Advanced Level", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Рыба Продвинутого Уровня • Fish Advanced Level", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="crucian carp", translation="карась", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="sturgeon", translation="осётр", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="flatfish", translation="камбала", subgroup=SUB_GROUP).add_to_session(session)
@@ -1121,7 +1122,7 @@ def vocab_filling_2():
 		Word(word="roach", translation="плотва", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="pike", translation="щука", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Насекомые • Insects", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Насекомые • Insects", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="insect", translation="насекомое", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="fly", translation="муха", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="bee", translation="пчела", subgroup=SUB_GROUP).add_to_session(session)
@@ -1138,7 +1139,7 @@ def vocab_filling_2():
 		Word(word="grasshopper", translation="кузнечик", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="cricket", translation="сверчок", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Остальные Классы • Other Groups", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Остальные Классы • Other Groups", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="reptile", translation="рептилия", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="frog", translation="лягушка", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="toad", translation="жаба", subgroup=SUB_GROUP).add_to_session(session)
@@ -1152,7 +1153,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Человек • Human", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Общие Сведения • General Information", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Общие Сведения • General Information", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="man", translation="мужчина", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="male", translation="мужчина", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="woman", translation="женщина", subgroup=SUB_GROUP).add_to_session(session)
@@ -1167,7 +1168,7 @@ def vocab_filling_2():
 		Word(word="surname", translation="фамилия", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="origin", translation="происхождение", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Анатомия: Общая группа • Anatomy: General", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Анатомия: Общая группа • Anatomy: General", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="stature", translation="телосложение", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="bone", translation="кость", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="muscle", translation="мышца", subgroup=SUB_GROUP).add_to_session(session)
@@ -1178,7 +1179,7 @@ def vocab_filling_2():
 		Word(word="artery", translation="артерия", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="vein", translation="вена", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Анатомия: Части тела • Anatomy: Parts of Body", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Анатомия: Части тела • Anatomy: Parts of Body", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="body", translation="тело", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="head", translation="голова", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="neck", translation="шея", subgroup=SUB_GROUP).add_to_session(session)
@@ -1198,7 +1199,7 @@ def vocab_filling_2():
 		Word(word="elbow", translation="локоть", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="nail", translation="ноготь", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Анатомия: Лицо • Anatomy: Face", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Анатомия: Лицо • Anatomy: Face", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="head", translation="голова", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="eye", translation="глаз", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="eyelid", translation="веко", subgroup=SUB_GROUP).add_to_session(session)
@@ -1216,7 +1217,7 @@ def vocab_filling_2():
 		Word(word="forehead", translation="лоб", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="cheek", translation="щека", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Анатомия: Внутренние органы • Anatomy: Internal organs", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Анатомия: Внутренние органы • Anatomy: Internal organs", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="brain", translation="мозг", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="lungs", translation="легкие", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="heart", translation="сердце", subgroup=SUB_GROUP).add_to_session(session)
@@ -1225,7 +1226,7 @@ def vocab_filling_2():
 		Word(word="liver", translation="печень", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="kidney", translation="почка", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Семья • Family", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Семья • Family", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="father", translation="отец", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="mother", translation="мать", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="sister", translation="сестра", subgroup=SUB_GROUP).add_to_session(session)
@@ -1240,7 +1241,7 @@ def vocab_filling_2():
 		Word(word="wedding", translation="свадьба", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="divorce", translation="развод", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Отношения между Людьми • Human Relationships", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Отношения между Людьми • Human Relationships", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="friend", translation="друг", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="colleague", translation="коллега", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="lover", translation="любовник", subgroup=SUB_GROUP).add_to_session(session)
@@ -1255,7 +1256,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Жилье • Dwelling", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Дом • House", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Дом • House", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="house", translation="дом", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="building", translation="здание", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="apartment", translation="квартира", subgroup=SUB_GROUP).add_to_session(session)
@@ -1268,7 +1269,7 @@ def vocab_filling_2():
 		Word(word="street", translation="улица", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="square", translation="площадь", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Устройство Дома • House Layout", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Устройство Дома • House Layout", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="roof", translation="крыша", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="chimney", translation="дымоход", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="wall", translation="стена", subgroup=SUB_GROUP).add_to_session(session)
@@ -1287,7 +1288,7 @@ def vocab_filling_2():
 		Word(word="electricity", translation="электричество", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="elevator", translation="лифт", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Комнаты • Rooms", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Комнаты • Rooms", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="kitchen", translation="кухня", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="bathroom", translation="ванная", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="toilet", translation="туалет", subgroup=SUB_GROUP).add_to_session(session)
@@ -1298,7 +1299,7 @@ def vocab_filling_2():
 		Word(word="dining room", translation="столовая", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="study", translation="кабинет", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Мебель • Furniture", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Мебель • Furniture", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="furniture", translation="мебель", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="table", translation="стол", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="chair", translation="стул", subgroup=SUB_GROUP).add_to_session(session)
@@ -1314,7 +1315,7 @@ def vocab_filling_2():
 		Word(word="curtain", translation="занавеска", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="coat rack", translation="вешалка", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Кровать • Bed", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Кровать • Bed", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="bedclothes", translation="постельное белье", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="sheet", translation="простыня", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="pillowcase", translation="наволочка", subgroup=SUB_GROUP).add_to_session(session)
@@ -1323,7 +1324,7 @@ def vocab_filling_2():
 		Word(word="mattress", translation="матрас", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="bedspread", translation="покрывало", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Сосуды / Емкости • Vessels / Containers", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Сосуды / Емкости • Vessels / Containers", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="container", translation="контейнер", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="bag", translation="сумка", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="suitcase", translation="чемодан", subgroup=SUB_GROUP).add_to_session(session)
@@ -1340,7 +1341,7 @@ def vocab_filling_2():
 		Word(word="jar", translation="кувшин", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="jug", translation="кувшин", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Бытовые приборы • Household Appliances", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Бытовые приборы • Household Appliances", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="iron", translation="утюг", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="vacuum cleaner", translation="пылесос", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="refrigerator", translation="холодильник", subgroup=SUB_GROUP).add_to_session(session)
@@ -1356,7 +1357,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Одежда • Clothes", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Одежда / Белье • Clothes / Underwear", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Одежда / Белье • Clothes / Underwear", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="coat", translation="пальто", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="raincoat", translation="дождевик", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="fur coat", translation="шуба", subgroup=SUB_GROUP).add_to_session(session)
@@ -1372,13 +1373,13 @@ def vocab_filling_2():
 		Word(word="blouse", translation="блузка", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="skirt", translation="юбка", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="underwear", translation="нижнее белье", subgroup=SUB_GROUP).add_to_session(session)
-		Word(word="bra", translation="лифчик", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="panties", translation="трусы", subgroup=SUB_GROUP).add_to_session(session)
+		Word(word="bra", translation="лифчик", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="pyjamas", translation="пижама", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="socks", translation="носки", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="tights", translation="колготки", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Обувь • Footwear", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Обувь • Footwear", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="footwear", translation="обувь", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="shoes", translation="туфли", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="boots", translation="ботинки, туфли", subgroup=SUB_GROUP).add_to_session(session)
@@ -1388,7 +1389,7 @@ def vocab_filling_2():
 		Word(word="shoelace", translation="шнурок", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="shoe polish", translation="краска для обуви", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Головные уборы • Headgear", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Головные уборы • Headgear", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="headgear", translation="головной убор", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="hat", translation="шляпа", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="cap", translation="кепка", subgroup=SUB_GROUP).add_to_session(session)
@@ -1396,7 +1397,7 @@ def vocab_filling_2():
 		Word(word="kerchief", translation="платок", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="shawl", translation="шаль", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Аксессуары и части одежды • Accessories and Clothing Parts", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Аксессуары и части одежды • Accessories and Clothing Parts", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="sleeve", translation="рукав", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="collar", translation="воротник", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="cuff", translation="манжета", subgroup=SUB_GROUP).add_to_session(session)
@@ -1417,7 +1418,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Питание • Nourishment", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Прием Пищи • Eating", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Прием Пищи • Eating", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="meal", translation="еда", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="breakfast", translation="завтрак", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="lunch", translation="обед", subgroup=SUB_GROUP).add_to_session(session)
@@ -1426,7 +1427,7 @@ def vocab_filling_2():
 		Word(word="taste", translation="вкус", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="appetite", translation="аппетит", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Блюда • Dishes", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Блюда • Dishes", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="the first course", translation="первое блюдо", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="the second course", translation="второе блюдо", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="dessert", translation="десерт", subgroup=SUB_GROUP).add_to_session(session)
@@ -1447,7 +1448,7 @@ def vocab_filling_2():
 		Word(word="veal", translation="телятина", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="poultry", translation="птица", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Приправы • Condiments", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Приправы • Condiments", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="mustard", translation="горчица", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="vinegar", translation="уксус", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="pepper", translation="перец", subgroup=SUB_GROUP).add_to_session(session)
@@ -1455,7 +1456,7 @@ def vocab_filling_2():
 		Word(word="spice", translation="специя", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="herb", translation="трава", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Напитки • Drinks and Beverages", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Напитки • Drinks and Beverages", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="drink", translation="напиток", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="tea", translation="чай", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="coffee", translation="кофе", subgroup=SUB_GROUP).add_to_session(session)
@@ -1468,7 +1469,7 @@ def vocab_filling_2():
 		Word(word="beer", translation="пиво", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="whisky", translation="виски", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Сладости • Sweets", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Сладости • Sweets", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="sweets", translation="сладости", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="chocolate", translation="шоколад", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="candy", translation="конфета", subgroup=SUB_GROUP).add_to_session(session)
@@ -1482,7 +1483,7 @@ def vocab_filling_2():
 		Word(word="honey", translation="мёд", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="chewing gum", translation="жевательная резинка", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Пищевые Продукты • Foodstuffs", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Пищевые Продукты • Foodstuffs", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="foodstuffs", translation="продукты питания", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="butter", translation="масло сливочное", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="margarine", translation="маргарин", subgroup=SUB_GROUP).add_to_session(session)
@@ -1505,7 +1506,7 @@ def vocab_filling_2():
 		Word(word="grocery", translation="бакалея", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="confectionery", translation="кондитерская", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Хлеб • Bread", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Хлеб • Bread", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="bread", translation="хлеб", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="loaf", translation="буханка", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="roll", translation="булочка", subgroup=SUB_GROUP).add_to_session(session)
@@ -1518,7 +1519,7 @@ def vocab_filling_2():
 		Word(word="dough", translation="тесто", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="pastry", translation="выпечка", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Кухонные Принадлежности • Kitchen Utensils", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Кухонные Принадлежности • Kitchen Utensils", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="kitchen utensils", translation="кухонная утварь", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="dining table", translation="обеденный стол", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="tablecloth", translation="скатерть", subgroup=SUB_GROUP).add_to_session(session)
@@ -1543,11 +1544,11 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Чувства / Характер • Feeling / Character", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Позитивные Эмоции • Positive Emotions", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Позитивные Эмоции • Positive Emotions", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="emotion", translation="эмоция", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="satisfaction", translation="удовлетворение", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="pleasure", translation="удовольствие", subgroup=SUB_GROUP).add_to_session(session)
-		Word(word="excitement", translation="возбуждение", subgroup=SUB_GROUP).add_to_session(session)
+		Word(word="excitement", translation="волнение, возбуждение", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="happiness", translation="счастье", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="joy", translation="радость", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="enthusiasm", translation="энтузиазм", subgroup=SUB_GROUP).add_to_session(session)
@@ -1555,7 +1556,7 @@ def vocab_filling_2():
 		Word(word="interest", translation="интерес", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="relief", translation="облегчение", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Негативные Эмоции • Negative Emotions", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Негативные Эмоции • Negative Emotions", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="boredom", translation="скука", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="uneasiness", translation="беспокойство", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="discontent", translation="недовольство", subgroup=SUB_GROUP).add_to_session(session)
@@ -1566,7 +1567,7 @@ def vocab_filling_2():
 		Word(word="grief", translation="горе", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="anxiety", translation="тревога", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Терпение / Слабость • Patience / Weakness", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Терпение / Слабость • Patience / Weakness", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="patience", translation="терпение", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="self-control", translation="самоконтроль", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="firmness", translation="твердость", subgroup=SUB_GROUP).add_to_session(session)
@@ -1583,7 +1584,7 @@ def vocab_filling_2():
 		Word(word="disbelief", translation="недоверие", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="distrust", translation="недоверие", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Любовь / Ненависть • Love / Hatred", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Любовь / Ненависть • Love / Hatred", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="sympathy", translation="сочувствие", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="respect", translation="уважение", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="friendship", translation="дружба", subgroup=SUB_GROUP).add_to_session(session)
@@ -1597,7 +1598,7 @@ def vocab_filling_2():
 		Word(word="disgust", translation="отвращение", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="envy", translation="зависть", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Гордость / Скромность 2 • Pride / Modesty", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Гордость / Скромность 2 • Pride / Modesty", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="pride", translation="гордость", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="vanity", translation="тщеславие", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="arrogance", translation="высокомерие", subgroup=SUB_GROUP).add_to_session(session)
@@ -1617,7 +1618,7 @@ def vocab_filling_2():
 		Word(word="offence", translation="оскорбление", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="insult", translation="обида", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Старание / Лень 2• Diligence / Laziness", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Старание / Лень 2• Diligence / Laziness", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="wish", translation="желание", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="desire", translation="желание", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="hope", translation="надежда", subgroup=SUB_GROUP).add_to_session(session)
@@ -1636,7 +1637,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Мышление • Thinking", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Сознание • Consciousness", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Сознание • Consciousness", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="nature", translation="природа", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="universe", translation="вселенная", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="world", translation="мир", subgroup=SUB_GROUP).add_to_session(session)
@@ -1647,7 +1648,7 @@ def vocab_filling_2():
 		Word(word="science", translation="наука", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="philosophy", translation="философия", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Познание • Cognition", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Познание • Cognition", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="practice", translation="практика", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="knowledge", translation="знание", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="cognition", translation="познание", subgroup=SUB_GROUP).add_to_session(session)
@@ -1664,7 +1665,7 @@ def vocab_filling_2():
 		Word(word="logic", translation="логика", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="theory", translation="теория", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Категории Мышления • Thinking Categories", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Категории Мышления • Thinking Categories", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="regularity", translation="регулярность", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="accident", translation="случайность", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="chance", translation="шанс", subgroup=SUB_GROUP).add_to_session(session)
@@ -1701,7 +1702,7 @@ def vocab_filling_2():
 		Word(word="possibility", translation="возможность", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="probability", translation="вероятность", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Исследование • Research", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Исследование • Research", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="research", translation="исследование", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="theme", translation="тема", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="topic", translation="тема", subgroup=SUB_GROUP).add_to_session(session)
@@ -1734,7 +1735,7 @@ def vocab_filling_2():
 		Word(word="invention", translation="изобретение", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="verification", translation="проверка", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Анализ • Analysis", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Анализ • Analysis", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="analysis", translation="анализ", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="comparison", translation="сравнение", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="data processing", translation="обработка данных", subgroup=SUB_GROUP).add_to_session(session)
@@ -1749,7 +1750,7 @@ def vocab_filling_2():
 		Word(word="principle", translation="принцип", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="exception", translation="исключение", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Результат • Result", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Результат • Result", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="success", translation="успех", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="failure", translation="неудача", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="advantage", translation="преимущество", subgroup=SUB_GROUP).add_to_session(session)
@@ -1763,7 +1764,7 @@ def vocab_filling_2():
 		Word(word="error", translation="ошибка", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="mistake", translation="ошибка", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Сообщение • Report", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Сообщение • Report", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="statement", translation="утверждение", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="report", translation="отчет", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="thought", translation="мысль", subgroup=SUB_GROUP).add_to_session(session)
@@ -1774,7 +1775,7 @@ def vocab_filling_2():
 		Word(word="argument", translation="аргумент", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="conclusion", translation="вывод", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Критика • Criticism", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Критика • Criticism", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="criticism", translation="критика", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="attitude", translation="отношение", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="position", translation="позиция", subgroup=SUB_GROUP).add_to_session(session)
@@ -1794,7 +1795,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Образование • Education", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Учебные Заведения • Educational Institutions", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Учебные Заведения • Educational Institutions", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="education", translation="образование", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="upbringing", translation="воспитание", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="teaching", translation="преподавание", subgroup=SUB_GROUP).add_to_session(session)
@@ -1806,7 +1807,7 @@ def vocab_filling_2():
 		Word(word="institute", translation="институт", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="university", translation="университет", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Учебные Предметы • Subjects", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Учебные Предметы • Subjects", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="subject", translation="предмет", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="timetable", translation="расписание", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="STEM fields", translation="технические науки", subgroup=SUB_GROUP).add_to_session(session)
@@ -1822,7 +1823,7 @@ def vocab_filling_2():
 		Word(word="physical education", translation="физическая культура", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="drawing", translation="рисование", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Учеба • Studies", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Учеба • Studies", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="year (as grade)", translation="год (класс)", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="grade", translation="класс", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="form", translation="класс", subgroup=SUB_GROUP).add_to_session(session)
@@ -1848,14 +1849,14 @@ def vocab_filling_2():
 		Word(word="school year", translation="учебный год", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="vacation", translation="каникулы", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Экзамен / Оценки • Exams / Grades", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Экзамен / Оценки • Exams / Grades", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="competition", translation="конкурс", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="examination", translation="экзамен", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="exam", translation="экзамен", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="certificate", translation="сертификат", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="diploma", translation="диплом", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Лингвистика • Linguistics — Part 1", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Лингвистика • Linguistics — Part 1", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="linguistics", translation="лингвистика", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="language", translation="язык", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="speech", translation="речь", subgroup=SUB_GROUP).add_to_session(session)
@@ -1870,7 +1871,7 @@ def vocab_filling_2():
 		Word(word="consonant", translation="согласный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="transcription", translation="транскрипция", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Лингвистика • Linguistics — Part 2", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Лингвистика • Linguistics — Part 2", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="word", translation="слово", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="phrase", translation="фраза", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="idiom", translation="идиома", subgroup=SUB_GROUP).add_to_session(session)
@@ -1881,7 +1882,7 @@ def vocab_filling_2():
 		Word(word="interrogation", translation="вопрос", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="negation", translation="отрицание", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Лингвистика • Linguistics — Part 3", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Лингвистика • Linguistics — Part 3", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="part of speech", translation="часть речи", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="noun", translation="существительное", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="verb", translation="глагол", subgroup=SUB_GROUP).add_to_session(session)
@@ -1894,7 +1895,7 @@ def vocab_filling_2():
 		Word(word="article", translation="артикль", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="interjection", translation="междометие", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Лингвистика • Linguistics — Part 4", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Лингвистика • Linguistics — Part 4", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="progressive aspect", translation="длительный вид", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="perfective aspect", translation="совершенный вид", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="active voice", translation="действительный залог", subgroup=SUB_GROUP).add_to_session(session)
@@ -1905,7 +1906,7 @@ def vocab_filling_2():
 		Word(word="singular", translation="единственное число", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="plural", translation="множественное число", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Лингвистика • Linguistics — Part 5", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Лингвистика • Linguistics — Part 5", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="part of sentence", translation="член предложения", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="subject", translation="подлежащее", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="predicate", translation="сказуемое", subgroup=SUB_GROUP).add_to_session(session)
@@ -1915,7 +1916,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Культура • Culture", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Кино • Cinema", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Кино • Cinema", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="cinema", translation="кино", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="film documentary", translation="документальный фильм", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="detective comedy", translation="детективная комедия", subgroup=SUB_GROUP).add_to_session(session)
@@ -1927,7 +1928,7 @@ def vocab_filling_2():
 		Word(word="performance", translation="представление", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="showing", translation="показ", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Киносоздатели  • Cinema — People", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Киносоздатели  • Cinema — People", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="producer", translation="продюсер", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="cameramen", translation="операторы", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="actor", translation="актер", subgroup=SUB_GROUP).add_to_session(session)
@@ -1936,7 +1937,7 @@ def vocab_filling_2():
 		Word(word="makeup artist", translation="визажист", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="set designer", translation="художник по декорациям", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Театр • Theatre", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Театр • Theatre", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="theatre", translation="театр", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="puppet show", translation="кукольный театр", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="stage", translation="сцена", subgroup=SUB_GROUP).add_to_session(session)
@@ -1951,7 +1952,7 @@ def vocab_filling_2():
 		Word(word="auditorium", translation="зал", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="balcony", translation="балкон", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Музыка • Music", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Музыка • Music", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="song", translation="песня", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="tune", translation="мелодия", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="concert", translation="концерт", subgroup=SUB_GROUP).add_to_session(session)
@@ -1967,7 +1968,7 @@ def vocab_filling_2():
 		Word(word="conductor", translation="дирижёр", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="singer", translation="певец", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Музыкальные инструменты • Musical Instruments", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Музыкальные инструменты • Musical Instruments", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="piano", translation="пианино", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="violin", translation="скрипка", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="drum", translation="барабан", subgroup=SUB_GROUP).add_to_session(session)
@@ -1975,7 +1976,7 @@ def vocab_filling_2():
 		Word(word="trumpet", translation="труба", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="saxophone", translation="саксофон", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Литература • Literature", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Литература • Literature", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="literature", translation="литература", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="book", translation="книга", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="edition", translation="издание", subgroup=SUB_GROUP).add_to_session(session)
@@ -1990,7 +1991,7 @@ def vocab_filling_2():
 		Word(word="poet", translation="поэт", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="playwright", translation="драматург", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Издательство • Publishing House", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Издательство • Publishing House", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="work", translation="произведение", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="novel", translation="роман", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="story", translation="рассказ", subgroup=SUB_GROUP).add_to_session(session)
@@ -2000,7 +2001,7 @@ def vocab_filling_2():
 		Word(word="library", translation="библиотека", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="editor", translation="редактор", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Спорт • Sport", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Спорт • Sport", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="sport", translation="спорт", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="running", translation="бег", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="gymnastics", translation="гимнастика", subgroup=SUB_GROUP).add_to_session(session)
@@ -2031,7 +2032,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Работа • Work", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Труд / Занятость • Labour / Employment", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Труд / Занятость • Labour / Employment", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="job", translation="работа", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="work", translation="труд", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="labour", translation="труд", subgroup=SUB_GROUP).add_to_session(session)
@@ -2044,7 +2045,7 @@ def vocab_filling_2():
 		Word(word="unemployed", translation="безработный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="unemployment", translation="безработица", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Сферы • Fields", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Сферы • Fields", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="field", translation="область", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="industry", translation="промышленность", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="agriculture", translation="сельское хозяйство", subgroup=SUB_GROUP).add_to_session(session)
@@ -2058,7 +2059,7 @@ def vocab_filling_2():
 		Word(word="healthcare", translation="здравоохранение", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="education", translation="образование", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Предприятие • Enterprise", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Предприятие • Enterprise", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="company", translation="компания", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="branch", translation="филиал", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="firm", translation="фирма", subgroup=SUB_GROUP).add_to_session(session)
@@ -2069,7 +2070,7 @@ def vocab_filling_2():
 		Word(word="oil refinery", translation="нефтеперерабатывающий завод", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="coal mine", translation="угольная шахта", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Професcия • Profession", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Професcия • Profession", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="profession", translation="профессия", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="trade", translation="ремесло", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="occupation", translation="занятие", subgroup=SUB_GROUP).add_to_session(session)
@@ -2090,7 +2091,7 @@ def vocab_filling_2():
 		Word(word="minister", translation="министр", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="ambassador", translation="посол", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Инструменты / Оборудование • Tools / Equipment (Beginner)", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Инструменты / Оборудование • Tools / Equipment (Beginner)", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="tool", translation="инструмент", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="hammer", translation="молоток", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="axe", translation="топор", subgroup=SUB_GROUP).add_to_session(session)
@@ -2109,7 +2110,7 @@ def vocab_filling_2():
 		Word(word="cutter", translation="резак", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="machinery", translation="станки, машины", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Инструменты / Оборудование • Tools / Equipment (Advanced)", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Инструменты / Оборудование • Tools / Equipment (Advanced)", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="file", translation="напильник", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="plane", translation="рубанок", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="pliers", translation="плоскогубцы", subgroup=SUB_GROUP).add_to_session(session)
@@ -2123,7 +2124,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Связь / Транспорт • Communication / Transport", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Почта • Post", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Почта • Post", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="post office", translation="почтовое отделение", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="general post office", translation="главпочтамт", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="postman", translation="почтальон", subgroup=SUB_GROUP).add_to_session(session)
@@ -2137,7 +2138,7 @@ def vocab_filling_2():
 		Word(word="postal order", translation="почтовый перевод", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="parcel", translation="посылка", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Телефон • Phone", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Телефон • Phone", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="telegraph", translation="телеграф", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="charge", translation="плата", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="phone", translation="телефон", subgroup=SUB_GROUP).add_to_session(session)
@@ -2147,7 +2148,7 @@ def vocab_filling_2():
 		Word(word="international call", translation="международный звонок", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="directory", translation="справочник", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Железная Дорога • Railway", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Железная Дорога • Railway", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="railway station", translation="железнодорожная станция", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="platform", translation="платформа", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="track", translation="путь", subgroup=SUB_GROUP).add_to_session(session)
@@ -2163,7 +2164,7 @@ def vocab_filling_2():
 		Word(word="upper berth", translation="верхняя полка", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="lower berth", translation="нижняя полка", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Типы Вагонов и Поездов • Types of Trains and Cars", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Типы Вагонов и Поездов • Types of Trains and Cars", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="passenger train", translation="пассажирский поезд", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="fast train", translation="скорый поезд", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="express", translation="экспресс", subgroup=SUB_GROUP).add_to_session(session)
@@ -2179,7 +2180,7 @@ def vocab_filling_2():
 		Word(word="goods van", translation="товарный вагон", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="tank wagon", translation="цистерна", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="В аэропорту • At the Airport", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="В аэропорту • At the Airport", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="airport", translation="аэропорт", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="air terminal", translation="аэровокзал", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="take-off runway", translation="взлётная полоса", subgroup=SUB_GROUP).add_to_session(session)
@@ -2198,7 +2199,7 @@ def vocab_filling_2():
 		Word(word="landing", translation="посадка", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="crash", translation="авария", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Воздушный Транспорт • Air Transport", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Воздушный Транспорт • Air Transport", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="aeroplane", translation="самолёт", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="jet plane", translation="реактивный самолёт", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="propeller-driven aircraft", translation="винтовой самолёт", subgroup=SUB_GROUP).add_to_session(session)
@@ -2209,7 +2210,7 @@ def vocab_filling_2():
 		Word(word="undercarriage", translation="шасси", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="cockpit", translation="кабина пилота", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Транспорт и инфраструктура • Vehicle Types and Infrastructure", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Транспорт и инфраструктура • Vehicle Types and Infrastructure", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="vehicle", translation="транспортное средство", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="car", translation="автомобиль", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="bus", translation="автобус", subgroup=SUB_GROUP).add_to_session(session)
@@ -2224,7 +2225,7 @@ def vocab_filling_2():
 		Word(word="underpass", translation="подземный переход", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="guardrail", translation="ограждение", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Дорожное движение • Traffic and Road Usage", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Дорожное движение • Traffic and Road Usage", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="traffic", translation="транспортное движение", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="traffic sign", translation="дорожный знак", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="road marking", translation="дорожная разметка", subgroup=SUB_GROUP).add_to_session(session)
@@ -2237,7 +2238,7 @@ def vocab_filling_2():
 		Word(word="gas station", translation="заправочная станция", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="car wash", translation="мойка автомобилей", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Части автомобиля • Car parts", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Части автомобиля • Car parts", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="spare part", translation="запасная часть", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="hood", translation="капот", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="headlight", translation="фара", subgroup=SUB_GROUP).add_to_session(session)
@@ -2263,7 +2264,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Город • City", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Улицы • Streets", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Улицы • Streets", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="city", translation="город", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="town", translation="городок", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="village", translation="деревня", subgroup=SUB_GROUP).add_to_session(session)
@@ -2275,7 +2276,7 @@ def vocab_filling_2():
 		Word(word="corner", translation="угол", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="pavement", translation="тротуар", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Транспорт • Transport", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Транспорт • Transport", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="tram", translation="трамвай", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="metro", translation="метро", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="underground", translation="метро", subgroup=SUB_GROUP).add_to_session(session)
@@ -2286,7 +2287,7 @@ def vocab_filling_2():
 		Word(word="ticket", translation="билет", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="seat", translation="место", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Культурные Учреждения • Social and Cultural institutions", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Культурные Учреждения • Social and Cultural institutions", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="cinema", translation="кинотеатр", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="theatre", translation="театр", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="museum", translation="музей", subgroup=SUB_GROUP).add_to_session(session)
@@ -2302,7 +2303,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Общение • Communication", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Информация • Information", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Информация • Information", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="deal", translation="сделка", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="information", translation="информация", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="report", translation="отчет", subgroup=SUB_GROUP).add_to_session(session)
@@ -2311,7 +2312,7 @@ def vocab_filling_2():
 		Word(word="truth", translation="правда", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="lie", translation="ложь", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Общение / Высказывание • Communication / Expression", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Общение / Высказывание • Communication / Expression", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="mother tongue", translation="родной язык", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="foreign language", translation="иностранный язык", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="meaning", translation="значение", subgroup=SUB_GROUP).add_to_session(session)
@@ -2343,7 +2344,7 @@ def vocab_filling_2():
 		Word(word="refusal", translation="отказ", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="understanding", translation="понимание", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Визит • Visit", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Визит • Visit", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="visit", translation="визит", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="meeting", translation="встреча", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="reception", translation="прием", subgroup=SUB_GROUP).add_to_session(session)
@@ -2359,7 +2360,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Государство • State", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Государство • State", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Государство • State", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="country", translation="страна", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="state", translation="государство", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="capital", translation="столица", subgroup=SUB_GROUP).add_to_session(session)
@@ -2373,7 +2374,7 @@ def vocab_filling_2():
 		Word(word="capitalism", translation="капитализм", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="civilization", translation="цивилизация", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Народ • People", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Народ • People", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="people", translation="народ", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="population", translation="население", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="nationality", translation="национальность", subgroup=SUB_GROUP).add_to_session(session)
@@ -2390,7 +2391,7 @@ def vocab_filling_2():
 		Word(word="christian", translation="христианин", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="muslim", translation="мусульманин", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Социальный Статус • Social Status", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Социальный Статус • Social Status", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="social status", translation="социальный статус", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="worker", translation="рабочий", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="peasant", translation="крестьянин", subgroup=SUB_GROUP).add_to_session(session)
@@ -2398,7 +2399,7 @@ def vocab_filling_2():
 		Word(word="landlord", translation="землевладелец", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="capitalist", translation="капиталист", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Закон / Право • Law", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Закон / Право • Law", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="justice", translation="справедливость", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="equality", translation="равенство", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="right", translation="право", subgroup=SUB_GROUP).add_to_session(session)
@@ -2425,7 +2426,7 @@ def vocab_filling_2():
 		Word(word="offence", translation="правонарушение", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="public prosecutor", translation="прокурор", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Политика • Politics", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Политика • Politics", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="government", translation="правительство", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="republic", translation="республика", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="parliament", translation="парламент", subgroup=SUB_GROUP).add_to_session(session)
@@ -2447,7 +2448,7 @@ def vocab_filling_2():
 		Word(word="reform", translation="реформа", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="revolution", translation="революция", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Экономика • Economy", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Экономика • Economy", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="economics", translation="экономика (наука)", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="statistics", translation="статистика", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="economy", translation="экономика (страны)", subgroup=SUB_GROUP).add_to_session(session)
@@ -2473,7 +2474,7 @@ def vocab_filling_2():
 		Word(word="inspection", translation="досмотр", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="duty", translation="пошлина", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Внешняя Политика • Foreign Policy", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Внешняя Политика • Foreign Policy", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="foreign policy", translation="внешняя политика", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="peaceful coexistence", translation="мирное сосуществование", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="mutual assistance", translation="взаимная помощь", subgroup=SUB_GROUP).add_to_session(session)
@@ -2492,7 +2493,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Медицина • Medicine", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Здоровье / болезнь • Health / Illness", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Здоровье / болезнь • Health / Illness", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="health", translation="здоровье", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="hygiene", translation="гигиена", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="preventive measures", translation="профилактические меры", subgroup=SUB_GROUP).add_to_session(session)
@@ -2506,7 +2507,7 @@ def vocab_filling_2():
 		Word(word="recovery", translation="выздоровление", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="death", translation="смерть", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Наружные повреждения • Injuries", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Наружные повреждения • Injuries", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="injury", translation="травма", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="wound", translation="рана", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="bruise", translation="ушиб", subgroup=SUB_GROUP).add_to_session(session)
@@ -2516,13 +2517,13 @@ def vocab_filling_2():
 		Word(word="abscess", translation="абсцесс", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="sore", translation="рана, воспаление", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Инфекции • Infections", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Инфекции • Infections", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="infection", translation="инфекция", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="contagious disease", translation="заразное заболевание", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="plague", translation="чума", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="flu", translation="грипп", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Остальные Заболевания • Other Diseases", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Остальные Заболевания • Other Diseases", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="mental disease", translation="психическое заболевание", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="neurological disease", translation="неврологическое заболевание", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="neurosis", translation="невроз", subgroup=SUB_GROUP).add_to_session(session)
@@ -2530,7 +2531,7 @@ def vocab_filling_2():
 		Word(word="AIDS", translation="СПИД", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="cancer", translation="рак", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Симптомы • Symptoms", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Симптомы • Symptoms", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="symptom", translation="симптом", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="fever", translation="лихорадка", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="blood pressure", translation="кровяное давление", subgroup=SUB_GROUP).add_to_session(session)
@@ -2543,10 +2544,9 @@ def vocab_filling_2():
 		Word(word="headache", translation="головная боль", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="toothache", translation="зубная боль", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Лечение • Treatment", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Лечение • Treatment", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="medical examination", translation="медицинское обследование", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="blood test", translation="анализ крови", subgroup=SUB_GROUP).add_to_session(session)
-		Word(word="urine test", translation="анализ мочи", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="x ray", translation="рентген", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="treatment", translation="лечение", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="therapy", translation="терапия", subgroup=SUB_GROUP).add_to_session(session)
@@ -2560,7 +2560,7 @@ def vocab_filling_2():
 		Word(word="pharmacy", translation="аптека", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="prescription", translation="рецепт", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Больница • Hospital", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Больница • Hospital", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="ambulance", translation="скорая помощь", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="hospital", translation="больница", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="clinic", translation="клиника", subgroup=SUB_GROUP).add_to_session(session)
@@ -2577,7 +2577,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Органы чувств • Organs of senses", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Глаза • Eye", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Глаза • Eye", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="dark", translation="тёмный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="light", translation="светлый", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="colourless", translation="бесцветный", subgroup=SUB_GROUP).add_to_session(session)
@@ -2615,7 +2615,7 @@ def vocab_filling_2():
 		Word(word="round", translation="круглый", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="square", translation="квадратный", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Кожа • Skin", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Кожа • Skin", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="uneven", translation="неровный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="even", translation="ровный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="smooth", translation="гладкий", subgroup=SUB_GROUP).add_to_session(session)
@@ -2628,7 +2628,7 @@ def vocab_filling_2():
 		Word(word="wet", translation="мокрый", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="humid", translation="влажный", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Язык • Tongue", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Язык • Tongue", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="tasty", translation="вкусный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="delicious", translation="восхитительный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="tasteless", translation="безвкусный", subgroup=SUB_GROUP).add_to_session(session)
@@ -2639,7 +2639,7 @@ def vocab_filling_2():
 		Word(word="strong", translation="резкий", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="pungent", translation="острый", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Ухо • Ear", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Ухо • Ear", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="loud", translation="громкий", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="noisy", translation="шумный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="sharp", translation="резкий", subgroup=SUB_GROUP).add_to_session(session)
@@ -2651,7 +2651,7 @@ def vocab_filling_2():
 		Word(word="deaf", translation="глухой", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="inaudible", translation="неслышимый", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Нос • Nose", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Нос • Nose", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="smelly", translation="вонючий", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="stinking", translation="зловонный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="aromatic", translation="ароматный", subgroup=SUB_GROUP).add_to_session(session)
@@ -2660,7 +2660,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Временные параметры • Time Properties", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Основные Свойства • Main Properties", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Основные Свойства • Main Properties", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="long", translation="длинный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="brief", translation="краткий", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="short", translation="короткий", subgroup=SUB_GROUP).add_to_session(session)
@@ -2677,7 +2677,7 @@ def vocab_filling_2():
 		Word(word="old", translation="старый", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="aged", translation="пожилой", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Стадии • Stages", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Стадии • Stages", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="past", translation="прошлый", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="recent", translation="недавний", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="obsolete", translation="устаревший", subgroup=SUB_GROUP).add_to_session(session)
@@ -2698,7 +2698,7 @@ def vocab_filling_2():
 		Word(word="initial", translation="начальный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="final", translation="окончательный", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Продолжительность / Частота • Duration / Frequency", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Продолжительность / Частота • Duration / Frequency", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="constant", translation="постоянный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="temporary", translation="временный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="uninterrupted", translation="непрерывный", subgroup=SUB_GROUP).add_to_session(session)
@@ -2712,7 +2712,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Способности человека • Human abilities", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Способность • Ability", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Способность • Ability", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="gifted", translation="одарённый", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="capable", translation="способный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="talented", translation="талантливый", subgroup=SUB_GROUP).add_to_session(session)
@@ -2721,7 +2721,7 @@ def vocab_filling_2():
 		Word(word="quick", translation="находчивый", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="wise", translation="мудрый", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Отсутствие Способности • Lack of Ability", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Отсутствие Способности • Lack of Ability", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="silly", translation="глупый", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="stupid", translation="тупой", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="stolid", translation="флегматичный", subgroup=SUB_GROUP).add_to_session(session)
@@ -2733,7 +2733,7 @@ def vocab_filling_2():
 		Word(word="mad", translation="безумный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="crazy", translation="сумасшедший", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Старание / Внимание • Diligence / Attention", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Старание / Внимание • Diligence / Attention", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="diligent", translation="прилежный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="industrious", translation="трудолюбивый", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="lazy", translation="ленивый", subgroup=SUB_GROUP).add_to_session(session)
@@ -2747,7 +2747,7 @@ def vocab_filling_2():
 		Word(word="absent-minded", translation="рассеянный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="distracted", translation="отвлечённый", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Навык / Опыт • Skill / Experience", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Навык / Опыт • Skill / Experience", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="experienced", translation="опытный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="inexperienced", translation="неопытный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="skillful", translation="умелый", subgroup=SUB_GROUP).add_to_session(session)
@@ -2758,7 +2758,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Эмоция • Emotions", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Характер • Character", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Характер • Character", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="sensitive", translation="чувствительный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="sentimental", translation="сентиментальный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="hard-hearted", translation="черствый", subgroup=SUB_GROUP).add_to_session(session)
@@ -2769,7 +2769,7 @@ def vocab_filling_2():
 		Word(word="tranquil", translation="безмятежный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="nervous", translation="нервный", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Настроение • Mood", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Настроение • Mood", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="happy", translation="счастливый", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="lucky", translation="удачливый", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="joyful", translation="радостный", subgroup=SUB_GROUP).add_to_session(session)
@@ -2786,7 +2786,7 @@ def vocab_filling_2():
 		Word(word="high-spirited", translation="бодрый", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="low-spirited", translation="подавленный", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Эмоциональная Оценка • Emotional Evaluation", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Эмоциональная Оценка • Emotional Evaluation", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="good", translation="хороший", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="pleasant", translation="приятный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="interesting", translation="интересный", subgroup=SUB_GROUP).add_to_session(session)
@@ -2824,9 +2824,9 @@ def vocab_filling_2():
 		Word(word="repulsive", translation="отталкивающий", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="fearful", translation="боязливый", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Оттенки Эмоции • Shades of Emotion", group=MAIN_GROUP).add_to_session(session)
-		Word(word="excited", translation="возбужденный", subgroup=SUB_GROUP).add_to_session(session)
-		Word(word="agitated", translation="взволнованный", subgroup=SUB_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Оттенки Эмоции • Shades of Emotion", main_group=MAIN_GROUP).add_to_session(session)
+		Word(word="excited", translation="взволнованный, возбужденный", subgroup=SUB_GROUP).add_to_session(session)
+		Word(word="agitated", translation="взволнованный, обеспокоенный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="uneasy", translation="беспокойный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="moved", translation="тронутый", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="frightened", translation="испуганный", subgroup=SUB_GROUP).add_to_session(session)
@@ -2842,7 +2842,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Мораль / Поведение • Moral / Behaviour", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Основа • Core part", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Основа • Core part", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="decent", translation="порядочный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="well-behaved", translation="послушный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="noble", translation="благородный", subgroup=SUB_GROUP).add_to_session(session)
@@ -2858,7 +2858,7 @@ def vocab_filling_2():
 		Word(word="criminal", translation="преступный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="guilty", translation="виновный", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Отношение к Окружающим • Attitude towards Others", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Отношение к Окружающим • Attitude towards Others", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="good", translation="хороший", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="kind", translation="добрый", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="friendly", translation="дружелюбный", subgroup=SUB_GROUP).add_to_session(session)
@@ -2878,7 +2878,7 @@ def vocab_filling_2():
 		Word(word="greedy", translation="жадный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="vicious", translation="порочный", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Качества в Общении • Communication Qualities", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Качества в Общении • Communication Qualities", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="talkative", translation="разговорчивый", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="sociable", translation="общительный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="reserved", translation="сдержанный", subgroup=SUB_GROUP).add_to_session(session)
@@ -2891,7 +2891,7 @@ def vocab_filling_2():
 		Word(word="strict", translation="строгий", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="severe", translation="строгий, суровый", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Качества в Поведении • Qualities in Behavior", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Качества в Поведении • Qualities in Behavior", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="brave", translation="храбрый", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="audacious", translation="дерзкий", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="courageous", translation="смелый", subgroup=SUB_GROUP).add_to_session(session)
@@ -2911,7 +2911,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Абстрактные прилагательные • Abstract Adjectives", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Классификация • Classification", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Классификация • Classification", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="certain", translation="определённый", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="common", translation="общий", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="general", translation="общий", subgroup=SUB_GROUP).add_to_session(session)
@@ -2928,7 +2928,7 @@ def vocab_filling_2():
 		Word(word="complex", translation="сложный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="simple", translation="простой", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Качество • Quality", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Качество • Quality", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="equal", translation="равный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="the same", translation="одинаковый", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="different", translation="разный", subgroup=SUB_GROUP).add_to_session(session)
@@ -2946,7 +2946,7 @@ def vocab_filling_2():
 		Word(word="difficult", translation="трудный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="easy", translation="лёгкий", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Количество • Quantity", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Количество • Quantity", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="maximum", translation="максимальный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="minimum", translation="минимальный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="average", translation="средний", subgroup=SUB_GROUP).add_to_session(session)
@@ -2956,7 +2956,7 @@ def vocab_filling_2():
 		Word(word="full", translation="полный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="empty", translation="пустой", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Категория • Category", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Категория • Category", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="inevitable", translation="неизбежный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="relative", translation="относительный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="absolute", translation="абсолютный", subgroup=SUB_GROUP).add_to_session(session)
@@ -2977,7 +2977,7 @@ def vocab_filling_2():
 		Word(word="occasional", translation="случайный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="necessary", translation="необходимый", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Соответствие • Accordance", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Соответствие • Accordance", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="correct", translation="правильный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="true", translation="истинный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="precise", translation="точный", subgroup=SUB_GROUP).add_to_session(session)
@@ -2997,7 +2997,7 @@ def vocab_filling_2():
 		Word(word="standard", translation="стандартный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="reliable", translation="надежный", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Преимущество • Advantage", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Преимущество • Advantage", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="advantageous", translation="выгодный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="profitable", translation="прибыльный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="efficient", translation="эффективный", subgroup=SUB_GROUP).add_to_session(session)
@@ -3013,7 +3013,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Состояние / Статус • Condition / Status", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Физическое Состояние • Physical Condition", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Физическое Состояние • Physical Condition", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="healthy", translation="здоровый", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="robust", translation="крепкий", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="strong", translation="сильный", subgroup=SUB_GROUP).add_to_session(session)
@@ -3030,12 +3030,12 @@ def vocab_filling_2():
 		Word(word="lean", translation="худой", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="slim", translation="стройный", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Семейное Положение • Family Status", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Семейное Положение • Family Status", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="single", translation="не женат / не замужем", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="married", translation="женат / замужем", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="divorced", translation="разведённый", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Состояние • Condition", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Состояние • Condition", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="comfortable", translation="комфортный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="convenient", translation="удобный", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="complete", translation="полный", subgroup=SUB_GROUP).add_to_session(session)
@@ -3059,7 +3059,7 @@ def vocab_filling_2():
 		
 		MAIN_GROUP = Group(name="Предлоги  • Prepositions", pos=pos).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Предлоги Места • Prepositions of place", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Предлоги Места • Prepositions of place", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="beside the house", translation="рядом с (домом)", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="among us", translation="среди (нас)", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="between the houses", translation="между (домами)", subgroup=SUB_GROUP).add_to_session(session)
@@ -3079,7 +3079,7 @@ def vocab_filling_2():
 		Word(word="outside the house", translation="снаружи (дома)", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="on the table", translation="на (столе)", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Предлоги Направления • Prepositions of Direction", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Предлоги Направления • Prepositions of Direction", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="from London", translation="из (Лондона)", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="off the field", translation="с (поля)", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="out of the room", translation="из (комнаты)", subgroup=SUB_GROUP).add_to_session(session)
@@ -3096,7 +3096,7 @@ def vocab_filling_2():
 		Word(word="into the house", translation="в (дом)", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="for Kiev", translation="в направлении (Киева)", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Предлоги Времени • Prepositions of Time", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Предлоги Времени • Prepositions of Time", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="for two weeks", translation="в течение (двух недель)", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="within a week", translation="за (неделю)", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="over the last three days", translation="за (последние три дня)", subgroup=SUB_GROUP).add_to_session(session)
@@ -3117,7 +3117,7 @@ def vocab_filling_2():
 		Word(word="ten minutes past seven", translation="(десять минут) после (семи)", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="ten minutes to seven", translation="(десять минут) до (семи)", subgroup=SUB_GROUP).add_to_session(session)
 		
-		SUB_GROUP = Sub_Group(name="Смешанная Группа • Mixed Group", group=MAIN_GROUP).add_to_session(session)
+		SUB_GROUP = Sub_Group(name="Смешанная Группа • Mixed Group", main_group=MAIN_GROUP).add_to_session(session)
 		Word(word="according to the plan", translation="согласно (плану)", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="in spite of poor health", translation="несмотря на (плохое здоровье)", subgroup=SUB_GROUP).add_to_session(session)
 		Word(word="despite the difference", translation="несмотря на (разницу)", subgroup=SUB_GROUP).add_to_session(session)
