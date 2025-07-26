@@ -5,18 +5,18 @@
 </div>
 
 > ### An English Learning app for windows in a form of flashcards that provides words upto B2 level without the need for subscription
-## Technologies 
 
-<p>
-<img alt="Static Badge" src="https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=ffd242">
-<img alt="Static Badge" src="https://img.shields.io/badge/Kokoro-TTS-ebb434">
-<img alt="Static Badge" src="https://img.shields.io/badge/Style-TTS-cc8a33">
-<img alt="Static Badge" src="https://img.shields.io/badge/TinyDB-DB-587896">
-<img alt="Static Badge" src="https://img.shields.io/badge/PySide-6.9-41CD52?logo=qt">
-<img alt="Static Badge" src="https://img.shields.io/badge/English Level-B2-ba5df0">
-<img alt="Static Badge" src="https://img.shields.io/badge/Licence-MIT-green">
-
-</p>
+<div align="center">
+    <p>
+    <img alt="Static Badge" src="https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=ffd242">
+    <img alt="Static Badge" src="https://img.shields.io/badge/Kokoro-TTS-ebb434">
+    <img alt="Static Badge" src="https://img.shields.io/badge/Style-TTS-cc8a33">
+    <img alt="Static Badge" src="https://img.shields.io/badge/TinyDB-DB-587896">
+    <img alt="Static Badge" src="https://img.shields.io/badge/PySide-6.9-41CD52?logo=qt">
+    <img alt="Static Badge" src="https://img.shields.io/badge/English Level-B2-ba5df0">
+    <img alt="Static Badge" src="https://img.shields.io/badge/Licence-MIT-green">
+    </p>
+</div>
 
 ## Key Fetures
 
