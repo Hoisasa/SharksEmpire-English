@@ -28,6 +28,10 @@
 
 ## Key Features
 
+<div align="center">
+  <img src="https://github.com/Hoisasa/English-word-learning/blob/readme/assets/images/MyCollages.jpg?raw=true">
+</div>
+
 There are three modes Overview Practice and Exam. 
 While overview just straight up shows the translation others provide it after pressing a designated button.
 In the end all mistakes are shown as so to provide you with a feature to reflect on your answers. 
@@ -150,10 +154,10 @@ Following the instructions provided on TTS repository install [**Kokoro**](https
 
 `Windows Installation To install espeak-ng on Windows:`
 
-`Go to espeak-ng releases`
-`Click on Latest release`
-`Download the appropriate *.msi file (e.g. espeak-ng-20191129-b702b03-x64.msi)`
-`Run the downloaded installer`
+`Go to espeak-ng releases`  
+`Click on Latest release`  
+`Download the appropriate *.msi file (e.g. espeak-ng-20191129-b702b03-x64.msi)`  
+`Run the downloaded installer`  
 
 **setting up database iterator**  
 you can scope it to only newly added items; just mess with the first loop
