@@ -4,8 +4,8 @@
   <img height="333" src="https://github.com/Hoisasa/English-word-learning/blob/readme/assets/images/sharkonamiTransparent.png?raw=true">
 </div>
 
-> ### An English Learning app for windows in a form of flashcards. 
-> ### Provides words upto B2 level of English without the need for subscription
+> ### An English Learning app for windows in a form of flashcards.  
+>  Provides words upto B2 level of English without the need for subscription
 
 <div align="center">
     <p>
@@ -21,9 +21,9 @@
 
 ##
 
-- [Key Features](#Key-Features)
-- [Installation](#Installation)
-- [Tweaking project](#How-to-tweak-project-for-your-own-uses)
+- ### [Key Features](#Key-Features)
+- ### [Installation](#Installation)
+- ### [Tweaking project](#How-to-tweak-project-for-your-own-needs)
 
 
 ## Key Features
@@ -50,13 +50,14 @@ But in order to not be utterly strict it allows one mistake to be completed
 
 [**Download**](https://github.com/Hoisasa/English-word-learning/releases/download/v0.2.1/UnoLingoLearn.rar) the portable version from [releases](https://github.com/Hoisasa/English-word-learning/releases).
 
-## How to tweak project for your own uses
+## How to tweak project for your own needs
     
 [Filling DB](#Add-your-vocabulary-or-locale)
 
 ### Setup
 
 ```bash
+
 git clone https://github.com/Hoisasa/English-word-learning.git
 cd English-word-learning
 pip install -r requirements.txt
@@ -82,8 +83,137 @@ Then run `audio_dev_ver.py`
 
 ### Add your vocabulary or locale
 
+#### Adding words comes in three steps
+* #### [Add](#Add-each-word-entries-in-code) each word entries in code
+* #### [populate](#Populating-database) them in database
+* #### [run](#Generating-Audio-files) Kokoro StyleTTS2 to generate audio files
+
+### Add each word entries in code
+
+> **Note:** Latest commit populates SqlLite database refer to [**This**](https://github.com/Hoisasa/English-word-learning/blob/665618e074a5cd49b6386147cfb8ed05e2fcf5b4/Vocabulary/grouping_main_2.py) commit to view how TinyDB population was implemented
+
+> **Disclaimer:** The specified commit was work in progress and may contain errors / dupes. Use just as an example
+
+The process is as simple as it is notorious  
+First lets look at structure
+
+```json
+{
+  "Name": "beginning",
+  "translation": "начало",
+  "weight": 1,
+  "transcription": "",
+  "Sub group": "Начало • Begining",
+  "Group": "Глаголы этапов • Verbs of Stage"
+}
+```
+
+So we have Name of word and its translation and if you want to add words independent of context then you can easily just provide words and use translator API to do so 
+> make sure to provide any dummy subgroup and group so that your custom one has entrypoint    
+
+issues are coming when you want context-sensitive translations (mostly due to `grouping of words` Problem) if words are already grouped, AI can easily unpack those to meet this pattern of filling database:
+
+```python
+POS = "verb"
+MAIN_GROUP = "Бытовые Глаголы • Verbs of Everyday Life"
+
+SUB_GROUP = "Болеть • Feel sick"
+add_word("be ill", "болеть (болезнь)", SUB_GROUP, MAIN_GROUP, POS)
+...
+add_word("bury", "хоронить",SUB_GROUP, MAIN_GROUP, POS)
+
+MAIN_GROUP = "Глаголы Чувства • Verbs of Feeling" #next group
+```
+
+### Populating database
+
+The filling process is passing constructed dictionary as doc to a TinyDB
+
+To provide clear from dupes db our Primary key here *even though tiny db doesnt need one* is the combination of word and subgroup. Simply you want to avoid ambiguity of translation
+
+```python
+def add_word(name, transl, s_group, group, pos):
+	global c
+	doc = {"Name": name, "translation": transl, "weight": 1.0, "transcription": '', "Sub group": s_group,
+		   "Group": group, "Part of speech": pos}
+	if tb.search((where("Name") == name) & (where("Sub group") == s_group)):
+		c += 1
+		print(f"{c}", end=' ')
+	
+	else:
+		tb.insert(doc)
+```
+
+### Generating Audio files
+
+Following the instructions provided on TTS repository install [**Kokoro**](https://github.com/hexgrad/kokoro) if it doesn't work most probably you missed this part of their readme 
+
+`Windows Installation To install espeak-ng on Windows:`
+
+`Go to espeak-ng releases`
+`Click on Latest release`
+`Download the appropriate *.msi file (e.g. espeak-ng-20191129-b702b03-x64.msi)`
+`Run the downloaded installer`
+
+**setting up database iterator**  
+you can scope it to only newly added items; just mess with the first loop
+
+<details>
+<summary> Imports (click to expand)</summary>
+
+```python
+from kokoro import KPipeline
+from IPython.display import display, Audio
+import soundfile as sf
+import os
+
+from regex import regex
+from tinydb import TinyDB, where
+```
+</details>
 
 
+```python
+pipeline = KPipeline(lang_code='a') # <= make sure lang_code matches voice
+
+tb = TinyDB('db.json')
+groups = []
+for group in tb.all():
+    if group.get('Sub group') not in groups:
+        groups.append(group.get('Sub group'))
+word_dict = {}
+for group in groups:
+    group_words = []
+    words = tb.search(where("Sub group") == group)
+    for word in words:
+        group_words.append(word.get("Name").split(' (')[0])
+    group_words = '\n'.join(group_words)
+    word_dict.update({group.replace('/', '-').replace(':', '-'): group_words})
+
+print(word_dict)
+```
+
+and pass it to tts 
+
+```python
+for group, dictionary in word_dict.items():
+      text = regex.split(r' (?=\p{Lu})', dictionary, maxsplit=1)[0]
+      text += '.'
+      generator = pipeline(
+          text, voice='af_heart', # <= change voice here
+          speed=1, split_pattern=r'\n+'
+      )
+  
+      for i, (gs, ps, audio) in enumerate(generator):
+          print(i)  # i => index
+          print(gs) # gs => graphemes/text
+          print(ps) # ps => phonemes
+          # This will not raise an error if the directory already exists
+          os.makedirs(f'audiofiles/testing/{group}', exist_ok=True)
+          sf.write(f'audiofiles/testing/{gs[:-1]}.wav', audio, 24000) # save each audio file
+```
+
+without additional tuning tts makes around 5% of errors in pronunciation this errors may occur or may not occur depending on the surrounding silent symbols or chosen american or british english so youd want to gather and refine them
 
 uses icons from  https://icons8.com/icon/LATsUneHQg4J/u-turn-to-left
 uses tts from repository https://github.com/hexgrad/kokoro
