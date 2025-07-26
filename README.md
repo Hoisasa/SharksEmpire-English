@@ -1,10 +1,10 @@
 # Sharks
 
 <div align="center">
-  <img height="500" src="https://github.com/Hoisasa/English-word-learning/blob/master/assets/images/sharkonamiTransparent.png?raw=true">
+  <img height="333" src="https://github.com/Hoisasa/English-word-learning/blob/readme/assets/images/sharkonamiTransparent.png?raw=true">
 </div>
 
-> ### An English Learning app for windows in a form of flashcards that provides words upto B2 level without the need for subscription
+> ### An English Learning app for windows in a form of flashcards. Provides words upto B2 level of English without the need for subscription
 
 <div align="center">
     <p>
