@@ -19,6 +19,13 @@
     </p>
 </div>
 
+#
+
+[Installation](## Installation)
+[Key Features](## Key Features)
+[Tweaking project](## Manual Installation (from Source))
+
+
 ## Key Fetures
 
 It's a flashcards application which organises words into quite small groups for easier memorisation. 
@@ -39,7 +46,7 @@ The features of an app are as follows:
 - self evaluation
 - it aims to show beginner how words meanings can vary depending on context 
 - target learner language russian
-> (you can provide your own translations for db) [Example] ()
+> (you can provide your own translations for db) [Example]()
 
 
 ## Installation
