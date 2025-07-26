@@ -48,10 +48,12 @@ The features of an app are as follows:
 
 ## How to tweak project for your own uses
     
+    pass
+
 ### Setup
 
 ```bash
-git -clone https://github.com/Hoisasa/English-word-learning.git
+git clone https://github.com/Hoisasa/English-word-learning.git
 pip install -r requirements.txt
 ```
 
