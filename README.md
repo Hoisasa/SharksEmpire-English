@@ -24,6 +24,7 @@
 - ### [Key Features](#Key-Features)
 - ### [Installation](#Installation)
 - ### [Tweaking project](#How-to-tweak-project-for-your-own-needs)
+- ### [Credits](#Credits)
 
 
 ## Key Features
@@ -219,8 +220,13 @@ for group, dictionary in word_dict.items():
 
 without additional tuning tts makes around 5% of errors in pronunciation this errors may occur or may not occur depending on the surrounding silent symbols or chosen american or british english so youd want to gather and refine them
 
-uses icons from  https://icons8.com/icon/LATsUneHQg4J/u-turn-to-left
-uses tts from repository https://github.com/hexgrad/kokoro
+
+## Credits
+
+This software uses the following packages and resources:
+
+* uses icons8 from  [This Site](https://icons8.com/icon/LATsUneHQg4J/u-turn-to-left)
+* uses Kokoro tts from [This repository](https://github.com/hexgrad/kokoro)
 
 
 
