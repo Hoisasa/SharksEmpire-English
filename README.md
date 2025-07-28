@@ -220,6 +220,11 @@ for group, dictionary in word_dict.items():
 
 without additional tuning tts makes around 5% of errors in pronunciation this errors may occur or may not occur depending on the surrounding silent symbols or chosen american or british english so youd want to gather and refine them
 
+### Build
+
+```bash
+pyinstaller --workpath 'updates/build' --distpath 'updates/dist' audio_dev_ver.spec   
+```
 
 ## Credits
 
