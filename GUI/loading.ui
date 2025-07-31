@@ -38,19 +38,20 @@
    <property name="styleSheet">
     <string notr="true">QProgressBar{
 	background: #f3f3f3
-	padding: 10 px;
+	padding: 10px;
 }
 
-QProgressBar::chunk{
+QProgressBar::chunk {
     background: qradialgradient(
         cx: 0.4, cy: -0.1, fx: 0.4, fy: -0.1,
-        radius: 1.35, stop: 0 #fff, stop: 1 #5b29f2
-        );   
-
+        radius: 1.35,
+        stop: 0 #ffffff, stop: 1 #5b29f2
+    );
+    border-radius: 4px;
 }</string>
    </property>
    <property name="value">
-    <number>24</number>
+    <number>0</number>
    </property>
   </widget>
   <widget class="QPushButton" name="getUpdate">
