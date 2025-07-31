@@ -1,23 +1,20 @@
 import os
+import platform
 import random
 import sys
-import time
 
 import soundfile as sf
 import sounddevice as sd
 
-
+from PySide6 import QtCore, QtGui
 from PySide6.QtCore import QPropertyAnimation, Qt, QEasingCurve
 from PySide6.QtGui import QColor, QFont
 from PySide6.QtWidgets import (
-	QApplication, QMainWindow, QGraphicsDropShadowEffect,
-	QPushButton, QLabel, QSpacerItem, QSizePolicy
+    QApplication, QMainWindow, QGraphicsDropShadowEffect,
+    QPushButton, QLabel, QSpacerItem, QSizePolicy
 )
 
-from PySide6 import QtCore, QtGui
-
 from tinydb import TinyDB, Query, where
-from colorama import Fore, Style, init
 
 from src.circular_progress.circular_progressbar import CircularProgress
 from GUI.python_gui import Ui_UNOlingo
@@ -50,8 +47,6 @@ def switch_pos(target_list, start, destination, word):
 
 
 def shuffle_to_learn(learn_list):
-
-	start_time = time.perf_counter()
 	list_length = len(learn_list)
 	allowed_start_last, allowed_start_second_last = 2, 1
 
@@ -62,35 +57,12 @@ def shuffle_to_learn(learn_list):
 		if learn_list[0] == last_word:
 			new_pos = get_pos(learn_list, allowed_start_last, list_length, second_last_word)
 			switch_pos(learn_list, 0, new_pos, last_word)
-			print(f"{last_word['Name']}{Fore.BLUE}{Style.BRIGHT}worked0")
-			end_time = time.perf_counter()
-
-			elapsed_time = end_time - start_time
-			print(f"Time spent: {elapsed_time:.6f} seconds")
-			print("".join(i["Name"] + "\n" for i in learn_list))
-
 		elif learn_list[1] == last_word:
 			new_pos = get_pos(learn_list, allowed_start_last, list_length, None)
 			switch_pos(learn_list, 1, new_pos, last_word)
-			print(f"{last_word['Name']}{Fore.BLUE}{Style.BRIGHT}worked1")
-			end_time = time.perf_counter()
-
-			elapsed_time = end_time - start_time
-			print(f"Time spent: {elapsed_time:.6f} seconds")
-			print("".join(i["Name"] + "\n" for i in learn_list))
-
 		elif learn_list[0] == second_last_word:
 			new_pos = get_pos(learn_list, allowed_start_second_last, list_length, last_word)
 			switch_pos(learn_list, 0, new_pos, second_last_word)
-			print(f"{second_last_word['Name']}{Fore.GREEN}{Style.BRIGHT}worked")
-			end_time = time.perf_counter()
-
-			elapsed_time = end_time - start_time
-			print(f"Time spent: {elapsed_time:.6f} seconds")
-			print("".join(i["Name"] + "\n" for i in learn_list))
-		else:
-			print("".join(i["Name"] + "\n" for i in learn_list))
-
 
 	elif list_length >= 3:
 		last_word = learn_list[-1]
@@ -98,8 +70,6 @@ def shuffle_to_learn(learn_list):
 		if learn_list[0] == last_word:
 			new_pos = get_pos(learn_list, allowed_start_second_last, list_length, None)
 			switch_pos(learn_list, 0, new_pos, last_word)
-			print(f"{last_word['Name']}{Fore.RED}{Style.BRIGHT}worked")
-			print("".join(i["Name"] + "\n" for i in learn_list))
 
 
 def shuffle_learned(learned):
@@ -111,7 +81,6 @@ class TransparentShadowLabel(QLabel):
 		super().__init__(*args, **kwargs)
 
 		self.setText("Styled Label with Fading Shadow")
-
 
 		# Set up the shadow effect for the label
 		self.shadow_effect = QGraphicsDropShadowEffect()
@@ -725,7 +694,6 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 
 
 if __name__ == '__main__':
-	init(autoreset=True)
 	app = QApplication(sys.argv)
 	debug = True
 
@@ -734,7 +702,26 @@ if __name__ == '__main__':
 	base_path = os.path.dirname(__file__)
 	audio_base_path = os.path.join(base_path, 'assets', 'audiofiles')
 	image_files_path = os.path.join(base_path, 'assets', 'images')
-	tb = TinyDB(os.path.join(base_path, "Vocabulary", "db.json"))
+	if platform.system()=="Windows":
+		db_path = os.path.join(base_path, "Vocabulary", "db.json")
+	else:
+		data_dir = os.environ.get("XDG_DATA_HOME", os.path.expanduser("~/.local/share"))
+		app_data_path = os.path.join(data_dir, "se-english") # Ensure it exists
+		os.makedirs(app_data_path, exist_ok=True)
+		db_path = os.path.join(app_data_path, "db.json")
+		print(os.listdir(app_data_path))
+		if not os.path.exists(db_path):
+			try:
+				with open("/app/lib/se-english/db.json", "rb") as src, open(db_path, "wb") as dst:
+					dst.write(src.read())
+				print("Copied db.json manually to", db_path)
+			except Exception as e:
+				print("Manual copy failed:", e)
+		print("db.json exists?", os.path.exists(db_path))
+		print("db.json size:", os.path.getsize(db_path))
+
+	tb = TinyDB(db_path)
+
 
 	Word = Query()
 
