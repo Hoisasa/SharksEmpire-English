@@ -23,11 +23,11 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>UNOlingo</string>
+   <string>Sharks Empire</string>
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../images/unolingo_P64_icon.ico</normaloff>../images/unolingo_P64_icon.ico</iconset>
+    <normaloff>assets/images/output-onlinepngtools.png</normaloff>assets/images/output-onlinepngtools.png</iconset>
   </property>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
@@ -60,7 +60,7 @@
        <bool>false</bool>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="page_3">
        <widget class="QLabel" name="MistakesLabel">
@@ -161,7 +161,7 @@
           <enum>Qt::LayoutDirection::LeftToRight</enum>
          </property>
          <property name="autoFillBackground">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <layout class="QGridLayout" name="scrollGrid"/>
         </widget>
@@ -1377,9 +1377,9 @@ QPushButton:pressed {
        <widget class="QScrollArea" name="scrollArea_2">
         <property name="geometry">
          <rect>
-          <x>30</x>
-          <y>0</y>
-          <width>1261</width>
+          <x>0</x>
+          <y>-10</y>
+          <width>1291</width>
           <height>731</height>
          </rect>
         </property>
@@ -1389,6 +1389,9 @@ QPushButton:pressed {
         <property name="verticalScrollBarPolicy">
          <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
         </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+        </property>
         <property name="widgetResizable">
          <bool>true</bool>
         </property>
@@ -1397,7 +1400,7 @@ QPushButton:pressed {
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>1259</width>
+           <width>1289</width>
            <height>729</height>
           </rect>
          </property>
@@ -1416,8 +1419,8 @@ QPushButton:pressed {
        <widget class="QScrollArea" name="scrollArea_3">
         <property name="geometry">
          <rect>
-          <x>-10</x>
-          <y>0</y>
+          <x>0</x>
+          <y>-10</y>
           <width>1291</width>
           <height>731</height>
          </rect>
@@ -1427,6 +1430,9 @@ QPushButton:pressed {
         </property>
         <property name="verticalScrollBarPolicy">
          <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
         </property>
         <property name="widgetResizable">
          <bool>true</bool>

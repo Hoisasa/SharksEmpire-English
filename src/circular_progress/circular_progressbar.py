@@ -34,7 +34,7 @@ class CircularProgress(QWidget):
         paint.setRenderHint(QPainter.RenderHint.Antialiasing)
         paint.setFont(self.font)
 
-        rect = QRect(30, 3, self.width - self.progress_width, self.height - self.progress_width)
+        rect = QRect(32, 2, self.width - self.progress_width, self.height - self.progress_width)
 
         pen = QPen()
         pen.setWidth(self.progress_width)

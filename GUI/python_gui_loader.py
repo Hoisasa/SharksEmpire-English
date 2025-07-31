@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'loading.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.8.2
+## Created by: Qt User Interface Compiler version 6.9.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -31,17 +31,18 @@ class Ui_Splash(object):
         self.progressBar.setGeometry(QRect(40, 242, 571, 41))
         self.progressBar.setStyleSheet(u"QProgressBar{\n"
 "	background: #f3f3f3\n"
-"	padding: 10 px;\n"
+"	padding: 10px;\n"
 "}\n"
 "\n"
-"QProgressBar::chunk{\n"
+"QProgressBar::chunk {\n"
 "    background: qradialgradient(\n"
 "        cx: 0.4, cy: -0.1, fx: 0.4, fy: -0.1,\n"
-"        radius: 1.35, stop: 0 #fff, stop: 1 #5b29f2\n"
-"        );   \n"
-"\n"
+"        radius: 1.35,\n"
+"        stop: 0 #ffffff, stop: 1 #5b29f2\n"
+"    );\n"
+"    border-radius: 4px;\n"
 "}")
-        self.progressBar.setValue(24)
+        self.progressBar.setValue(0)
         self.getUpdate = QPushButton(Splash)
         self.getUpdate.setObjectName(u"getUpdate")
         self.getUpdate.setGeometry(QRect(120, 180, 391, 61))

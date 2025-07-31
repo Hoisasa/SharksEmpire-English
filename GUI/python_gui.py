@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'untitled.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.8.2
+## Created by: Qt User Interface Compiler version 6.9.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -27,7 +27,7 @@ class Ui_UNOlingo(object):
         UNOlingo.setMinimumSize(QSize(1280, 0))
         UNOlingo.setMaximumSize(QSize(1280, 720))
         icon = QIcon()
-        icon.addFile(u"../images/unolingo_P64_icon.ico", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        icon.addFile(u"assets/images/output-onlinepngtools.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         UNOlingo.setWindowIcon(icon)
         self.verticalLayoutWidget = QWidget(UNOlingo)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
@@ -69,7 +69,7 @@ class Ui_UNOlingo(object):
         self.scrollAreaWidget.setObjectName(u"scrollAreaWidget")
         self.scrollAreaWidget.setGeometry(QRect(0, 0, 1059, 269))
         self.scrollAreaWidget.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
-        self.scrollAreaWidget.setAutoFillBackground(False)
+        self.scrollAreaWidget.setAutoFillBackground(True)
         self.scrollGrid = QGridLayout(self.scrollAreaWidget)
         self.scrollGrid.setObjectName(u"scrollGrid")
         self.scrollArea.setWidget(self.scrollAreaWidget)
@@ -619,13 +619,14 @@ class Ui_UNOlingo(object):
         self.page.setObjectName(u"page")
         self.scrollArea_2 = QScrollArea(self.page)
         self.scrollArea_2.setObjectName(u"scrollArea_2")
-        self.scrollArea_2.setGeometry(QRect(30, 0, 1261, 731))
+        self.scrollArea_2.setGeometry(QRect(0, -10, 1291, 731))
         self.scrollArea_2.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
         self.scrollArea_2.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
+        self.scrollArea_2.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidget_2 = QWidget()
         self.scrollAreaWidget_2.setObjectName(u"scrollAreaWidget_2")
-        self.scrollAreaWidget_2.setGeometry(QRect(0, 0, 1259, 729))
+        self.scrollAreaWidget_2.setGeometry(QRect(0, 0, 1289, 729))
         self.scrollAreaWidget_2.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
         self.groupGrid = QGridLayout(self.scrollAreaWidget_2)
         self.groupGrid.setSpacing(6)
@@ -636,9 +637,10 @@ class Ui_UNOlingo(object):
         self.page_2.setObjectName(u"page_2")
         self.scrollArea_3 = QScrollArea(self.page_2)
         self.scrollArea_3.setObjectName(u"scrollArea_3")
-        self.scrollArea_3.setGeometry(QRect(-10, 0, 1291, 731))
+        self.scrollArea_3.setGeometry(QRect(0, -10, 1291, 731))
         self.scrollArea_3.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
         self.scrollArea_3.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
+        self.scrollArea_3.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.scrollArea_3.setWidgetResizable(True)
         self.scrollAreaWidget_5 = QWidget()
         self.scrollAreaWidget_5.setObjectName(u"scrollAreaWidget_5")
@@ -660,14 +662,14 @@ class Ui_UNOlingo(object):
 
         self.retranslateUi(UNOlingo)
 
-        self.pages.setCurrentIndex(3)
+        self.pages.setCurrentIndex(4)
 
 
         QMetaObject.connectSlotsByName(UNOlingo)
     # setupUi
 
     def retranslateUi(self, UNOlingo):
-        UNOlingo.setWindowTitle(QCoreApplication.translate("UNOlingo", u"UNOlingo", None))
+        UNOlingo.setWindowTitle(QCoreApplication.translate("UNOlingo", u"Sharks Empire", None))
         self.MistakesLabel.setText(QCoreApplication.translate("UNOlingo", u"<html><head/><body><p><span style=\" font-size:36pt; font-weight:700; color:#00007f;\">Mistakes:</span></p></body></html>", None))
         self.Grade3.setText(QCoreApplication.translate("UNOlingo", u"<html><head/><body><p><br/></p></body></html>", None))
         self.Grade4.setText(QCoreApplication.translate("UNOlingo", u"<html><head/><body><p><br/></p></body></html>", None))
