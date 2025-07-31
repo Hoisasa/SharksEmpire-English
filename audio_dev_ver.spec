@@ -1,5 +1,8 @@
 # -*- mode: python ; coding: utf-8 -*-
 
+from PyInstaller.utils.hooks import collect_all
+datas, binaries, hiddenimports = collect_all('numpy')
+
 added_files = [
     ('assets', 'assets'),
     ('Vocabulary', 'Vocabulary'),
@@ -7,10 +10,10 @@ added_files = [
 
 a = Analysis(
     ['audio_dev_ver.py'],
-    pathex=[],
+    pathex=['.'],
     binaries=[],
     datas=added_files,
-    hiddenimports=[],
+    hiddenimports=hiddenimports,
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -25,7 +28,7 @@ exe = EXE(
     a.scripts,
     [],
     exclude_binaries=True,
-    name='UnoLingoLearn',
+    name='SharksEmpire',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -36,7 +39,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['assets\\images\\unolingo_P64_icon.ico'],
+    icon=[],
 )
 coll = COLLECT(
     exe,
@@ -45,6 +48,6 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='UnoLingoLearn',
+    name='SharksEmpire_English',
 
 )
