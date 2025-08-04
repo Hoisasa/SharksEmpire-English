@@ -34,7 +34,7 @@ class CircularProgress(QWidget):
         paint.setRenderHint(QPainter.RenderHint.Antialiasing)
         paint.setFont(self.font)
 
-        rect = QRect(32, 2, self.width - self.progress_width, self.height - self.progress_width)
+        rect = QRect(62, 2, self.width - self.progress_width, self.height - self.progress_width)
 
         pen = QPen()
         pen.setWidth(self.progress_width)
@@ -44,7 +44,7 @@ class CircularProgress(QWidget):
             pen.setCapStyle(Qt.PenCapStyle.RoundCap)
 
         paint.setPen(pen)
-        paint.drawArc(margin + 30, margin, width, height, 90 * 16, -value * 16)
+        paint.drawArc(margin + 60, margin, width, height, 90 * 16, -value * 16)
 
         paint.drawText(rect, Qt.AlignmentFlag.AlignCenter, f"{self.value}/{self.max_value}")
         paint.end()

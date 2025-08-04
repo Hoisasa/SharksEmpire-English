@@ -303,6 +303,7 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 		self.L_answer.clicked.connect(self.answer)
 		self.Repeat.clicked.connect(lambda _: (self.pages.setCurrentIndex(1), self.teach()))
 		self.SaveAndExit.clicked.connect(self.choose_next_lesson)
+		self.Layout_type.toggled.connect(self.toggle_translation)
 
 		self.groupGrid.setContentsMargins(60, 10, 0, 0)
 		self.groupGrid_2.setContentsMargins(60, 10, 0, 0)
@@ -337,7 +338,6 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 
 	def go_back(self):
 		we_are_here = self.pages.currentIndex()
-		print("leaving page" + str(we_are_here))
 		self.pages.setCurrentIndex(we_are_here + 1)
 		if self.pages.currentIndex() == 4:
 			self.prev_page_strip.setVisible(False)
@@ -368,10 +368,9 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 		self.word_iterator()
 
 	def choose_next_lesson(self):
-		if self.mistakes:
+		if len(self.mistakes)==1:
 			self.focus.upsert(*self.mistakes)
-		self.pages.setCurrentIndex(3)
-		print(self.focus.all())
+		self.populate_group()
 
 	# Common use functions
 	def update_weight_info(self):
@@ -460,7 +459,7 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 			self.word_translation.setText(self.wd.transl())
 			self.show_points()
 
-		elif self.Flag or self.study_mode == "mode3ex":
+		else:
 			self.translation.setText("translation")
 			self.word_translation.setVisible(False)
 			self.W_answer.setEnabled(False)
@@ -475,13 +474,13 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 
 			try:
 				self.current_word = next(self.word_iterating)
-
 			except StopIteration:
 				self.The_word.setText("Lesson Done!")
 				sd.stop()
 				if self.checkBox.isChecked() or self.study_mode == "mode3ex":
 					self.lesson_resume()
 				self.enable_buttons(False)
+				self.translation.setVisible(False)
 				return
 			if self.Flag and not self.glow and self.current_word in self.learned:
 				self.glow = True
@@ -513,7 +512,7 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 	def progress_value(self, querry, group):
 		max_value = len(tb.search(where(group) == querry))
 		value = len(tb.search((where(group) == querry) & (where('weight') == 0)))
-		return (value, max_value)
+		return value, max_value
 
 	def populate_main_group(self):
 		self.pages.setCurrentIndex(4)
@@ -525,9 +524,9 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 			self.Group_button = QPushButton(f'{group}', self)
 			self.Group_button.clicked.connect(self.populate_group)
 			self.Group_button.setFont(QFont('Arial', 24))
-			self.Group_button.setFixedSize(1200, 70)
+			self.Group_button.setFixedSize(1150, 70)
 			self.Group_button.setStyleSheet(self.stylesheet_prpl)
-			self.groupGrid_2.addWidget(self.Group_button, num, 0)
+			self.groupGrid_2.addWidget(self.Group_button, num, 0, alignment=Qt.AlignJustify)
 
 			self.progress = CircularProgress()
 			self.progress.setFixedSize(120, 60)
@@ -539,7 +538,8 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 		self.clear_grid_column(self.groupGrid)
 		self.prev_page_strip.setVisible(True)
 		self.pages.setCurrentIndex(3)
-		if self.sender().text():
+		sendby = self.sender().text()
+		if sendby!='Save and switch Lesson' and sendby!='':
 			self.supergroup_name = self.sender().text()
 		self.groups = list(
 			dict.fromkeys([group.get('Sub group') for group in tb.search(where("Group") == self.supergroup_name)]))
@@ -547,10 +547,10 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 			self.Group_button = QPushButton(f'{group}', self)
 			self.Group_button.clicked.connect(self.switch_to_WordLearn)
 			self.Group_button.setFont(QFont('Arial', 28))
-			self.Group_button.setFixedSize(1175, 70)
+			self.Group_button.setFixedSize(1150, 70)
 			self.Group_button.setStyleSheet(self.stylesheet_prpl)
 
-			self.groupGrid.addWidget(self.Group_button, num, 0)
+			self.groupGrid.addWidget(self.Group_button, num, 0, alignment=Qt.AlignJustify)
 
 			self.progress = CircularProgress()
 			self.progress.setFixedSize(120, 60)
@@ -567,16 +567,6 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 				if column == 0:
 					obj.removeWidget(widget)  # Remove from layout
 					widget.deleteLater()  # Delete widget
-
-					def clear_grid_column(self):
-						for i in reversed(range(self.groupGrid.count())):  # Iterate in reverse to avoid index shifting
-							item = self.groupGrid.itemAt(i)
-							if item is not None:
-								widget = item.widget()
-								_, column, _, _ = self.groupGrid.getItemPosition(i)  # Get the column position
-								if column == 0:
-									self.groupGrid.removeWidget(widget)  # Remove from layout
-									widget.deleteLater()
 
 	def clear_mistakes(self):
 		for i in reversed(range(self.scrollGrid.count())):  # Iterate in reverse to avoid index shifting
@@ -599,8 +589,13 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 		self.W_answer.setVisible(on_off)
 		self.L_answer.setVisible(on_off)
 		self.points_display.setVisible(on_off)
-		self.translation.setVisible(on_off)
 		self.repeat_audio.setEnabled(on_off)
+
+	def	toggle_translation(self):
+		if self.The_word.text() == 'Lesson Done!':
+			self.translation.setVisible(False)
+		else:
+			self.translation.setVisible(not self.Layout_type.isChecked())
 
 	def show_points(self):
 		self.points_display.shadow_anim.stop()
@@ -704,23 +699,25 @@ if __name__ == '__main__':
 	image_files_path = os.path.join(base_path, 'assets', 'images')
 	if platform.system()=="Windows":
 		db_path = os.path.join(base_path, "Vocabulary", "db.json")
+		tb = TinyDB(db_path)
 	else:
-		data_dir = os.environ.get("XDG_DATA_HOME", os.path.expanduser("~/.local/share"))
-		app_data_path = os.path.join(data_dir, "se-english") # Ensure it exists
-		os.makedirs(app_data_path, exist_ok=True)
-		db_path = os.path.join(app_data_path, "db.json")
-		print(os.listdir(app_data_path))
-		if not os.path.exists(db_path):
-			try:
-				with open("/app/lib/se-english/db.json", "rb") as src, open(db_path, "wb") as dst:
-					dst.write(src.read())
-				print("Copied db.json manually to", db_path)
-			except Exception as e:
-				print("Manual copy failed:", e)
-		print("db.json exists?", os.path.exists(db_path))
-		print("db.json size:", os.path.getsize(db_path))
+		try:
+			db_path = os.path.join(base_path, "Vocabulary", "db.json")
+			tb = TinyDB(db_path)
+		except Exception as e:
+			data_dir = os.environ.get("XDG_DATA_HOME", os.path.expanduser("~/.local/share"))
+			app_data_path = os.path.join(data_dir, "se-english")
+			os.makedirs(app_data_path, exist_ok=True)
+			db_path = os.path.join(app_data_path, "db.json")
+			if not os.path.exists(db_path):
+				try:
+					with open("/app/lib/se-english/db.json", "rb") as src, open(db_path, "wb") as dst:
+						dst.write(src.read())
+				except Exception as e:
+					print("Manual copy failed:", e)
+			tb = TinyDB(db_path)
 
-	tb = TinyDB(db_path)
+
 
 
 	Word = Query()

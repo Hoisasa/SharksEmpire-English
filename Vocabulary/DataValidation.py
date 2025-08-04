@@ -13,7 +13,7 @@ for entry in tb:
     base_path = os.path.dirname(script_dir)
     audio_base_path = os.path.join(base_path, 'assets', 'audiofiles')
 
-    file_path = os.path.join(audio_base_path, f"{entry['Sub group'].replace('/', '-')}",#.replace(':', '-')}",
+    file_path = os.path.join(audio_base_path, f"{entry['Sub group'].replace('/', '-').replace(':', '-')}",
                                   f"{entry['Name'].split(' (')[0]}.wav")
 
     try:

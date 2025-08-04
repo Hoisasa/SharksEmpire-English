@@ -9,7 +9,7 @@ added_files = [
 ]
 
 a = Analysis(
-    ['audio_dev_ver.py'],
+    ['main.py'],
     pathex=['.'],
     binaries=[],
     datas=added_files,

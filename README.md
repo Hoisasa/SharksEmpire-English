@@ -1,4 +1,4 @@
-# Sharks
+# Sharks' Empire: English
 
 <div align="center">
   <img height="333" src="https://github.com/Hoisasa/English-word-learning/blob/readme/assets/images/sharkonamiTransparent.png?raw=true">
@@ -44,11 +44,11 @@ But in order to not be utterly strict it allows one mistake to be completed
 **The features of an app are as follows:**
 - **Only one part of speech per group, less confusion**  
 - **Groups consist of subgroups** 
-- **Mostly just 10 words per subgroup** flashcards organised into quite small groups for easier memorisation.
+- **Mostly just 10 words per subgroup** flashcards organised into quite small groups for easier memorization.
 - **self evaluation** We don't put a goal of checking your typing speed or pronunciation thus it's your responsibility to evaluate the answer. We also wanted to reduce guessing factor which `four options` introduces so if you see that your translation didn't align with given one - press a `wrong answer` button
 - **context-sensitive translations** it aims to show beginner how words meanings can vary depending on context 
-- **target learner language russian**
-> (**you can provide your own translations for db**) [Example]()
+- **target learner language Russian**
+> (**you can provide your own translations for db**) [Example](#add-your-vocabulary-or-locale)
 
 
 ## Installation
