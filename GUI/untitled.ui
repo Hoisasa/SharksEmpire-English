@@ -60,7 +60,7 @@
        <bool>false</bool>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page_3">
        <widget class="QLabel" name="MistakesLabel">
@@ -114,10 +114,10 @@
        <widget class="QLabel" name="GradesLabel">
         <property name="geometry">
          <rect>
-          <x>430</x>
-          <y>200</y>
-          <width>512</width>
-          <height>123</height>
+          <x>360</x>
+          <y>220</y>
+          <width>581</width>
+          <height>71</height>
          </rect>
         </property>
         <property name="text">
@@ -169,10 +169,10 @@
        <widget class="QLabel" name="ResultsLabel">
         <property name="geometry">
          <rect>
-          <x>580</x>
-          <y>20</y>
-          <width>211</width>
-          <height>151</height>
+          <x>470</x>
+          <y>50</y>
+          <width>361</width>
+          <height>91</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -340,10 +340,10 @@ QPushButton:pressed {
        <widget class="QLabel" name="AnswersLabel">
         <property name="geometry">
          <rect>
-          <x>440</x>
-          <y>120</y>
-          <width>512</width>
-          <height>122</height>
+          <x>350</x>
+          <y>140</y>
+          <width>601</width>
+          <height>81</height>
          </rect>
         </property>
         <property name="text">
@@ -1417,7 +1417,7 @@ QPushButton:pressed {
           <enum>Qt::LayoutDirection::LeftToRight</enum>
          </property>
          <property name="autoFillBackground">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <layout class="QGridLayout" name="groupGrid" rowminimumheight="0">
           <property name="leftMargin">
@@ -1480,7 +1480,7 @@ QPushButton:pressed {
           <enum>Qt::LayoutDirection::LeftToRight</enum>
          </property>
          <property name="autoFillBackground">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <layout class="QGridLayout" name="groupGrid_2" rowminimumheight="0">
           <property name="leftMargin">

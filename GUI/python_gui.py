@@ -56,7 +56,7 @@ class Ui_UNOlingo(object):
         self.Grade4.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.GradesLabel = QLabel(self.page_3)
         self.GradesLabel.setObjectName(u"GradesLabel")
-        self.GradesLabel.setGeometry(QRect(430, 200, 512, 123))
+        self.GradesLabel.setGeometry(QRect(360, 220, 581, 71))
         self.GradesLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.scrollArea = QScrollArea(self.page_3)
         self.scrollArea.setObjectName(u"scrollArea")
@@ -75,7 +75,7 @@ class Ui_UNOlingo(object):
         self.scrollArea.setWidget(self.scrollAreaWidget)
         self.ResultsLabel = QLabel(self.page_3)
         self.ResultsLabel.setObjectName(u"ResultsLabel")
-        self.ResultsLabel.setGeometry(QRect(580, 20, 211, 151))
+        self.ResultsLabel.setGeometry(QRect(470, 50, 361, 91))
         self.ResultsLabel.setStyleSheet(u"font-size: 24px; color: #810031;")
         self.ResultsLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.Grade1 = QLabel(self.page_3)
@@ -166,7 +166,7 @@ class Ui_UNOlingo(object):
 
         self.AnswersLabel = QLabel(self.page_3)
         self.AnswersLabel.setObjectName(u"AnswersLabel")
-        self.AnswersLabel.setGeometry(QRect(440, 120, 512, 122))
+        self.AnswersLabel.setGeometry(QRect(350, 140, 601, 81))
         self.AnswersLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.Grade2 = QLabel(self.page_3)
         self.Grade2.setObjectName(u"Grade2")
@@ -630,7 +630,7 @@ class Ui_UNOlingo(object):
         self.scrollAreaWidget_2.setObjectName(u"scrollAreaWidget_2")
         self.scrollAreaWidget_2.setGeometry(QRect(0, 0, 1298, 718))
         self.scrollAreaWidget_2.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
-        self.scrollAreaWidget_2.setAutoFillBackground(False)
+        self.scrollAreaWidget_2.setAutoFillBackground(True)
         self.groupGrid = QGridLayout(self.scrollAreaWidget_2)
         self.groupGrid.setSpacing(6)
         self.groupGrid.setObjectName(u"groupGrid")
@@ -651,7 +651,7 @@ class Ui_UNOlingo(object):
         self.scrollAreaWidget_5.setObjectName(u"scrollAreaWidget_5")
         self.scrollAreaWidget_5.setGeometry(QRect(0, 0, 1298, 718))
         self.scrollAreaWidget_5.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
-        self.scrollAreaWidget_5.setAutoFillBackground(False)
+        self.scrollAreaWidget_5.setAutoFillBackground(True)
         self.groupGrid_2 = QGridLayout(self.scrollAreaWidget_5)
         self.groupGrid_2.setSpacing(6)
         self.groupGrid_2.setObjectName(u"groupGrid_2")
@@ -668,7 +668,7 @@ class Ui_UNOlingo(object):
 
         self.retranslateUi(UNOlingo)
 
-        self.pages.setCurrentIndex(1)
+        self.pages.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(UNOlingo)
