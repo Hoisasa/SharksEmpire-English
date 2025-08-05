@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+    <id>io.github.hoisasa.SharksEmpire-English</id>
+
+    <branding>
+        <color type="primary" scheme_preference="light">#97f2bb</color>
+        <color type="primary" scheme_preference="dark">#9e81ee</color>
+    </branding>
+
+    <icon type="stock">io.github.hoisasa.SharksEmpire-English</icon>
+    <icon type="remote">https://raw.githubusercontent.com/Hoisasa/SharksEmpire-English/master/hicolor/512x512/io.github.hoisasa.SharksEmpire-English.png</icon>
+
+    <name>Sharks Empire: English</name>
+    <summary>Learn vocabulary with flashcards</summary>
+    <summary xml:lang="ru">Изучение слов по карточкам</summary>
+
+    <developer id="io.github.hoisasa">
+        <name>Hoisasa</name>
+    </developer>
+
+
+    <url type="homepage">https://github.com/Hoisasa/SharksEmpire-English</url>
+
+
+    <metadata_license>MIT</metadata_license>
+    <project_license>GPL-3.0-or-later</project_license>
+
+    <description>
+        <p>There are three modes: Overview, Practice, and Exam. While the overview straight up shows the translation, other modes provide it after pressing a corresponding button. In the end, all mistakes are shown to provide you with a feature to reflect on your answers. To gauge the progress of learning each word, they have points assigned to them. When you are ready, complete the exam—a more strict area which punishes mistakes more. The exam's goal is to make as few mistakes as possible, but in order to not be utterly strict, it allows one mistake to pass.</p>
+        <p xml:lang="ru">В приложении есть три режима: Ознакомление, Практика и Экзамен. Тогда как в ознакомлении перевод виден сразу, в остальных он будет показан только по нажатии соответствующей кнопки. В конце все ошибки будут показаны, чтоб у тебя была возможность их усвоить. Для отслеживания прогресса изучения слов им присуждаются очки. Когда ты готов, пройди экзамен — более жесткий режим, который наказывает за ошибки сильнее. Цель экзамена — чтоб ты допустил как можно меньше ошибок. Но допускается совершить одну ошибку, чтоб пройти его.</p>
+
+        <p>The features of an app are as follows:</p>
+        <p xml:lang="ru">Особенности приложения:</p>
+
+        <ul>
+            <li>One part of speech per group</li>
+            <li xml:lang="ru">Одна часть речи на группу</li>
+
+            <li>Groups have subgroups</li>
+            <li xml:lang="ru">Группы поделены на подгруппы</li>
+
+            <li>10 words per subgroup</li>
+            <li xml:lang="ru">10 слов на подгруппу</li>
+
+            <li>Self-evaluation approach</li>
+            <li xml:lang="ru">Ты сам оцениваешь, правильный ответ дал или нет</li>
+
+            <li>No multiple choice guessing</li>
+            <li xml:lang="ru">Нет 4ех вариантов ответов, чтоб уменьшить угадывание</li>
+
+            <li>Context-sensitive translations</li>
+            <li xml:lang="ru">Перевод слов чувствителен к контексту</li>
+
+            <li>Target language: Russian</li>
+            <li xml:lang="ru">Язык приложения - Русский</li>
+        </ul>
+    </description>
+
+
+
+    <launchable type="desktop-id">io.github.hoisasa.SharksEmpire-English.desktop</launchable>
+    <screenshots>
+        <screenshot type="default">
+            <image>https://raw.githubusercontent.com/Hoisasa/SharksEmpire-English/master/assets/screenshots/Screenshot_20250804_163503.png</image>
+            <caption>Studying screen</caption>
+            <caption xml:lang="ru">Окно урока</caption>
+        </screenshot>
+        <screenshot>
+            <image>https://raw.githubusercontent.com/Hoisasa/SharksEmpire-English/master/assets/screenshots/Screenshot_20250804_163408.png</image>
+            <caption>Selecting group of words</caption>
+            <caption xml:lang="ru">Выбор слов для изучения</caption>
+        </screenshot>
+        <screenshot>
+            <image>https://raw.githubusercontent.com/Hoisasa/SharksEmpire-English/master/assets/screenshots/Screenshot_20250804_163524.png</image>
+            <caption>Study mode choosing screen</caption>
+            <caption xml:lang="ru">Меню выбора режима обучения</caption>
+        </screenshot>
+    </screenshots>
+
+    <content_rating type="oars-1.1" />
+
+    <recommends>
+        <control>pointing</control>
+    </recommends>
+    <requires>
+        <display_length compare="ge">1280</display_length>
+    </requires>
+
+    <releases>
+        <release version="0.2.2" date="2025-08-04">
+
+            <description>
+                <p>Launching app on Linux</p>
+                <p xml:lang="ru">Запуск на линукс!</p>
+
+                <ul>
+                    <li>Now packed with flatpak</li>
+                    <li xml:lang="ru">Теперь доступен через Flatpak</li>
+
+                    <li>Added 2300 new words</li>
+                    <li xml:lang="ru">Добавлено 2300 новых слов</li>
+
+                    <li>Reduced items overlapping</li>
+                    <li xml:lang="ru">Уменьшено перекрытие элементов</li>
+
+                    <li>Fixed text not being cut out correctly</li>
+                    <li xml:lang="ru">Исправлено некоректное обрезание текста</li>
+
+                    <li>Translation button now correctly displayed</li>
+                    <li xml:lang="ru">Кнопка "перевод" теперь корректно отображается</li>
+
+                </ul>
+            </description>
+        </release>
+    </releases>
+</component>
