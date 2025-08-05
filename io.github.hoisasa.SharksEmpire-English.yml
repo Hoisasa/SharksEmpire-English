@@ -38,6 +38,7 @@ modules:
   - name: desktop_icon
     buildsystem: simple
     build-commands:
+      - ls hicolor
       - install -Dm644 hicolor/16x16/io.github.hoisasa.SharksEmpire-English.png /app/share/icons/hicolor/16x16/apps/io.github.hoisasa.SharksEmpire-English.png
       - install -Dm644 hicolor/32x32/io.github.hoisasa.SharksEmpire-English.png /app/share/icons/hicolor/32x32/apps/io.github.hoisasa.SharksEmpire-English.png
       - install -Dm644 hicolor/64x64/io.github.hoisasa.SharksEmpire-English.png /app/share/icons/hicolor/64x64/apps/io.github.hoisasa.SharksEmpire-English.png
