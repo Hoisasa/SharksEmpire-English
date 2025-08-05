@@ -48,11 +48,11 @@ class Ui_UNOlingo(object):
         self.MistakesLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.Grade3 = QLabel(self.page_3)
         self.Grade3.setObjectName(u"Grade3")
-        self.Grade3.setGeometry(QRect(1030, 230, 51, 71))
+        self.Grade3.setGeometry(QRect(1000, 220, 71, 71))
         self.Grade3.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.Grade4 = QLabel(self.page_3)
         self.Grade4.setObjectName(u"Grade4")
-        self.Grade4.setGeometry(QRect(1100, 230, 51, 71))
+        self.Grade4.setGeometry(QRect(1080, 220, 71, 71))
         self.Grade4.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.GradesLabel = QLabel(self.page_3)
         self.GradesLabel.setObjectName(u"GradesLabel")
@@ -80,11 +80,11 @@ class Ui_UNOlingo(object):
         self.ResultsLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.Grade1 = QLabel(self.page_3)
         self.Grade1.setObjectName(u"Grade1")
-        self.Grade1.setGeometry(QRect(890, 230, 51, 71))
+        self.Grade1.setGeometry(QRect(840, 220, 71, 71))
         self.Grade1.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.Grade5 = QLabel(self.page_3)
         self.Grade5.setObjectName(u"Grade5")
-        self.Grade5.setGeometry(QRect(1170, 230, 51, 71))
+        self.Grade5.setGeometry(QRect(1160, 220, 71, 71))
         self.Grade5.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.horizontalLayoutWidget = QWidget(self.page_3)
         self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
@@ -160,7 +160,8 @@ class Ui_UNOlingo(object):
 "        cx: 0.4, cy: -0.1, fx: 0.4, fy: -0.1,\n"
 "        radius: 1.35, stop: 0 #fff, stop: 1 #5b29f2\n"
 "        );\n"
-"    }")
+"    }\n"
+"")
 
         self.ButtonsLayout.addWidget(self.Repeat)
 
@@ -170,7 +171,7 @@ class Ui_UNOlingo(object):
         self.AnswersLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.Grade2 = QLabel(self.page_3)
         self.Grade2.setObjectName(u"Grade2")
-        self.Grade2.setGeometry(QRect(960, 230, 51, 71))
+        self.Grade2.setGeometry(QRect(920, 220, 71, 71))
         self.Grade2.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.pages.addWidget(self.page_3)
         self.Lesson_screen = QWidget()
@@ -215,6 +216,7 @@ class Ui_UNOlingo(object):
 "        radius: 1.35, stop: 0 #fff, stop: 1 #ccc\n"
 "        );\n"
 "    padding: 5px;\n"
+"    outline: none;\n"
 "    }\n"
 "\n"
 "QPushButton:hover {\n"
@@ -232,7 +234,7 @@ class Ui_UNOlingo(object):
 "        );\n"
 "    }")
         icon1 = QIcon()
-        icon1.addFile(u"../images/audio.png", QSize(), QIcon.Mode.Normal, QIcon.State.On)
+        icon1.addFile(u"../../../../../.designer/images/audio.png", QSize(), QIcon.Mode.Normal, QIcon.State.On)
         self.repeat_audio.setIcon(icon1)
         self.repeat_audio.setIconSize(QSize(60, 60))
         self.restart_lesson = QPushButton(self.Center_widget)
@@ -251,6 +253,7 @@ class Ui_UNOlingo(object):
 "        radius: 1.35, stop: 0 #fff, stop: 1 #ccc\n"
 "        );\n"
 "    padding: 5px;\n"
+"    outline: none;\n"
 "    }\n"
 "\n"
 "QPushButton:hover {\n"
@@ -266,10 +269,9 @@ class Ui_UNOlingo(object):
 "        cx: 0.4, cy: -0.1, fx: 0.4, fy: -0.1,\n"
 "        radius: 1.35, stop: 0 #fff, stop: 1 #bbb\n"
 "        );\n"
-"    }\n"
-"")
+"    }")
         icon2 = QIcon()
-        icon2.addFile(u"../images/restart.png", QSize(), QIcon.Mode.Normal, QIcon.State.On)
+        icon2.addFile(u"../../../../../.designer/images/restart.png", QSize(), QIcon.Mode.Normal, QIcon.State.On)
         self.restart_lesson.setIcon(icon2)
         self.restart_lesson.setIconSize(QSize(60, 60))
         self.word_translation = QLabel(self.Center_widget)
@@ -290,14 +292,14 @@ class Ui_UNOlingo(object):
         self.word_transcription.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.checkBox = QCheckBox(self.Center_widget)
         self.checkBox.setObjectName(u"checkBox")
-        self.checkBox.setGeometry(QRect(1060, 40, 161, 31))
+        self.checkBox.setGeometry(QRect(1070, 40, 181, 31))
         font3 = QFont()
         font3.setPointSize(15)
         self.checkBox.setFont(font3)
         self.Layout_type = QCheckBox(self.Center_widget)
         self.Layout_type.setObjectName(u"Layout_type")
         self.Layout_type.setEnabled(True)
-        self.Layout_type.setGeometry(QRect(1060, 80, 161, 31))
+        self.Layout_type.setGeometry(QRect(1070, 80, 181, 31))
         self.Layout_type.setFont(font3)
         self.Layout_type.setChecked(False)
 
@@ -329,6 +331,7 @@ class Ui_UNOlingo(object):
 "        radius: 1.35, stop: 0 #fff, stop: 1 #c71050\n"
 "        );\n"
 "    padding: 5px;\n"
+"    outline: none;\n"
 "    }\n"
 "\n"
 "QPushButton:hover {\n"
@@ -346,7 +349,7 @@ class Ui_UNOlingo(object):
 "        );\n"
 "    }")
         icon3 = QIcon()
-        icon3.addFile(u"../images/cross.png", QSize(), QIcon.Mode.Normal, QIcon.State.On)
+        icon3.addFile(u"../../../../../.designer/images/cross.png", QSize(), QIcon.Mode.Normal, QIcon.State.On)
         self.L_answer.setIcon(icon3)
         self.L_answer.setIconSize(QSize(64, 64))
 
@@ -366,6 +369,7 @@ class Ui_UNOlingo(object):
 "        radius: 1.35, stop: 0 #fff, stop: 1 #10a350\n"
 "        );\n"
 "    padding: 5px;\n"
+"    outline: none;\n"
 "    }\n"
 "\n"
 "QPushButton:hover {\n"
@@ -383,7 +387,7 @@ class Ui_UNOlingo(object):
 "        );\n"
 "    }")
         icon4 = QIcon()
-        icon4.addFile(u"../images/checked.png", QSize(), QIcon.Mode.Normal, QIcon.State.On)
+        icon4.addFile(u"../../../../../.designer/images/checked.png", QSize(), QIcon.Mode.Normal, QIcon.State.On)
         self.W_answer.setIcon(icon4)
         self.W_answer.setIconSize(QSize(64, 64))
 
@@ -438,7 +442,8 @@ class Ui_UNOlingo(object):
 "        cx: 0.4, cy: -0.1, fx: 0.4, fy: -0.1,\n"
 "        radius: 1.35, stop: 0 #fff, stop: 1 #5b29f2\n"
 "        );\n"
-"    }")
+"    }\n"
+"")
 
         self.translation_layout.addWidget(self.translation)
 
@@ -472,6 +477,8 @@ class Ui_UNOlingo(object):
 "        radius: 1.35, stop: 0 #fff, stop: 1 rgb(199, 20, 47)\n"
 "        );\n"
 "    padding: 5px;\n"
+"    outline: none;\n"
+"    box-shadow: none;\n"
 "    }\n"
 "\n"
 "QPushButton:hover {\n"
@@ -487,12 +494,12 @@ class Ui_UNOlingo(object):
 "        cx: 0.4, cy: -0.1, fx: 0.4, fy: -0.1,\n"
 "        radius: 1.35, stop: 0 #fff, stop: 1 rgb(232, 0, 0)\n"
 "        );\n"
-"    }\n"
-"")
+"    }")
         icon5 = QIcon()
-        icon5.addFile(u"../images/return.png", QSize(), QIcon.Mode.Normal, QIcon.State.On)
+        icon5.addFile(u"../../../../../.designer/images/return.png", QSize(), QIcon.Mode.Normal, QIcon.State.On)
         self.prev_page.setIcon(icon5)
         self.prev_page.setIconSize(QSize(80, 60))
+        self.prev_page.setAutoDefault(False)
         self.points_display = QLabel(self.Back_widget)
         self.points_display.setObjectName(u"points_display")
         self.points_display.setGeometry(QRect(650, 70, 341, 31))
@@ -668,7 +675,7 @@ class Ui_UNOlingo(object):
 
         self.retranslateUi(UNOlingo)
 
-        self.pages.setCurrentIndex(0)
+        self.pages.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(UNOlingo)

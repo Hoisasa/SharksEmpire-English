@@ -60,7 +60,7 @@
        <bool>false</bool>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="page_3">
        <widget class="QLabel" name="MistakesLabel">
@@ -82,9 +82,9 @@
        <widget class="QLabel" name="Grade3">
         <property name="geometry">
          <rect>
-          <x>1030</x>
-          <y>230</y>
-          <width>51</width>
+          <x>1000</x>
+          <y>220</y>
+          <width>71</width>
           <height>71</height>
          </rect>
         </property>
@@ -98,9 +98,9 @@
        <widget class="QLabel" name="Grade4">
         <property name="geometry">
          <rect>
-          <x>1100</x>
-          <y>230</y>
-          <width>51</width>
+          <x>1080</x>
+          <y>220</y>
+          <width>71</width>
           <height>71</height>
          </rect>
         </property>
@@ -188,9 +188,9 @@
        <widget class="QLabel" name="Grade1">
         <property name="geometry">
          <rect>
-          <x>890</x>
-          <y>230</y>
-          <width>51</width>
+          <x>840</x>
+          <y>220</y>
+          <width>71</width>
           <height>71</height>
          </rect>
         </property>
@@ -204,9 +204,9 @@
        <widget class="QLabel" name="Grade5">
         <property name="geometry">
          <rect>
-          <x>1170</x>
-          <y>230</y>
-          <width>51</width>
+          <x>1160</x>
+          <y>220</y>
+          <width>71</width>
           <height>71</height>
          </rect>
         </property>
@@ -328,7 +328,8 @@ QPushButton:pressed {
         cx: 0.4, cy: -0.1, fx: 0.4, fy: -0.1,
         radius: 1.35, stop: 0 #fff, stop: 1 #5b29f2
         );
-    }</string>
+    }
+</string>
            </property>
            <property name="text">
             <string>Next lesson</string>
@@ -356,9 +357,9 @@ QPushButton:pressed {
        <widget class="QLabel" name="Grade2">
         <property name="geometry">
          <rect>
-          <x>960</x>
-          <y>230</y>
-          <width>51</width>
+          <x>920</x>
+          <y>220</y>
+          <width>71</width>
           <height>71</height>
          </rect>
         </property>
@@ -486,6 +487,7 @@ QPushButton:pressed {
         radius: 1.35, stop: 0 #fff, stop: 1 #ccc
         );
     padding: 5px;
+    outline: none;
     }
 
 QPushButton:hover {
@@ -508,7 +510,7 @@ QPushButton:pressed {
             </property>
             <property name="icon">
              <iconset>
-              <normalon>../images/audio.png</normalon>
+              <normalon>../../../../../.designer/images/audio.png</normalon>
              </iconset>
             </property>
             <property name="iconSize">
@@ -553,6 +555,7 @@ QPushButton:pressed {
         radius: 1.35, stop: 0 #fff, stop: 1 #ccc
         );
     padding: 5px;
+    outline: none;
     }
 
 QPushButton:hover {
@@ -568,15 +571,14 @@ QPushButton:pressed {
         cx: 0.4, cy: -0.1, fx: 0.4, fy: -0.1,
         radius: 1.35, stop: 0 #fff, stop: 1 #bbb
         );
-    }
-</string>
+    }</string>
             </property>
             <property name="text">
              <string/>
             </property>
             <property name="icon">
              <iconset>
-              <normalon>../images/restart.png</normalon>
+              <normalon>../../../../../.designer/images/restart.png</normalon>
              </iconset>
             </property>
             <property name="iconSize">
@@ -655,9 +657,9 @@ QPushButton:pressed {
            <widget class="QCheckBox" name="checkBox">
             <property name="geometry">
              <rect>
-              <x>1060</x>
+              <x>1070</x>
               <y>40</y>
-              <width>161</width>
+              <width>181</width>
               <height>31</height>
              </rect>
             </property>
@@ -676,9 +678,9 @@ QPushButton:pressed {
             </property>
             <property name="geometry">
              <rect>
-              <x>1060</x>
+              <x>1070</x>
               <y>80</y>
-              <width>161</width>
+              <width>181</width>
               <height>31</height>
              </rect>
             </property>
@@ -764,6 +766,7 @@ QPushButton:pressed {
         radius: 1.35, stop: 0 #fff, stop: 1 #c71050
         );
     padding: 5px;
+    outline: none;
     }
 
 QPushButton:hover {
@@ -786,7 +789,7 @@ QPushButton:pressed {
              </property>
              <property name="icon">
               <iconset>
-               <normalon>../images/cross.png</normalon>
+               <normalon>../../../../../.designer/images/cross.png</normalon>
               </iconset>
              </property>
              <property name="iconSize">
@@ -822,6 +825,7 @@ QPushButton:pressed {
         radius: 1.35, stop: 0 #fff, stop: 1 #10a350
         );
     padding: 5px;
+    outline: none;
     }
 
 QPushButton:hover {
@@ -844,7 +848,7 @@ QPushButton:pressed {
              </property>
              <property name="icon">
               <iconset>
-               <normalon>../images/checked.png</normalon>
+               <normalon>../../../../../.designer/images/checked.png</normalon>
               </iconset>
              </property>
              <property name="iconSize">
@@ -955,7 +959,8 @@ QPushButton:pressed {
         cx: 0.4, cy: -0.1, fx: 0.4, fy: -0.1,
         radius: 1.35, stop: 0 #fff, stop: 1 #5b29f2
         );
-    }</string>
+    }
+</string>
              </property>
              <property name="text">
               <string>Reveal Translation</string>
@@ -1040,6 +1045,8 @@ QPushButton:pressed {
         radius: 1.35, stop: 0 #fff, stop: 1 rgb(199, 20, 47)
         );
     padding: 5px;
+    outline: none;
+    box-shadow: none;
     }
 
 QPushButton:hover {
@@ -1055,15 +1062,14 @@ QPushButton:pressed {
         cx: 0.4, cy: -0.1, fx: 0.4, fy: -0.1,
         radius: 1.35, stop: 0 #fff, stop: 1 rgb(232, 0, 0)
         );
-    }
-</string>
+    }</string>
          </property>
          <property name="text">
           <string/>
          </property>
          <property name="icon">
           <iconset>
-           <normalon>../images/return.png</normalon>
+           <normalon>../../../../../.designer/images/return.png</normalon>
           </iconset>
          </property>
          <property name="iconSize">
@@ -1071,6 +1077,9 @@ QPushButton:pressed {
            <width>80</width>
            <height>60</height>
           </size>
+         </property>
+         <property name="autoDefault">
+          <bool>false</bool>
          </property>
         </widget>
         <widget class="QLabel" name="points_display">
@@ -1206,7 +1215,7 @@ QPushButton:pressed {
             </property>
             <property name="icon">
              <iconset>
-              <normalon>../images/return.png</normalon>
+              <normalon>../../../../../.designer/images/return.png</normalon>
              </iconset>
             </property>
             <property name="iconSize">

@@ -22,10 +22,10 @@ import sounddevice as sd
 
 from PySide6 import QtCore, QtGui
 from PySide6.QtCore import QPropertyAnimation, Qt, QEasingCurve
-from PySide6.QtGui import QColor, QFont
+from PySide6.QtGui import QColor, QFont, QPainterPath, QRegion
 from PySide6.QtWidgets import (
-    QApplication, QMainWindow, QGraphicsDropShadowEffect,
-    QPushButton, QLabel, QSpacerItem, QSizePolicy
+	QApplication, QMainWindow, QGraphicsDropShadowEffect,
+	QPushButton, QLabel, QSpacerItem, QSizePolicy
 )
 
 from tinydb import TinyDB, Query, where
@@ -88,7 +88,6 @@ def shuffle_to_learn(learn_list):
 
 def shuffle_learned(learned):
 	random.shuffle(learned)
-
 
 class TransparentShadowLabel(QLabel):
 	def __init__(self, *args, **kwargs):
@@ -416,6 +415,7 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 	def teach(self):
 		self.mistakes.clear()
 		self.enable_buttons(True)
+		self.toggle_translation()
 		self.W_answer.setEnabled(False)
 		self.L_answer.setEnabled(False)
 		if self.dock:
@@ -606,8 +606,8 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 		self.repeat_audio.setEnabled(on_off)
 
 	def	toggle_translation(self):
-		if self.The_word.text() == 'Lesson Done!':
-			self.translation.setVisible(False)
+		if self.study_mode == 'mode1intro':
+			self.translation.setVisible(True)
 		else:
 			self.translation.setVisible(not self.Layout_type.isChecked())
 
