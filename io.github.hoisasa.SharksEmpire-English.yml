@@ -1,4 +1,4 @@
-app-id: io.github.Hoisasa.SharksEmpire-English
+app-id: io.github.hoisasa.SharksEmpire-English
 runtime: org.kde.Platform
 runtime-version: "6.9"   # latest KDE runtime version (check flathub for updates)
 sdk: org.kde.Sdk
@@ -30,20 +30,20 @@ modules:
   - name: desktop_shortcut
     buildsystem: simple
     build-commands:
-      - install -Dm644 io.github.Hoisasa.SharksEmpire-English.desktop /app/share/applications/io.github.Hoisasa.SharksEmpire-English.desktop
+      - install -Dm644 io.github.hoisasa.SharksEmpire-English.desktop /app/share/applications/io.github.hoisasa.SharksEmpire-English.desktop
     sources:
       - type: file
-        path: io.github.Hoisasa.SharksEmpire-English.desktop
+        path: io.github.hoisasa.SharksEmpire-English.desktop
 
   - name: desktop_icon
     buildsystem: simple
     build-commands:
-      - install -Dm644 hicolor/16x16/io.github.Hoisasa.SharksEmpire-English.png /app/share/icons/hicolor/16x16/apps/io.github.Hoisasa.SharksEmpire-English.png
-      - install -Dm644 hicolor/32x32/io.github.Hoisasa.SharksEmpire-English.png /app/share/icons/hicolor/32x32/apps/io.github.Hoisasa.SharksEmpire-English.png
-      - install -Dm644 hicolor/64x64/io.github.Hoisasa.SharksEmpire-English.png /app/share/icons/hicolor/64x64/apps/io.github.Hoisasa.SharksEmpire-English.png
-      - install -Dm644 hicolor/128x128/io.github.Hoisasa.SharksEmpire-English.png /app/share/icons/hicolor/128x128/apps/io.github.Hoisasa.SharksEmpire-English.png
-      - install -Dm644 hicolor/256x256/io.github.Hoisasa.SharksEmpire-English.png /app/share/icons/hicolor/256x256/apps/io.github.Hoisasa.SharksEmpire-English.png
-      - install -Dm644 hicolor/512x512/io.github.Hoisasa.SharksEmpire-English.png /app/share/icons/hicolor/512x512/apps/io.github.Hoisasa.SharksEmpire-English.png
+      - install -Dm644 hicolor/16x16/io.github.hoisasa.SharksEmpire-English.png /app/share/icons/hicolor/16x16/apps/io.github.hoisasa.SharksEmpire-English.png
+      - install -Dm644 hicolor/32x32/io.github.hoisasa.SharksEmpire-English.png /app/share/icons/hicolor/32x32/apps/io.github.hoisasa.SharksEmpire-English.png
+      - install -Dm644 hicolor/64x64/io.github.hoisasa.SharksEmpire-English.png /app/share/icons/hicolor/64x64/apps/io.github.hoisasa.SharksEmpire-English.png
+      - install -Dm644 hicolor/128x128/io.github.hoisasa.SharksEmpire-English.png /app/share/icons/hicolor/128x128/apps/io.github.hoisasa.SharksEmpire-English.png
+      - install -Dm644 hicolor/256x256/io.github.hoisasa.SharksEmpire-English.png /app/share/icons/hicolor/256x256/apps/io.github.hoisasa.SharksEmpire-English.png
+      - install -Dm644 hicolor/512x512/io.github.hoisasa.SharksEmpire-English.png /app/share/icons/hicolor/512x512/apps/io.github.hoisasa.SharksEmpire-English.png
     sources:
       - type: archive
         path: hicolor.tar.gz
