@@ -4,7 +4,8 @@ from PyInstaller.utils.hooks import collect_all
 datas, binaries, hiddenimports = collect_all('numpy')
 
 added_files = [
-    ('assets', 'assets'),
+    ('assets/audiofiles', 'assets/audiofiles'),
+    ('assets/images', 'assets/images'),
     ('Vocabulary', 'Vocabulary'),
 ]
 
