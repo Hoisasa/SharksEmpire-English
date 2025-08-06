@@ -21,8 +21,8 @@ import soundfile as sf
 import sounddevice as sd
 
 from PySide6 import QtCore, QtGui
-from PySide6.QtCore import QPropertyAnimation, Qt, QEasingCurve
-from PySide6.QtGui import QColor, QFont, QPainterPath, QRegion
+from PySide6.QtCore import QPropertyAnimation, Qt, QEasingCurve, QSize
+from PySide6.QtGui import QColor, QFont, QPainterPath, QRegion, QIcon
 from PySide6.QtWidgets import (
 	QApplication, QMainWindow, QGraphicsDropShadowEffect,
 	QPushButton, QLabel, QSpacerItem, QSizePolicy
@@ -31,7 +31,7 @@ from PySide6.QtWidgets import (
 from tinydb import TinyDB, Query, where
 
 from src.circular_progress.circular_progressbar import CircularProgress
-from GUI.python_gui import Ui_UNOlingo
+from GUI.python_gui import Ui_SEEnglish
 
 
 
@@ -129,7 +129,7 @@ class WordShortcut:
 		return self.word_meta.get("Sub group")
 
 
-class EnglishApp(Ui_UNOlingo, QMainWindow):
+class EnglishApp(Ui_SEEnglish, QMainWindow):
 	def __init__(self):
 		super().__init__()
 		self.setupUi(self)
@@ -296,6 +296,10 @@ class EnglishApp(Ui_UNOlingo, QMainWindow):
 		icon6 = QtGui.QIcon()
 		icon6.addPixmap(QtGui.QPixmap(os.path.join(image_files_path, "BACK.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
 		self.prev_page_strip.setIcon(icon6)
+		
+		icon = QIcon()
+		icon.addFile(os.path.join(image_files_path, "io.github.hoisasa.SharksEmpire-English.ico"), QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+		self.setWindowIcon(icon)
 
 		# Mode choose page section
 		self.prev_page_2.clicked.connect(self.go_back)
@@ -714,6 +718,15 @@ if __name__ == '__main__':
 	if platform.system()=="Windows":
 		db_path = os.path.join(base_path, "Vocabulary", "db.json")
 		tb = TinyDB(db_path)
+		
+		appIcon = QtGui.QIcon()
+		appIcon.addPixmap(QtGui.QPixmap(os.path.join(image_files_path, "io.github.hoisasa.SharksEmpire-English.ico")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
+		app.setWindowIcon(appIcon)
+		
+		import ctypes
+		
+		myappid = 'io.github.hoisasa.SharksEmpire-English'  # arbitrary string
+		ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
 	else:
 		try:
 			db_path = os.path.join(base_path, "Vocabulary", "db.json")

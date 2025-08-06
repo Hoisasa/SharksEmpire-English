@@ -15,7 +15,7 @@
     <img alt="Static Badge" src="https://img.shields.io/badge/TinyDB-DB-587896">
     <img alt="Static Badge" src="https://img.shields.io/badge/PySide-6.9-41CD52?logo=qt">
     <img alt="Static Badge" src="https://img.shields.io/badge/English Level-B2-ba5df0">
-    <img alt="Static Badge" src="https://img.shields.io/badge/Licence-MIT-green">
+    <img alt="Static Badge" src="https://img.shields.io/badge/Licence-GPL3.0-green">
     </p>
 </div>
 
@@ -223,7 +223,7 @@ without additional tuning tts makes around 5% of errors in pronunciation this er
 ### Build
 
 ```bash
-pyinstaller --workpath 'updates/build' --distpath 'updates/dist' audio_dev_ver.spec   
+pyinstaller --workpath 'updates/build' --distpath 'updates/dist' main.spec   
 ```
 
 ## Credits

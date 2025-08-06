@@ -19,17 +19,17 @@ from PySide6.QtWidgets import (QApplication, QCheckBox, QGridLayout, QHBoxLayout
     QLabel, QPushButton, QScrollArea, QSizePolicy,
     QSpacerItem, QStackedWidget, QVBoxLayout, QWidget)
 
-class Ui_UNOlingo(object):
-    def setupUi(self, UNOlingo):
-        if not UNOlingo.objectName():
-            UNOlingo.setObjectName(u"UNOlingo")
-        UNOlingo.resize(1280, 720)
-        UNOlingo.setMinimumSize(QSize(1280, 0))
-        UNOlingo.setMaximumSize(QSize(1280, 720))
+class Ui_SEEnglish(object):
+    def setupUi(self, SEEnglish):
+        if not SEEnglish.objectName():
+            SEEnglish.setObjectName(u"SEEnglish")
+        SEEnglish.resize(1280, 720)
+        SEEnglish.setMinimumSize(QSize(1280, 0))
+        SEEnglish.setMaximumSize(QSize(1280, 720))
         icon = QIcon()
         icon.addFile(u"assets/images/output-onlinepngtools.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        UNOlingo.setWindowIcon(icon)
-        self.verticalLayoutWidget = QWidget(UNOlingo)
+        SEEnglish.setWindowIcon(icon)
+        self.verticalLayoutWidget = QWidget(SEEnglish)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
         self.verticalLayoutWidget.setGeometry(QRect(-10, 0, 1301, 771))
         self.Base_Layout = QVBoxLayout(self.verticalLayoutWidget)
@@ -673,43 +673,43 @@ class Ui_UNOlingo(object):
         self.Base_Layout.addItem(self.verticalSpacer_2)
 
 
-        self.retranslateUi(UNOlingo)
+        self.retranslateUi(SEEnglish)
 
         self.pages.setCurrentIndex(2)
 
 
-        QMetaObject.connectSlotsByName(UNOlingo)
+        QMetaObject.connectSlotsByName(SEEnglish)
     # setupUi
 
-    def retranslateUi(self, UNOlingo):
-        UNOlingo.setWindowTitle(QCoreApplication.translate("UNOlingo", u"Shark's Empire: English", None))
-        self.MistakesLabel.setText(QCoreApplication.translate("UNOlingo", u"<html><head/><body><p><span style=\" font-size:36pt; font-weight:700; color:#00007f;\">Mistakes:</span></p></body></html>", None))
-        self.Grade3.setText(QCoreApplication.translate("UNOlingo", u"<html><head/><body><p><br/></p></body></html>", None))
-        self.Grade4.setText(QCoreApplication.translate("UNOlingo", u"<html><head/><body><p><br/></p></body></html>", None))
-        self.GradesLabel.setText(QCoreApplication.translate("UNOlingo", u"<html><head/><body><p><span style=\" font-size:36pt; font-weight:700; color:#00007f;\">Recent grades:</span></p></body></html>", None))
-        self.ResultsLabel.setText(QCoreApplication.translate("UNOlingo", u"<html><head/><body><p><span style=\" font-size:48pt; font-weight:700; color:#810031;\">Results</span></p></body></html>", None))
-        self.Grade1.setText(QCoreApplication.translate("UNOlingo", u"<html><head/><body><p><br/></p></body></html>", None))
-        self.Grade5.setText(QCoreApplication.translate("UNOlingo", u"<html><head/><body><p><br/></p></body></html>", None))
-        self.SaveAndExit.setText(QCoreApplication.translate("UNOlingo", u"Save and switch Lesson", None))
-        self.Repeat.setText(QCoreApplication.translate("UNOlingo", u"Next lesson", None))
-        self.AnswersLabel.setText(QCoreApplication.translate("UNOlingo", u"<html><head/><body><p><span style=\" font-size:36pt; font-weight:700; color:#00007f;\">Correct answers: </span></p></body></html>", None))
-        self.Grade2.setText(QCoreApplication.translate("UNOlingo", u"<html><head/><body><p><br/></p></body></html>", None))
-        self.The_word.setText(QCoreApplication.translate("UNOlingo", u"WordLabel", None))
+    def retranslateUi(self, SEEnglish):
+        SEEnglish.setWindowTitle(QCoreApplication.translate("SEEnglish", u"Shark's Empire: English", None))
+        self.MistakesLabel.setText(QCoreApplication.translate("SEEnglish", u"<html><head/><body><p><span style=\" font-size:36pt; font-weight:700; color:#00007f;\">Mistakes:</span></p></body></html>", None))
+        self.Grade3.setText(QCoreApplication.translate("SEEnglish", u"<html><head/><body><p><br/></p></body></html>", None))
+        self.Grade4.setText(QCoreApplication.translate("SEEnglish", u"<html><head/><body><p><br/></p></body></html>", None))
+        self.GradesLabel.setText(QCoreApplication.translate("SEEnglish", u"<html><head/><body><p><span style=\" font-size:36pt; font-weight:700; color:#00007f;\">Recent grades:</span></p></body></html>", None))
+        self.ResultsLabel.setText(QCoreApplication.translate("SEEnglish", u"<html><head/><body><p><span style=\" font-size:48pt; font-weight:700; color:#810031;\">Results</span></p></body></html>", None))
+        self.Grade1.setText(QCoreApplication.translate("SEEnglish", u"<html><head/><body><p><br/></p></body></html>", None))
+        self.Grade5.setText(QCoreApplication.translate("SEEnglish", u"<html><head/><body><p><br/></p></body></html>", None))
+        self.SaveAndExit.setText(QCoreApplication.translate("SEEnglish", u"Save and switch Lesson", None))
+        self.Repeat.setText(QCoreApplication.translate("SEEnglish", u"Next lesson", None))
+        self.AnswersLabel.setText(QCoreApplication.translate("SEEnglish", u"<html><head/><body><p><span style=\" font-size:36pt; font-weight:700; color:#00007f;\">Correct answers: </span></p></body></html>", None))
+        self.Grade2.setText(QCoreApplication.translate("SEEnglish", u"<html><head/><body><p><br/></p></body></html>", None))
+        self.The_word.setText(QCoreApplication.translate("SEEnglish", u"WordLabel", None))
         self.repeat_audio.setText("")
         self.restart_lesson.setText("")
-        self.word_translation.setText(QCoreApplication.translate("UNOlingo", u"Translation", None))
-        self.word_transcription.setText(QCoreApplication.translate("UNOlingo", u"Transcription", None))
-        self.checkBox.setText(QCoreApplication.translate("UNOlingo", u"Show mistakes", None))
-        self.Layout_type.setText(QCoreApplication.translate("UNOlingo", u"Buttons layout ", None))
+        self.word_translation.setText(QCoreApplication.translate("SEEnglish", u"Translation", None))
+        self.word_transcription.setText(QCoreApplication.translate("SEEnglish", u"Transcription", None))
+        self.checkBox.setText(QCoreApplication.translate("SEEnglish", u"Show mistakes", None))
+        self.Layout_type.setText(QCoreApplication.translate("SEEnglish", u"Buttons layout ", None))
         self.L_answer.setText("")
         self.W_answer.setText("")
-        self.translation.setText(QCoreApplication.translate("UNOlingo", u"Reveal Translation", None))
+        self.translation.setText(QCoreApplication.translate("SEEnglish", u"Reveal Translation", None))
         self.prev_page.setText("")
         self.points_display.setText("")
         self.prev_page_2.setText("")
-        self.mode3ex.setText(QCoreApplication.translate("UNOlingo", u"\u0415\u043a\u0437\u0430\u043c\u0435\u043d", None))
-        self.mode_choose.setText(QCoreApplication.translate("UNOlingo", u"\u0412\u044b\u0431\u043e\u0440 \u0440\u0435\u0436\u0438\u043c\u0430", None))
-        self.mode2stud.setText(QCoreApplication.translate("UNOlingo", u"\u0418\u0437\u0443\u0447\u0435\u043d\u0438\u0435 \u0441\u043b\u043e\u0432", None))
-        self.mode1intro.setText(QCoreApplication.translate("UNOlingo", u"\u0421\u043b\u043e\u0432\u0430 \u0432 \u044d\u0442\u043e\u043c \u0443\u0440\u043e\u043a\u0435", None))
+        self.mode3ex.setText(QCoreApplication.translate("SEEnglish", u"\u0415\u043a\u0437\u0430\u043c\u0435\u043d", None))
+        self.mode_choose.setText(QCoreApplication.translate("SEEnglish", u"\u0412\u044b\u0431\u043e\u0440 \u0440\u0435\u0436\u0438\u043c\u0430", None))
+        self.mode2stud.setText(QCoreApplication.translate("SEEnglish", u"\u0418\u0437\u0443\u0447\u0435\u043d\u0438\u0435 \u0441\u043b\u043e\u0432", None))
+        self.mode1intro.setText(QCoreApplication.translate("SEEnglish", u"\u0421\u043b\u043e\u0432\u0430 \u0432 \u044d\u0442\u043e\u043c \u0443\u0440\u043e\u043a\u0435", None))
     # retranslateUi
 
