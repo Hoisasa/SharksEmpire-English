@@ -1,7 +1,8 @@
 # -*- mode: python ; coding: utf-8 -*-
 
 added_files = [
-    ('assets', 'assets'),
+    ('assets/audiofiles', 'assets/audiofiles'),
+    ('assets/images', 'assets/images'),
     ('Vocabulary', 'Vocabulary'),
 ]
 

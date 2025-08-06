@@ -14,7 +14,7 @@ for entry in tb:
     audio_base_path = os.path.join(base_path, 'assets', 'audiofiles')
 
     file_path = os.path.join(audio_base_path, f"{entry['Sub group'].replace('/', '-').replace(':', '-')}",
-                                  f"{entry['Name'].split(' (')[0]}.wav")
+                                  f"{entry['Name'].split(' (')[0]}.ogg")
 
     try:
         with open(file_path, 'rb'):
