@@ -61,19 +61,39 @@
     <launchable type="desktop-id">io.github.hoisasa.SharksEmpire-English.desktop</launchable>
     <screenshots>
         <screenshot type="default">
-            <image>https://raw.githubusercontent.com/Hoisasa/SharksEmpire-English/master/assets/screenshots/Screenshot_20250804_163503.png</image>
-            <caption>Studying screen</caption>
+            <image>https://raw.githubusercontent.com/Hoisasa/SharksEmpire-English/v0.2.2/assets/screenshots/Screenshot_20250806_233734.png</image>
+            <caption>Studying screen: translation hidden</caption>
+            <caption xml:lang="ru">Окно урока</caption>
+        </screenshot>
+        <screenshot type="default">
+            <image>https://raw.githubusercontent.com/Hoisasa/SharksEmpire-English/v0.2.2/assets/screenshots/Screenshot_20250806_233748.png</image>
+            <caption>Studying screen: translation revealed</caption>
+            <caption xml:lang="ru">Окно урока</caption>
+        </screenshot>
+        <screenshot type="default">
+            <image>https://raw.githubusercontent.com/Hoisasa/SharksEmpire-English/v0.2.2/assets/screenshots/Screenshot_20250806_233702.png</image>
+            <caption>Overview mode</caption>
             <caption xml:lang="ru">Окно урока</caption>
         </screenshot>
         <screenshot>
-            <image>https://raw.githubusercontent.com/Hoisasa/SharksEmpire-English/master/assets/screenshots/Screenshot_20250804_163408.png</image>
-            <caption>Selecting group of words</caption>
+            <image>https://raw.githubusercontent.com/Hoisasa/SharksEmpire-English/v0.2.2/assets/screenshots/Screenshot_20250806_233801.png</image>
+            <caption>Alternative buttons layout</caption>
             <caption xml:lang="ru">Выбор слов для изучения</caption>
         </screenshot>
         <screenshot>
-            <image>https://raw.githubusercontent.com/Hoisasa/SharksEmpire-English/master/assets/screenshots/Screenshot_20250804_163524.png</image>
+            <image>https://raw.githubusercontent.com/Hoisasa/SharksEmpire-English/v0.2.2/assets/screenshots/Screenshot_20250806_233854.png</image>
+            <caption>Alternative buttons layout</caption>
+            <caption xml:lang="ru">Выбор слов для изучения</caption>
+        </screenshot>
+        <screenshot>
+            <image>https://raw.githubusercontent.com/Hoisasa/SharksEmpire-English/v0.2.2/assets/screenshots/Screenshot_20250806_214847.png</image>
             <caption>Study mode choosing screen</caption>
             <caption xml:lang="ru">Меню выбора режима обучения</caption>
+        </screenshot>
+        <screenshot>
+            <image>https://raw.githubusercontent.com/Hoisasa/SharksEmpire-English/v0.2.2/assets/screenshots/Screenshot_20250806_214837.png</image>
+            <caption>Selecting group of words</caption>
+            <caption xml:lang="ru">Выбор слов для изучения</caption>
         </screenshot>
     </screenshots>
 

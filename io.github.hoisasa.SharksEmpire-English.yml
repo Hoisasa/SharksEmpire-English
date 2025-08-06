@@ -47,4 +47,4 @@ modules:
     sources:
       - type: archive
         url: https://github.com/Hoisasa/SharksEmpire-English/archive/refs/tags/v0.2.2.tar.gz
-        sha256: 3be29ca046817653885b5aa298d635e9a5c8eb78fd8619af25e4cd98785750d3
+        sha256: 00a4cfc11390fc4b0ace7f6c9e16d996eb6ca8834a21dd5824c938b07f2cb93a
