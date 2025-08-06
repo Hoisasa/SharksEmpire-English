@@ -248,6 +248,9 @@
              <kerning>false</kerning>
             </font>
            </property>
+           <property name="focusPolicy">
+            <enum>Qt::FocusPolicy::TabFocus</enum>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton {
     color: #eee;
@@ -301,6 +304,9 @@ QPushButton:pressed {
              <bold>true</bold>
              <kerning>false</kerning>
             </font>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::FocusPolicy::TabFocus</enum>
            </property>
            <property name="styleSheet">
             <string notr="true">QPushButton {
@@ -476,6 +482,9 @@ QPushButton:pressed {
               <height>100</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::FocusPolicy::TabFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
     color: #333;
@@ -487,7 +496,6 @@ QPushButton:pressed {
         radius: 1.35, stop: 0 #fff, stop: 1 #ccc
         );
     padding: 5px;
-    outline: none;
     }
 
 QPushButton:hover {
@@ -544,6 +552,9 @@ QPushButton:pressed {
               <height>100</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::FocusPolicy::TabFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
     color: #333;
@@ -555,7 +566,6 @@ QPushButton:pressed {
         radius: 1.35, stop: 0 #fff, stop: 1 #ccc
         );
     padding: 5px;
-    outline: none;
     }
 
 QPushButton:hover {
@@ -755,6 +765,9 @@ QPushButton:pressed {
                <height>70</height>
               </size>
              </property>
+             <property name="focusPolicy">
+              <enum>Qt::FocusPolicy::TabFocus</enum>
+             </property>
              <property name="styleSheet">
               <string notr="true">QPushButton {
     color: #333;
@@ -766,7 +779,6 @@ QPushButton:pressed {
         radius: 1.35, stop: 0 #fff, stop: 1 #c71050
         );
     padding: 5px;
-    outline: none;
     }
 
 QPushButton:hover {
@@ -814,6 +826,9 @@ QPushButton:pressed {
                <height>70</height>
               </size>
              </property>
+             <property name="focusPolicy">
+              <enum>Qt::FocusPolicy::TabFocus</enum>
+             </property>
              <property name="styleSheet">
               <string notr="true">QPushButton {
     color: #333;
@@ -825,7 +840,6 @@ QPushButton:pressed {
         radius: 1.35, stop: 0 #fff, stop: 1 #10a350
         );
     padding: 5px;
-    outline: none;
     }
 
 QPushButton:hover {
@@ -933,6 +947,9 @@ QPushButton:pressed {
                <bold>true</bold>
               </font>
              </property>
+             <property name="focusPolicy">
+              <enum>Qt::FocusPolicy::TabFocus</enum>
+             </property>
              <property name="styleSheet">
               <string notr="true">QPushButton {
     color: #eee;
@@ -1034,6 +1051,9 @@ QPushButton:pressed {
            <pointsize>9</pointsize>
           </font>
          </property>
+         <property name="focusPolicy">
+          <enum>Qt::FocusPolicy::TabFocus</enum>
+         </property>
          <property name="styleSheet">
           <string notr="true">QPushButton {
     color: #333;
@@ -1045,8 +1065,6 @@ QPushButton:pressed {
         radius: 1.35, stop: 0 #fff, stop: 1 rgb(199, 20, 47)
         );
     padding: 5px;
-    outline: none;
-    box-shadow: none;
     }
 
 QPushButton:hover {
@@ -1181,6 +1199,9 @@ QPushButton:pressed {
               <pointsize>9</pointsize>
              </font>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::FocusPolicy::TabFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
     color: #333;
@@ -1267,6 +1288,9 @@ QPushButton:pressed {
                <pointsize>32</pointsize>
               </font>
              </property>
+             <property name="focusPolicy">
+              <enum>Qt::FocusPolicy::TabFocus</enum>
+             </property>
              <property name="text">
               <string>Екзамен</string>
              </property>
@@ -1316,6 +1340,9 @@ QPushButton:pressed {
                <pointsize>32</pointsize>
               </font>
              </property>
+             <property name="focusPolicy">
+              <enum>Qt::FocusPolicy::TabFocus</enum>
+             </property>
              <property name="text">
               <string>Изучение слов</string>
              </property>
@@ -1339,6 +1366,9 @@ QPushButton:pressed {
               <font>
                <pointsize>32</pointsize>
               </font>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::FocusPolicy::TabFocus</enum>
              </property>
              <property name="autoFillBackground">
               <bool>false</bool>
