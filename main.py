@@ -523,8 +523,8 @@ class EnglishApp(Ui_SEEnglish, QMainWindow):
 			self.L_answer.setEnabled(True)
 
 		QApplication.processEvents()
-		self.file_path = os.path.join(audio_base_path, f"{self.wd.sub_group().replace('/', '-')}",
-									  f"{self.wd.name().split(' (')[0]}.wav")
+		self.file_path = os.path.join(audio_base_path, f"{self.wd.sub_group().replace('/', '-').replace(':', '-')}",
+									  f"{self.wd.name().split(' (')[0]}.ogg")
 		self.voice_word()
 
 	def progress_value(self, querry, group):
