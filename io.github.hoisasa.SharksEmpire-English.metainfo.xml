@@ -65,12 +65,12 @@
             <caption>Studying screen: translation hidden</caption>
             <caption xml:lang="ru">Окно урока</caption>
         </screenshot>
-        <screenshot type="default">
+        <screenshot>
             <image>https://raw.githubusercontent.com/Hoisasa/SharksEmpire-English/v0.2.2/assets/screenshots/Screenshot_20250806_233748.png</image>
             <caption>Studying screen: translation revealed</caption>
             <caption xml:lang="ru">Окно урока</caption>
         </screenshot>
-        <screenshot type="default">
+        <screenshot>
             <image>https://raw.githubusercontent.com/Hoisasa/SharksEmpire-English/v0.2.2/assets/screenshots/Screenshot_20250806_233702.png</image>
             <caption>Overview mode</caption>
             <caption xml:lang="ru">Окно урока</caption>
