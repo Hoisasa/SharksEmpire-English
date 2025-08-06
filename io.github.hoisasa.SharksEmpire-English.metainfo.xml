@@ -8,7 +8,7 @@
     </branding>
 
     <icon type="stock">io.github.hoisasa.SharksEmpire-English</icon>
-    <icon type="remote">https://raw.githubusercontent.com/Hoisasa/SharksEmpire-English/master/hicolor/512x512/io.github.hoisasa.SharksEmpire-English.png</icon>
+    <icon type="remote">https://raw.githubusercontent.com/Hoisasa/SharksEmpire-English/v0.2.2/hicolor/512x512/io.github.hoisasa.SharksEmpire-English.png</icon>
 
     <name>Sharks Empire: English</name>
     <summary>Learn vocabulary with flashcards</summary>
