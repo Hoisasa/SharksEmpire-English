@@ -101,6 +101,7 @@ class Ui_SEEnglish(object):
         font.setBold(True)
         font.setKerning(False)
         self.SaveAndExit.setFont(font)
+        self.SaveAndExit.setFocusPolicy(Qt.FocusPolicy.TabFocus)
         self.SaveAndExit.setStyleSheet(u"QPushButton {\n"
 "    color: #eee;\n"
 "    border: none;\n"
@@ -135,6 +136,7 @@ class Ui_SEEnglish(object):
         self.Repeat.setMinimumSize(QSize(500, 70))
         self.Repeat.setMaximumSize(QSize(500, 70))
         self.Repeat.setFont(font)
+        self.Repeat.setFocusPolicy(Qt.FocusPolicy.TabFocus)
         self.Repeat.setStyleSheet(u"QPushButton {\n"
 "    color: #eee;\n"
 "    border: none;\n"
@@ -206,6 +208,7 @@ class Ui_SEEnglish(object):
         self.repeat_audio.setGeometry(QRect(250, 30, 100, 100))
         self.repeat_audio.setMinimumSize(QSize(100, 100))
         self.repeat_audio.setMaximumSize(QSize(100, 100))
+        self.repeat_audio.setFocusPolicy(Qt.FocusPolicy.TabFocus)
         self.repeat_audio.setStyleSheet(u"QPushButton {\n"
 "    color: #333;\n"
 "    border: none;\n"
@@ -216,7 +219,6 @@ class Ui_SEEnglish(object):
 "        radius: 1.35, stop: 0 #fff, stop: 1 #ccc\n"
 "        );\n"
 "    padding: 5px;\n"
-"    outline: none;\n"
 "    }\n"
 "\n"
 "QPushButton:hover {\n"
@@ -243,6 +245,7 @@ class Ui_SEEnglish(object):
         self.restart_lesson.setGeometry(QRect(930, 30, 100, 100))
         self.restart_lesson.setMinimumSize(QSize(100, 100))
         self.restart_lesson.setMaximumSize(QSize(100, 100))
+        self.restart_lesson.setFocusPolicy(Qt.FocusPolicy.TabFocus)
         self.restart_lesson.setStyleSheet(u"QPushButton {\n"
 "    color: #333;\n"
 "    border: none;\n"
@@ -253,7 +256,6 @@ class Ui_SEEnglish(object):
 "        radius: 1.35, stop: 0 #fff, stop: 1 #ccc\n"
 "        );\n"
 "    padding: 5px;\n"
-"    outline: none;\n"
 "    }\n"
 "\n"
 "QPushButton:hover {\n"
@@ -321,6 +323,7 @@ class Ui_SEEnglish(object):
         self.L_answer.setObjectName(u"L_answer")
         self.L_answer.setMinimumSize(QSize(0, 70))
         self.L_answer.setMaximumSize(QSize(16777215, 70))
+        self.L_answer.setFocusPolicy(Qt.FocusPolicy.TabFocus)
         self.L_answer.setStyleSheet(u"QPushButton {\n"
 "    color: #333;\n"
 "    border: none;\n"
@@ -331,7 +334,6 @@ class Ui_SEEnglish(object):
 "        radius: 1.35, stop: 0 #fff, stop: 1 #c71050\n"
 "        );\n"
 "    padding: 5px;\n"
-"    outline: none;\n"
 "    }\n"
 "\n"
 "QPushButton:hover {\n"
@@ -359,6 +361,7 @@ class Ui_SEEnglish(object):
         self.W_answer.setObjectName(u"W_answer")
         self.W_answer.setMinimumSize(QSize(0, 70))
         self.W_answer.setMaximumSize(QSize(16777215, 70))
+        self.W_answer.setFocusPolicy(Qt.FocusPolicy.TabFocus)
         self.W_answer.setStyleSheet(u"QPushButton {\n"
 "    color: #333;\n"
 "    border: none;\n"
@@ -369,7 +372,6 @@ class Ui_SEEnglish(object):
 "        radius: 1.35, stop: 0 #fff, stop: 1 #10a350\n"
 "        );\n"
 "    padding: 5px;\n"
-"    outline: none;\n"
 "    }\n"
 "\n"
 "QPushButton:hover {\n"
@@ -417,6 +419,7 @@ class Ui_SEEnglish(object):
         font4.setPointSize(24)
         font4.setBold(True)
         self.translation.setFont(font4)
+        self.translation.setFocusPolicy(Qt.FocusPolicy.TabFocus)
         self.translation.setStyleSheet(u"QPushButton {\n"
 "    color: #eee;\n"
 "    border: none;\n"
@@ -467,6 +470,7 @@ class Ui_SEEnglish(object):
         font5 = QFont()
         font5.setPointSize(9)
         self.prev_page.setFont(font5)
+        self.prev_page.setFocusPolicy(Qt.FocusPolicy.TabFocus)
         self.prev_page.setStyleSheet(u"QPushButton {\n"
 "    color: #333;\n"
 "    border: none;\n"
@@ -477,8 +481,6 @@ class Ui_SEEnglish(object):
 "        radius: 1.35, stop: 0 #fff, stop: 1 rgb(199, 20, 47)\n"
 "        );\n"
 "    padding: 5px;\n"
-"    outline: none;\n"
-"    box-shadow: none;\n"
 "    }\n"
 "\n"
 "QPushButton:hover {\n"
@@ -535,6 +537,7 @@ class Ui_SEEnglish(object):
         self.prev_page_2.setMinimumSize(QSize(100, 70))
         self.prev_page_2.setMaximumSize(QSize(100, 70))
         self.prev_page_2.setFont(font5)
+        self.prev_page_2.setFocusPolicy(Qt.FocusPolicy.TabFocus)
         self.prev_page_2.setStyleSheet(u"QPushButton {\n"
 "    color: #333;\n"
 "    border: none;\n"
@@ -579,6 +582,7 @@ class Ui_SEEnglish(object):
         self.mode3ex.setMinimumSize(QSize(700, 70))
         self.mode3ex.setMaximumSize(QSize(700, 16777215))
         self.mode3ex.setFont(font2)
+        self.mode3ex.setFocusPolicy(Qt.FocusPolicy.TabFocus)
 
         self.gridLayout.addWidget(self.mode3ex, 6, 0, 1, 1)
 
@@ -599,6 +603,7 @@ class Ui_SEEnglish(object):
         self.mode2stud.setMinimumSize(QSize(700, 70))
         self.mode2stud.setMaximumSize(QSize(700, 16777215))
         self.mode2stud.setFont(font2)
+        self.mode2stud.setFocusPolicy(Qt.FocusPolicy.TabFocus)
 
         self.gridLayout.addWidget(self.mode2stud, 5, 0, 1, 1)
 
@@ -607,6 +612,7 @@ class Ui_SEEnglish(object):
         self.mode1intro.setMinimumSize(QSize(700, 70))
         self.mode1intro.setMaximumSize(QSize(700, 16777215))
         self.mode1intro.setFont(font2)
+        self.mode1intro.setFocusPolicy(Qt.FocusPolicy.TabFocus)
         self.mode1intro.setAutoFillBackground(False)
 
         self.gridLayout.addWidget(self.mode1intro, 2, 0, 1, 1)

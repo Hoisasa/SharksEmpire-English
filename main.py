@@ -439,6 +439,10 @@ class EnglishApp(Ui_SEEnglish, QMainWindow):
 		elif self.study_mode == 'mode1intro' or self.study_mode == 'mode3ex':
 			full_list = tb.search(where("Sub group") == self.group_name)
 
+
+		if self.study_mode == "mode3ex":
+			shuffle_to_learn(full_list)
+
 		self.size = len(full_list)
 
 		self.word_iterating = iter(full_list)
