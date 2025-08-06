@@ -148,7 +148,6 @@ class EnglishApp(Ui_SEEnglish, QMainWindow):
 		self.mistakes = []
 		self.glow = False
 		self.Flag = False
-		self.translation_flag = False
 		self.dock = None  # MistakesDock()
 
 		self.grades_table = tb.table('exam grades')
@@ -369,19 +368,18 @@ class EnglishApp(Ui_SEEnglish, QMainWindow):
 			self.word_translation.setVisible(True)
 
 	def answer(self):
-		if self.Layout_type.isChecked() and not self.translation_flag:
-			self.translation_flag = True
-			self.reveal_translation()
+		if self.Layout_type.isChecked() and self.word_translation.isHidden():
+			self.word_translation.setVisible(True)
 			return
-		elif self.translation_flag:
-			self.translation_flag = False
 
 		# Flag is study mode. not Flag is exam mode
-		mark = 1 if self.Flag else 3
-		mark *= -1 if self.sender().objectName() == self.L_answer.objectName() else 1
-		self.mark(mark)
-		if self.sender().objectName() == self.L_answer.objectName():
+		wrong = self.sender().objectName() == "L_answer"
+		exam = not self.Flag
+		mark = 3 if exam else 1
+		mark *= -1 if wrong else 1
+		if wrong:
 			self.mistakes.insert(0, self.current_word)
+		self.mark(mark)
 		self.word_iterator()
 
 	def choose_next_lesson(self):
