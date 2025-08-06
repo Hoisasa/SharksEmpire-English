@@ -610,6 +610,8 @@ class EnglishApp(Ui_SEEnglish, QMainWindow):
 		self.L_answer.setVisible(on_off)
 		self.points_display.setVisible(on_off)
 		self.repeat_audio.setEnabled(on_off)
+		self.checkBox.setVisible(on_off)
+		self.Layout_type.setVisible(on_off)
 
 	def	toggle_translation(self):
 		if self.study_mode == 'mode1intro':
