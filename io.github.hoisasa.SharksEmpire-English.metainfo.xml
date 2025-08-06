@@ -87,10 +87,10 @@
     </requires>
 
     <releases>
-        <release version="0.2.2" date="2025-08-04">
-
+        <release version="0.2.2" date="2025-08-06">
+        <url type="details">https://github.com/Hoisasa/SharksEmpire-English/releases/tag/v0.2.2</url>
             <description>
-                <p>Launching app on Linux</p>
+                <p>Releasing app on Linux</p>
                 <p xml:lang="ru">Запуск на линукс!</p>
 
                 <ul>
@@ -108,7 +108,6 @@
 
                     <li>Translation button now correctly displayed</li>
                     <li xml:lang="ru">Кнопка "перевод" теперь корректно отображается</li>
-
                 </ul>
             </description>
         </release>
