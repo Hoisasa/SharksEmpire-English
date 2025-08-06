@@ -180,7 +180,7 @@ class Ui_SEEnglish(object):
         self.Lesson_screen.setObjectName(u"Lesson_screen")
         self.verticalLayoutWidget_2 = QWidget(self.Lesson_screen)
         self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
-        self.verticalLayoutWidget_2.setGeometry(QRect(0, 0, 1282, 591))
+        self.verticalLayoutWidget_2.setGeometry(QRect(0, 0, 1447, 625))
         self.Main_Study_Layout = QVBoxLayout(self.verticalLayoutWidget_2)
         self.Main_Study_Layout.setSpacing(0)
         self.Main_Study_Layout.setObjectName(u"Main_Study_Layout")
@@ -191,8 +191,8 @@ class Ui_SEEnglish(object):
 
         self.Center_widget = QWidget(self.verticalLayoutWidget_2)
         self.Center_widget.setObjectName(u"Center_widget")
-        self.Center_widget.setMinimumSize(QSize(0, 220))
-        self.Center_widget.setMaximumSize(QSize(16777215, 200))
+        self.Center_widget.setMinimumSize(QSize(0, 300))
+        self.Center_widget.setMaximumSize(QSize(16777215, 260))
         self.The_word = QLabel(self.Center_widget)
         self.The_word.setObjectName(u"The_word")
         self.The_word.setGeometry(QRect(10, 40, 1271, 110))
@@ -205,7 +205,7 @@ class Ui_SEEnglish(object):
         self.The_word.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.repeat_audio = QPushButton(self.Center_widget)
         self.repeat_audio.setObjectName(u"repeat_audio")
-        self.repeat_audio.setGeometry(QRect(250, 30, 100, 100))
+        self.repeat_audio.setGeometry(QRect(210, 150, 100, 100))
         self.repeat_audio.setMinimumSize(QSize(100, 100))
         self.repeat_audio.setMaximumSize(QSize(100, 100))
         self.repeat_audio.setFocusPolicy(Qt.FocusPolicy.TabFocus)
@@ -242,7 +242,7 @@ class Ui_SEEnglish(object):
         self.restart_lesson = QPushButton(self.Center_widget)
         self.restart_lesson.setObjectName(u"restart_lesson")
         self.restart_lesson.setEnabled(True)
-        self.restart_lesson.setGeometry(QRect(930, 30, 100, 100))
+        self.restart_lesson.setGeometry(QRect(980, 150, 100, 100))
         self.restart_lesson.setMinimumSize(QSize(100, 100))
         self.restart_lesson.setMaximumSize(QSize(100, 100))
         self.restart_lesson.setFocusPolicy(Qt.FocusPolicy.TabFocus)
@@ -294,35 +294,31 @@ class Ui_SEEnglish(object):
         self.word_transcription.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.checkBox = QCheckBox(self.Center_widget)
         self.checkBox.setObjectName(u"checkBox")
-        self.checkBox.setGeometry(QRect(1070, 40, 181, 31))
+        self.checkBox.setGeometry(QRect(690, 240, 181, 31))
         font3 = QFont()
         font3.setPointSize(15)
         self.checkBox.setFont(font3)
         self.Layout_type = QCheckBox(self.Center_widget)
         self.Layout_type.setObjectName(u"Layout_type")
         self.Layout_type.setEnabled(True)
-        self.Layout_type.setGeometry(QRect(1070, 80, 181, 31))
+        self.Layout_type.setGeometry(QRect(400, 240, 181, 31))
         self.Layout_type.setFont(font3)
         self.Layout_type.setChecked(False)
 
         self.Main_Study_Layout.addWidget(self.Center_widget)
 
-        self.word_centering1 = QSpacerItem(20, 10, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-
-        self.Main_Study_Layout.addItem(self.word_centering1)
-
         self.W_L_button_layout = QHBoxLayout()
-        self.W_L_button_layout.setSpacing(20)
+        self.W_L_button_layout.setSpacing(0)
         self.W_L_button_layout.setObjectName(u"W_L_button_layout")
-        self.W_L_button_layout.setContentsMargins(400, -1, 400, -1)
+        self.W_L_button_layout.setContentsMargins(320, -1, 480, -1)
         self.button_spaceholder2_2 = QSpacerItem(5, 70, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
 
         self.W_L_button_layout.addItem(self.button_spaceholder2_2)
 
         self.L_answer = QPushButton(self.verticalLayoutWidget_2)
         self.L_answer.setObjectName(u"L_answer")
-        self.L_answer.setMinimumSize(QSize(0, 70))
-        self.L_answer.setMaximumSize(QSize(16777215, 70))
+        self.L_answer.setMinimumSize(QSize(240, 70))
+        self.L_answer.setMaximumSize(QSize(240, 70))
         self.L_answer.setFocusPolicy(Qt.FocusPolicy.TabFocus)
         self.L_answer.setStyleSheet(u"QPushButton {\n"
 "    color: #333;\n"
@@ -359,8 +355,8 @@ class Ui_SEEnglish(object):
 
         self.W_answer = QPushButton(self.verticalLayoutWidget_2)
         self.W_answer.setObjectName(u"W_answer")
-        self.W_answer.setMinimumSize(QSize(0, 70))
-        self.W_answer.setMaximumSize(QSize(16777215, 70))
+        self.W_answer.setMinimumSize(QSize(240, 70))
+        self.W_answer.setMaximumSize(QSize(240, 70))
         self.W_answer.setFocusPolicy(Qt.FocusPolicy.TabFocus)
         self.W_answer.setStyleSheet(u"QPushButton {\n"
 "    color: #333;\n"
@@ -403,9 +399,9 @@ class Ui_SEEnglish(object):
         self.Main_Study_Layout.addLayout(self.W_L_button_layout)
 
         self.translation_layout = QHBoxLayout()
-        self.translation_layout.setSpacing(90)
+        self.translation_layout.setSpacing(0)
         self.translation_layout.setObjectName(u"translation_layout")
-        self.translation_layout.setContentsMargins(160, 10, 160, 0)
+        self.translation_layout.setContentsMargins(83, 10, 237, 0)
         self.button_spaceholder2 = QSpacerItem(5, 70, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
 
         self.translation_layout.addItem(self.button_spaceholder2)
@@ -413,8 +409,8 @@ class Ui_SEEnglish(object):
         self.translation = QPushButton(self.verticalLayoutWidget_2)
         self.translation.setObjectName(u"translation")
         self.translation.setEnabled(True)
-        self.translation.setMinimumSize(QSize(0, 70))
-        self.translation.setMaximumSize(QSize(496, 70))
+        self.translation.setMinimumSize(QSize(500, 70))
+        self.translation.setMaximumSize(QSize(520, 70))
         font4 = QFont()
         font4.setPointSize(24)
         font4.setBold(True)
@@ -459,7 +455,7 @@ class Ui_SEEnglish(object):
 
         self.Back_widget = QWidget(self.Lesson_screen)
         self.Back_widget.setObjectName(u"Back_widget")
-        self.Back_widget.setGeometry(QRect(0, 0, 1280, 120))
+        self.Back_widget.setGeometry(QRect(10, 1, 1280, 120))
         self.Back_widget.setMinimumSize(QSize(1280, 120))
         self.Back_widget.setMaximumSize(QSize(1280, 16777215))
         self.prev_page = QPushButton(self.Back_widget)
@@ -529,8 +525,8 @@ class Ui_SEEnglish(object):
         self.Main_Mode_Layout.setContentsMargins(0, 0, 0, 0)
         self.Back_widget_2 = QWidget(self.verticalLayoutWidget_3)
         self.Back_widget_2.setObjectName(u"Back_widget_2")
-        self.Back_widget_2.setMinimumSize(QSize(700, 120))
-        self.Back_widget_2.setMaximumSize(QSize(16777215, 120))
+        self.Back_widget_2.setMinimumSize(QSize(1280, 120))
+        self.Back_widget_2.setMaximumSize(QSize(1280, 120))
         self.prev_page_2 = QPushButton(self.Back_widget_2)
         self.prev_page_2.setObjectName(u"prev_page_2")
         self.prev_page_2.setGeometry(QRect(280, 40, 100, 70))
@@ -577,6 +573,15 @@ class Ui_SEEnglish(object):
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setHorizontalSpacing(15)
+        self.mode2stud = QPushButton(self.verticalLayoutWidget_3)
+        self.mode2stud.setObjectName(u"mode2stud")
+        self.mode2stud.setMinimumSize(QSize(700, 70))
+        self.mode2stud.setMaximumSize(QSize(700, 16777215))
+        self.mode2stud.setFont(font2)
+        self.mode2stud.setFocusPolicy(Qt.FocusPolicy.TabFocus)
+
+        self.gridLayout.addWidget(self.mode2stud, 5, 0, 1, 1)
+
         self.mode3ex = QPushButton(self.verticalLayoutWidget_3)
         self.mode3ex.setObjectName(u"mode3ex")
         self.mode3ex.setMinimumSize(QSize(700, 70))
@@ -585,6 +590,16 @@ class Ui_SEEnglish(object):
         self.mode3ex.setFocusPolicy(Qt.FocusPolicy.TabFocus)
 
         self.gridLayout.addWidget(self.mode3ex, 6, 0, 1, 1)
+
+        self.mode1intro = QPushButton(self.verticalLayoutWidget_3)
+        self.mode1intro.setObjectName(u"mode1intro")
+        self.mode1intro.setMinimumSize(QSize(700, 70))
+        self.mode1intro.setMaximumSize(QSize(700, 16777215))
+        self.mode1intro.setFont(font2)
+        self.mode1intro.setFocusPolicy(Qt.FocusPolicy.TabFocus)
+        self.mode1intro.setAutoFillBackground(False)
+
+        self.gridLayout.addWidget(self.mode1intro, 2, 0, 1, 1)
 
         self.mode_choose = QLabel(self.verticalLayoutWidget_3)
         self.mode_choose.setObjectName(u"mode_choose")
@@ -597,25 +612,6 @@ class Ui_SEEnglish(object):
         self.mode_choose.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.gridLayout.addWidget(self.mode_choose, 1, 0, 1, 1)
-
-        self.mode2stud = QPushButton(self.verticalLayoutWidget_3)
-        self.mode2stud.setObjectName(u"mode2stud")
-        self.mode2stud.setMinimumSize(QSize(700, 70))
-        self.mode2stud.setMaximumSize(QSize(700, 16777215))
-        self.mode2stud.setFont(font2)
-        self.mode2stud.setFocusPolicy(Qt.FocusPolicy.TabFocus)
-
-        self.gridLayout.addWidget(self.mode2stud, 5, 0, 1, 1)
-
-        self.mode1intro = QPushButton(self.verticalLayoutWidget_3)
-        self.mode1intro.setObjectName(u"mode1intro")
-        self.mode1intro.setMinimumSize(QSize(700, 70))
-        self.mode1intro.setMaximumSize(QSize(700, 16777215))
-        self.mode1intro.setFont(font2)
-        self.mode1intro.setFocusPolicy(Qt.FocusPolicy.TabFocus)
-        self.mode1intro.setAutoFillBackground(False)
-
-        self.gridLayout.addWidget(self.mode1intro, 2, 0, 1, 1)
 
         self.verticalSpacer_4 = QSpacerItem(20, 50, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
 
@@ -681,7 +677,7 @@ class Ui_SEEnglish(object):
 
         self.retranslateUi(SEEnglish)
 
-        self.pages.setCurrentIndex(2)
+        self.pages.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(SEEnglish)
@@ -713,9 +709,9 @@ class Ui_SEEnglish(object):
         self.prev_page.setText("")
         self.points_display.setText("")
         self.prev_page_2.setText("")
-        self.mode3ex.setText(QCoreApplication.translate("SEEnglish", u"\u0415\u043a\u0437\u0430\u043c\u0435\u043d", None))
-        self.mode_choose.setText(QCoreApplication.translate("SEEnglish", u"\u0412\u044b\u0431\u043e\u0440 \u0440\u0435\u0436\u0438\u043c\u0430", None))
         self.mode2stud.setText(QCoreApplication.translate("SEEnglish", u"\u0418\u0437\u0443\u0447\u0435\u043d\u0438\u0435 \u0441\u043b\u043e\u0432", None))
+        self.mode3ex.setText(QCoreApplication.translate("SEEnglish", u"\u0415\u043a\u0437\u0430\u043c\u0435\u043d", None))
         self.mode1intro.setText(QCoreApplication.translate("SEEnglish", u"\u0421\u043b\u043e\u0432\u0430 \u0432 \u044d\u0442\u043e\u043c \u0443\u0440\u043e\u043a\u0435", None))
+        self.mode_choose.setText(QCoreApplication.translate("SEEnglish", u"\u0412\u044b\u0431\u043e\u0440 \u0440\u0435\u0436\u0438\u043c\u0430", None))
     # retranslateUi
 

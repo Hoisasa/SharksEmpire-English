@@ -45,7 +45,6 @@ modules:
       - cp main.py /app/lib/se-english/
       - cp Vocabulary/db.json /app/lib/se-english
     sources:
-      - type: dir
-        path: .
-#        path: https://github.com/Hoisasa/SharksEmpire-English/archive/refs/tags/v0.2.2.tar.gz
-        sha256: 11193057271e35e153f58be1a598f73cc28dbfcb292a8ab0eae1fbec6ffd84ba
+      - type: archive
+        url: https://github.com/Hoisasa/SharksEmpire-English/archive/refs/tags/v0.2.2.tar.gz
+        sha256: 119d2ed146e2096994bc067724fb7cb3f9b2b34df06cbf072eebbdd53cd635b9
