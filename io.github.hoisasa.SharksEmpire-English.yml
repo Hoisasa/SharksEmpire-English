@@ -24,19 +24,10 @@ cleanup:
 
 modules:
   - "python3-requirements-flat.json"
-  - name: portaudio-lib
-    buildsystem: autotools
-    config-opts:
-      - --disable-static
-      - --without-jack
-    sources:
-      - type: archive
-        url: https://github.com/PortAudio/portaudio/archive/refs/tags/v19.7.0.tar.gz
-        sha256: 5af29ba58bbdbb7bbcefaaecc77ec8fc413f0db6f4c4e286c40c3e1b83174fa0
-
   - name: sharks-empire
     buildsystem: simple
     build-commands:
+      - install -Dm644 io.github.hoisasa.SharksEmpire-English.metainfo.xml /app/share/metainfo/io.github.hoisasa.SharksEmpire-English.metainfo.xml
       - install -Dm755 launcher.sh /app/bin/se-english
       - install -Dm644 io.github.hoisasa.SharksEmpire-English.desktop /app/share/applications/io.github.hoisasa.SharksEmpire-English.desktop
       - install -Dm644 hicolor/16x16/io.github.hoisasa.SharksEmpire-English.png /app/share/icons/hicolor/16x16/apps/io.github.hoisasa.SharksEmpire-English.png
@@ -46,7 +37,8 @@ modules:
       - install -Dm644 hicolor/256x256/io.github.hoisasa.SharksEmpire-English.png /app/share/icons/hicolor/256x256/apps/io.github.hoisasa.SharksEmpire-English.png
       - install -Dm644 hicolor/512x512/io.github.hoisasa.SharksEmpire-English.png /app/share/icons/hicolor/512x512/apps/io.github.hoisasa.SharksEmpire-English.png
       - mkdir -p /app/lib/se-english/assets
-      - cp -r assets /app/lib/se-english
+      - cp -r assets/audiofiles /app/lib/se-english/assets
+      - cp -r assets/images /app/lib/se-english/assets
       - mkdir -p /app/lib/se-english/src/circular_progress
       - mkdir /app/lib/se-english/GUI
       - cp src/circular_progress/circular_progressbar.py /app/lib/se-english/src/circular_progress
@@ -54,6 +46,5 @@ modules:
       - cp main.py /app/lib/se-english/
       - cp Vocabulary/db.json /app/lib/se-english
     sources:
-      - type: archive
-        url: https://github.com/Hoisasa/SharksEmpire-English/archive/refs/tags/v0.2.2.tar.gz
-        sha256: a88a5d3f55276212e5aa3bc0a5d245448ab693becb1741d1f11f99046f4d140f
+      - type: dir
+        path: .
