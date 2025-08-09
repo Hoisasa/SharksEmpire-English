@@ -5,6 +5,7 @@ tb = TinyDB('db.json')
 
 valid = 0
 total = 0
+lowerone = 0
 for entry in tb:
 #     entry = tb.get(doc_id=3)
 
@@ -24,5 +25,9 @@ for entry in tb:
         print(f'Filepath causing error:  {relative_path}')
 
     total += 1
+    if entry['weight']:
+        lowerone += 1
 
-print(valid, '/', total)
+print('assets check: ', valid, '/', total)
+print('weight check: ', lowerone, '/', total)
+print('tables check: ', tb.tables())

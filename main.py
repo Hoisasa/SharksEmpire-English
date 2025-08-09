@@ -13,27 +13,49 @@
 
 
 import os
+QT_LOGGING_RULES="*.multimedia.*=true"
+
 import platform
 import random
 import sys
+import threading
 
-import soundfile as sf
-import sounddevice as sd
 
 from PySide6 import QtCore, QtGui
-from PySide6.QtCore import QPropertyAnimation, Qt, QEasingCurve, QSize
-from PySide6.QtGui import QColor, QFont, QPainterPath, QRegion, QIcon
+from PySide6.QtMultimedia import QMediaPlayer, QAudioOutput, QMediaFormat
+from PySide6.QtCore import QPropertyAnimation, Qt, QEasingCurve, QSize, QUrl, QLoggingCategory
+from PySide6.QtGui import QColor, QFont, QIcon
 from PySide6.QtWidgets import (
 	QApplication, QMainWindow, QGraphicsDropShadowEffect,
 	QPushButton, QLabel, QSpacerItem, QSizePolicy
 )
 
 from tinydb import TinyDB, Query, where
+from dataclasses import dataclass
 
 from src.circular_progress.circular_progressbar import CircularProgress
 from GUI.python_gui import Ui_SEEnglish
 
+QLoggingCategory.setFilterRules("qt.multimedia.ffmpeg=false")
 
+# AI generated filters not fixed by qt error (or ffmpeg presumably)
+# The error itself doesn't affect functionality but floods stderr on each opened file
+class StderrFilter:
+	def __init__(self):
+		self.real_stderr = os.fdopen(os.dup(2), 'w')   # backup
+		self.pipe_r, self.pipe_w = os.pipe()
+		os.dup2(self.pipe_w, 2)                        # make print() & FFmpeg go into pipe
+		os.close(self.pipe_w)
+
+		import threading
+		threading.Thread(target=self._drain, daemon=True).start()
+
+	def _drain(self):
+		with os.fdopen(self.pipe_r, 'r') as r:
+			for line in r:
+				if "Could not update timestamps for discarded samples" not in line:
+					self.real_stderr.write(line)
+					self.real_stderr.flush()
 
 def get_to_learn_list(group_name):
 	return tb.search((where("Sub group") == group_name) & (Word.weight > 0.0))
@@ -109,24 +131,13 @@ class TransparentShadowLabel(QLabel):
 		self.shadow_anim.setDuration(1500)
 		self.shadow_anim.setEasingCurve(QEasingCurve.Type.InOutSine)
 
+@dataclass (frozen=True)
 class WordShortcut:
-	def __init__(self, word_full):
-		self.word_meta = word_full
-
-	def name(self):
-		return self.word_meta.get("Name")
-
-	def transl(self):
-		return self.word_meta.get("translation")
-
-	def transcript(self):
-		return self.word_meta.get("transcription")
-
-	def weight(self):
-		return self.word_meta.get("weight")
-
-	def sub_group(self):
-		return self.word_meta.get("Sub group")
+	name: str
+	transl: str
+	transcript: str
+	weight: float
+	sub_group: str
 
 
 class EnglishApp(Ui_SEEnglish, QMainWindow):
@@ -148,14 +159,15 @@ class EnglishApp(Ui_SEEnglish, QMainWindow):
 		self.mistakes = []
 		self.glow = False
 		self.Flag = False
-		self.dock = None  # MistakesDock()
+
+		self.player = QMediaPlayer()
+		self.audioOutput = QAudioOutput()
 
 		self.grades_table = tb.table('exam grades')
 		self.grades_objects = [self.Grade1, self.Grade2, self.Grade3, self.Grade4, self.Grade5]
 
 		self.focus = tb.table('focused review')
 
-		# self.dock = MistakesDock()
 		self.progress = CircularProgress()
 		self.progress.setFixedSize(120, 60)
 
@@ -420,8 +432,6 @@ class EnglishApp(Ui_SEEnglish, QMainWindow):
 		self.toggle_translation()
 		self.W_answer.setEnabled(False)
 		self.L_answer.setEnabled(False)
-		if self.dock:
-			self.dock.tableWidget.clear()
 		if self.study_mode == "mode2stud":
 			self.update_weight_info()
 			shuffle_to_learn(self.to_learn)
@@ -447,8 +457,11 @@ class EnglishApp(Ui_SEEnglish, QMainWindow):
 		self.word_iterator()
 
 	def voice_word(self):
-		audio, samplerate = sf.read(self.file_path)
-		sd.play(audio, samplerate)
+		self.player.setAudioOutput(self.audioOutput)
+		self.player.setSource(QUrl.fromLocalFile(self.file_path))
+
+		self.player.play()
+
 
 	def word_iterator(self):
 		self.Flag = self.study_mode == "mode2stud"
@@ -473,10 +486,18 @@ class EnglishApp(Ui_SEEnglish, QMainWindow):
 				self.teach()
 				return
 
-			self.wd = WordShortcut(self.current_word)
-			self.The_word.setText(self.wd.name())
-			self.word_transcription.setText(self.wd.transcript())
-			self.word_translation.setText(self.wd.transl())
+			# making intermediate list to ensure wd integrity
+			arg_list = (
+				self.current_word["Name"],
+				self.current_word["translation"],
+				self.current_word["transcription"],
+				self.current_word["weight"],
+				self.current_word["Sub group"],
+			)
+			self.wd = WordShortcut(*arg_list)
+			self.The_word.setText(self.wd.name)
+			self.word_transcription.setText(self.wd.transcript)
+			self.word_translation.setText(self.wd.transl)
 			self.show_points()
 
 		else:
@@ -496,7 +517,6 @@ class EnglishApp(Ui_SEEnglish, QMainWindow):
 				self.current_word = next(self.word_iterating)
 			except StopIteration:
 				self.The_word.setText("Lesson Done!")
-				sd.stop()
 				if self.checkBox.isChecked() or self.study_mode == "mode3ex":
 					self.lesson_resume()
 				self.enable_buttons(False)
@@ -516,18 +536,30 @@ class EnglishApp(Ui_SEEnglish, QMainWindow):
 				self.restart_lesson.setEnabled(True)
 			else:
 				self.restart_lesson.setEnabled(True)
-			self.wd = WordShortcut(self.current_word)
+
+			arg_list = (
+				self.current_word["Name"],
+				self.current_word["translation"],
+				self.current_word["transcription"],
+				self.current_word["weight"],
+				self.current_word["Sub group"],
+			)
+			self.wd = WordShortcut(*arg_list)
 			self.show_points()
-			self.The_word.setText(self.wd.name())
-			self.word_transcription.setText(self.wd.transcript())
-			self.word_translation.setText(self.wd.transl())
+			self.The_word.setText(self.wd.name)
+			self.word_transcription.setText(self.wd.transcript)
+			self.word_translation.setText(self.wd.transl)
 			self.W_answer.setEnabled(True)
 			self.L_answer.setEnabled(True)
 
 		QApplication.processEvents()
-		self.file_path = os.path.join(audio_base_path, f"{self.wd.sub_group().replace('/', '-').replace(':', '-')}",
-									  f"{self.wd.name().split(' (')[0]}.ogg")
+		self.file_path = os.path.join(audio_base_path,
+									  f"{self.wd.sub_group.replace('/', '-').replace(':', '-')}",
+									  f"{self.wd.name.split(' (')[0]}.ogg")
+
 		self.voice_word()
+
+
 
 	def progress_value(self, querry, group):
 		max_value = len(tb.search(where(group) == querry))
@@ -600,10 +632,10 @@ class EnglishApp(Ui_SEEnglish, QMainWindow):
 					self.scrollGrid.removeItem(item)  # Remove non-widget items like spacers
 
 	def mark(self, num):
-		new_value = round((self.wd.weight() - (self.wd.weight() * max_points % 1 / max_points) - num / max_points), 2)
+		new_value = round((self.wd.weight - (self.wd.weight * max_points % 1 / max_points) - num / max_points), 2)
 		new_value = min(1, max(new_value, 0))
 		tb.update({"weight": new_value},
-				  (where('Sub group') == self.wd.sub_group()) & (where("Name") == self.wd.name()))
+				  (where('Sub group') == self.wd.sub_group) & (where("Name") == self.wd.name))
 
 	def enable_buttons(self, on_off):
 		self.W_answer.setVisible(on_off)
@@ -621,7 +653,7 @@ class EnglishApp(Ui_SEEnglish, QMainWindow):
 
 	def show_points(self):
 		self.points_display.shadow_anim.stop()
-		amount = max_points - self.wd.weight() * max_points
+		amount = max_points - self.wd.weight * max_points
 		self.points_display.setText(" 🐟" * int(amount))
 		if amount == max_points:
 			self.points_display.setText("MAX" + " 🐟" * int(amount))
@@ -629,67 +661,63 @@ class EnglishApp(Ui_SEEnglish, QMainWindow):
 
 
 	def lesson_resume(self):
-		if self.dock:
-			self.dock.populate(self.mistakes)
-			self.dock.show()
+		self.clear_mistakes()
+
+		for num, mistake in enumerate(self.mistakes):
+
+			self.redLabel = QLabel(f"{mistake['Name']}", self.ResultsLabel)
+			self.redLabel.setStyleSheet("font-size: 24px; color: #810031; font-weight: bold;")
+			self.redLabel.setFixedSize(400, 50)
+			self.redLabel.setAlignment(Qt.AlignmentFlag.AlignRight)
+			self.scrollGrid.addWidget(self.redLabel, num, 0)
+			self.redLabel = QLabel("-", self.ResultsLabel)
+			self.redLabel.setStyleSheet("font-size: 24px; color: #810031; font-weight: bold;")
+			self.redLabel.setFixedSize(50, 50)
+			self.redLabel.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+			self.scrollGrid.addWidget(self.redLabel, num, 1)
+			self.redLabel = QLabel(f"{mistake['translation']}", self.ResultsLabel)
+			self.redLabel.setStyleSheet("font-size: 24px; color: #810031; font-weight: bold;")
+			self.redLabel.setFixedSize(450, 50)
+			self.redLabel.setAlignment(Qt.AlignmentFlag.AlignLeft)
+			self.scrollGrid.addWidget(self.redLabel, num, 2)
+		self.scrollSpacer = QSpacerItem(0, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+		self.scrollGrid.addItem(self.scrollSpacer, 6, 1)
+		self.AnswersLabel.setText(f"Correct Answers: {self.size - len(self.mistakes)}/{self.size}")
+		self.SaveAndExit.setVisible(not self.Flag)
+		self.Grade1.setVisible(not self.Flag)
+		self.Grade2.setVisible(not self.Flag)
+		self.Grade3.setVisible(not self.Flag)
+		self.Grade4.setVisible(not self.Flag)
+		self.Grade5.setVisible(not self.Flag)
+		self.GradesLabel.setVisible(not self.Flag)
+
+		if self.Flag:
+			self.Repeat.setText("next Lesson")
+
 		else:
-			self.clear_mistakes()
-
-			for num, mistake in enumerate(self.mistakes):
-
-				self.redLabel = QLabel(f"{mistake['Name']}", self.ResultsLabel)
-				self.redLabel.setStyleSheet("font-size: 24px; color: #810031; font-weight: bold;")
-				self.redLabel.setFixedSize(400, 50)
-				self.redLabel.setAlignment(Qt.AlignmentFlag.AlignRight)
-				self.scrollGrid.addWidget(self.redLabel, num, 0)
-				self.redLabel = QLabel("-", self.ResultsLabel)
-				self.redLabel.setStyleSheet("font-size: 24px; color: #810031; font-weight: bold;")
-				self.redLabel.setFixedSize(50, 50)
-				self.redLabel.setAlignment(Qt.AlignmentFlag.AlignHCenter)
-				self.scrollGrid.addWidget(self.redLabel, num, 1)
-				self.redLabel = QLabel(f"{mistake['translation']}", self.ResultsLabel)
-				self.redLabel.setStyleSheet("font-size: 24px; color: #810031; font-weight: bold;")
-				self.redLabel.setFixedSize(450, 50)
-				self.redLabel.setAlignment(Qt.AlignmentFlag.AlignLeft)
-				self.scrollGrid.addWidget(self.redLabel, num, 2)
-			self.scrollSpacer = QSpacerItem(0, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-			self.scrollGrid.addItem(self.scrollSpacer, 6, 1)
-			self.AnswersLabel.setText(f"Correct Answers: {self.size - len(self.mistakes)}/{self.size}")
-			self.SaveAndExit.setVisible(not self.Flag)
-			self.Grade1.setVisible(not self.Flag)
-			self.Grade2.setVisible(not self.Flag)
-			self.Grade3.setVisible(not self.Flag)
-			self.Grade4.setVisible(not self.Flag)
-			self.Grade5.setVisible(not self.Flag)
-			self.GradesLabel.setVisible(not self.Flag)
-
-			if self.Flag:
-				self.Repeat.setText("next Lesson")
+			self.grades_list = self.grades_table.get(where('group grades') == self.group_name)
+			self.grades_list = self.grades_list.get('list', [])
+			self.grade = self.size - len(self.mistakes)
+			self.Repeat.setText("repeat Exam")
+			if len(self.mistakes) <= 1:
+				self.SaveAndExit.setStyleSheet(self.stylesheet_prpl)
+				self.SaveAndExit.setEnabled(True)
 
 			else:
-				self.grades_list = self.grades_table.get(where('group grades') == self.group_name)
-				self.grades_list = self.grades_list.get('list', [])
-				self.grade = self.size - len(self.mistakes)
-				self.Repeat.setText("repeat Exam")
-				if len(self.mistakes) <= 1:
-					self.SaveAndExit.setStyleSheet(self.stylesheet_prpl)
-					self.SaveAndExit.setEnabled(True)
+				self.SaveAndExit.setStyleSheet(self.stylesheet_gray)
+				self.SaveAndExit.setEnabled(False)
 
-				else:
-					self.SaveAndExit.setStyleSheet(self.stylesheet_gray)
-					self.SaveAndExit.setEnabled(False)
+			self.grades_list.insert(0, self.grade)
+			if len(self.grades_list) > 5:
+				self.grades_list.pop()
 
-				self.grades_list.insert(0, self.grade)
-				if len(self.grades_list) > 5:
-					self.grades_list.pop()
+			for grade, label_object in zip(self.grades_list, self.grades_objects):
+				label_object.setText(str(grade))
+				label_object.setStyleSheet(self.get_grade_color(grade))
 
-				for grade, label_object in zip(self.grades_list, self.grades_objects):
-					label_object.setText(str(grade))
-					label_object.setStyleSheet(self.get_grade_color(grade))
+			self.grades_table.update({'list': self.grades_list}, where('group grades') == self.group_name)
 
-				self.grades_table.update({'list': self.grades_list}, where('group grades') == self.group_name)
-
-			self.pages.setCurrentIndex(0)
+		self.pages.setCurrentIndex(0)
 
 	def switch_to_WordLearn(self, group):
 		self.pages.setCurrentIndex(2)
@@ -711,8 +739,8 @@ class EnglishApp(Ui_SEEnglish, QMainWindow):
 
 
 if __name__ == '__main__':
+	StderrFilter()
 	app = QApplication(sys.argv)
-	debug = True
 
 	max_points = 5
 
@@ -748,11 +776,11 @@ if __name__ == '__main__':
 					print("Manual copy failed:", e)
 			tb = TinyDB(db_path)
 
-
-
+	# fix
+	tb.update({'Name': 'go in'}, where('translation') == 'входить')
+	tb.update({'Name': 'emerge'}, where('translation') == 'всплывать')
 
 	Word = Query()
-
 	window = EnglishApp()
 	window.show()
 
