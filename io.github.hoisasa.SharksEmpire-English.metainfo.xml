@@ -11,12 +11,14 @@
     <icon type="remote">https://raw.githubusercontent.com/Hoisasa/SharksEmpire-English/v0.2.2/hicolor/512x512/io.github.hoisasa.SharksEmpire-English.png</icon>
 
     <name>Sharks Empire: English</name>
-    <summary>Learn vocabulary with flashcards</summary>
+    <summary>Learn vocabulary with flashcards </summary>
     <summary xml:lang="ru">Изучение слов по карточкам</summary>
 
     <developer id="io.github.hoisasa">
         <name>Hoisasa</name>
     </developer>
+
+
 
 
     <url type="homepage">https://github.com/Hoisasa/SharksEmpire-English</url>
@@ -26,6 +28,9 @@
     <project_license>GPL-3.0-or-later</project_license>
 
     <description>
+<!-- doesn't make sense to localise this tag       -->
+        <p> Note: Only supports russian translations </p>
+
         <p>There are three modes: Overview, Practice, and Exam. While the overview straight up shows the translation, other modes provide it after pressing a corresponding button. In the end, all mistakes are shown to provide you with a feature to reflect on your answers. To gauge the progress of learning each word, they have points assigned to them. When you are ready, complete the exam—a more strict area which punishes mistakes more. The exam's goal is to make as few mistakes as possible, but in order to not be utterly strict, it allows one mistake to pass.</p>
         <p xml:lang="ru">В приложении есть три режима: Ознакомление, Практика и Экзамен. Тогда как в ознакомлении перевод виден сразу, в остальных он будет показан только по нажатии соответствующей кнопки. В конце все ошибки будут показаны, чтоб у тебя была возможность их усвоить. Для отслеживания прогресса изучения слов им присуждаются очки. Когда ты готов, пройди экзамен — более жесткий режим, который наказывает за ошибки сильнее. Цель экзамена — чтоб ты допустил как можно меньше ошибок. Но допускается совершить одну ошибку, чтоб пройти его.</p>
 
@@ -51,7 +56,7 @@
             <li>Context-sensitive translations</li>
             <li xml:lang="ru">Перевод слов чувствителен к контексту</li>
 
-            <li>Target language: Russian</li>
+            <li>Supported languages: Russian</li>
             <li xml:lang="ru">Язык приложения - Русский</li>
         </ul>
     </description>
